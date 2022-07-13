@@ -1,6 +1,6 @@
 // /stories/pages/home.stories.jsx
 
-import Home from "../../pages/index";
+import Home from "../../src/pages/index";
 
 export default {
   title: "Pages/Home",
