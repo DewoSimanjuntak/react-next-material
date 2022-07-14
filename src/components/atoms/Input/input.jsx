@@ -1,6 +1,6 @@
-import { ThemeProvider, styled } from '@mui/material/styles';
+import { ThemeProvider, styled, alpha } from '@mui/material/styles';
 import React, { useEffect } from "react";
-import "./input.css";
+// import "./input.css";
 
 // import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
@@ -17,6 +17,30 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { colors, primaryTheme, secondaryTheme } from "../../../styles/theme";
+
+export const RedditTextField = styled((props) => (
+  <TextField InputProps={{ disableUnderline: true }} {...props} />
+))(({ theme }) => ({
+  '& .MuiFilledInput-root': {
+    border: '1px solid #e2e2e1',
+    overflow: 'hidden',
+    borderRadius: 4,
+    backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
+    transition: theme.transitions.create([
+      'border-color',
+      'background-color',
+      'box-shadow',
+    ]),
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
+    '&.Mui-focused': {
+      backgroundColor: 'transparent',
+      boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+      borderColor: theme.palette.primary.main,
+    },
+  },
+}));
 
 export const CustomInput = styled(({...props}) => {
   const [values, setValues] = React.useState({
@@ -80,14 +104,11 @@ export const CustomInput = styled(({...props}) => {
             <div>Input Date of birth (under construction)</div>
           </>
         : <>
-            <TextField
-              sx={{ m: 1, width: '25ch', backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }}
-              type={props.type}
-              error={props.error}
-              label={props.label}
-              placeholder={props.placeholder}
-              variant={props.variant}
-              helperText={props.helperText} />
+            <RedditTextField 
+              variant="filled" 
+              style={{ marginTop: 11 }} 
+              sx={{ m: 1, backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }} 
+              {...props}/>
           </>
       }
       
