@@ -1,0 +1,13 @@
+.loginPage {
+    display: flex;
+    flex: 1;
+}
+
+.loginComponentContainer {
+    flex: 1;
+    background-color: #003B4A;
+}
+
+.loginImageContainer {
+    flex: 1;
+}
