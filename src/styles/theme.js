@@ -15,27 +15,27 @@ export const colors = {
   peach25: '#FDFAF9',
 };
 
-declare module '@mui/material/styles' {
-  interface Theme {
-    status: {
-      danger: string;
-    };
-    button: {
-      background: string
-      color: string
-    }
-  }
-  // allow configuration using `createTheme`
-  interface ThemeOptions {
-    status?: {
-      danger?: string;
-    };
-    button?: {
-      background?: string;
-      color?: string;
-    },
-  }
-};
+// declare module '@mui/material/styles' {
+//   interface Theme {
+//     status: {
+//       danger: string;
+//     };
+//     button: {
+//       background: string
+//       color: string
+//     }
+//   }
+//   // allow configuration using `createTheme`
+//   interface ThemeOptions {
+//     status?: {
+//       danger?: string;
+//     };
+//     button?: {
+//       background?: string;
+//       color?: string;
+//     },
+//   }
+// };
 
 
 export const primaryTheme = createTheme({
