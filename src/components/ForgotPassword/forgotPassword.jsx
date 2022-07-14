@@ -1,0 +1,128 @@
+import React, {useState} from "react"
+import { Button, TextField } from "@mui/material";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import { alpha, styled } from '@mui/material/styles';
+
+const headingStyles = {
+    marginBottom: 30,
+    textAlign:'left'
+}
+
+const labelStyle = {
+    textAlign:'left'
+}
+
+const center = {
+    margin: 'auto',
+    width: '50%',
+    padding: 10,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    textAlign: 'center'
+}
+
+const cardContentStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+}
+
+const securityQuestionContainer = {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+}
+
+const buttonStyle = {
+    marginTop: 2,
+    backgroundColor: "#003B4A",
+    borderRadius:'48pt'
+}
+
+const regularFont = {
+    fontFamily: 'Libre Franklin',
+    fontSize: '16px'
+}
+
+const RedditTextField = styled((props) => (
+    <TextField InputProps={{ disableUnderline: true }} {...props} />
+  ))(({ theme }) => ({
+    '& .MuiFilledInput-root': {
+      border: '1px solid #e2e2e1',
+      overflow: 'hidden',
+      borderRadius: 4,
+      backgroundColor: theme.palette.mode === 'light' ? '#fcfcfb' : '#2b2b2b',
+      transition: theme.transitions.create([
+        'border-color',
+        'background-color',
+        'box-shadow',
+      ]),
+      '&:hover': {
+        backgroundColor: 'transparent',
+      },
+      '&.Mui-focused': {
+        backgroundColor: 'transparent',
+        boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+        borderColor: theme.palette.primary.main,
+      },
+    },
+  }));
+
+const ForgotPasswordComponent= () => {
+    const [isValidUsername, setValidUsername] = useState(false);
+    const [isMagicLinkClicked, setMagicLinkClicked] = useState(false);
+    const [isShowSecurityQuestion, setShowSecurityQuestion] = useState(false);
+
+    const onResetPasswordClicked = () =>{
+        setValidUsername(!isValidUsername)
+    }
+
+    const onMagicLinkClicked = () => {
+        setMagicLinkClicked(!isMagicLinkClicked)
+    }
+
+    const onSetNewPasswordClicked = () => {
+        setShowSecurityQuestion(!isShowSecurityQuestion)
+    }
+
+    const magicLinkUI = () =>{
+        return(
+            <div>
+                <p style={regularFont}>User receives a magic link to their registered email-id/ mobile number</p>
+            </div>
+        )
+    }
+
+    const getSecurityQuestionUI = () =>{
+        return(
+            <div style={securityQuestionContainer}>
+                <TextField id="outlined-basic" label="Security Question 1" variant="standard" margin="dense"/>
+                <TextField id="outlined-basic" label="Security Question 2" variant="standard" margin="dense"/>
+                <TextField id="outlined-basic" label="Security Question 3" variant="standard" margin="dense"/>
+            </div>
+        )
+    }
+    
+    return (
+        <Card sx={{ minWidth: 275, margin:10 }}>
+            <CardContent style={cardContentStyle}>
+                <h1 style={headingStyles}>Forgot Your Password?</h1>
+                <label style={labelStyle}>Enter your email address or phone number bellow and we'll send you an-email to reset it.</label>
+                <RedditTextField label="Email or Phone" id="reddit-input" variant="filled" style={{ marginTop: 11 }}/>
+                <Button variant="contained" sx={buttonStyle} onClick={onResetPasswordClicked}>Reset Password</Button>
+                {isValidUsername ? 
+                    <div style={center}>
+                        <Button variant="contained" sx={buttonStyle} onClick={onMagicLinkClicked}>Magic Link</Button>
+                        {isMagicLinkClicked ? magicLinkUI() : null}
+                        <Button variant="contained" sx={buttonStyle} onClick={onSetNewPasswordClicked}>Set New Password</Button>
+                        {isShowSecurityQuestion ? getSecurityQuestionUI() : null}
+                    </div>
+                : null}
+            </CardContent>
+        </Card>
+    )
+  }
+
+
+export default ForgotPasswordComponent
