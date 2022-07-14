@@ -3,6 +3,7 @@ import { Button, TextField } from "@mui/material";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { alpha, styled } from '@mui/material/styles';
+import {StyledInput} from "../atoms/Input/input"
 
 const headingStyles = {
     marginBottom: 30,
@@ -109,7 +110,7 @@ const ForgotPasswordComponent= () => {
             <CardContent style={cardContentStyle}>
                 <h1 style={headingStyles}>Forgot Your Password?</h1>
                 <label style={labelStyle}>Enter your email address or phone number bellow and we'll send you an-email to reset it.</label>
-                <RedditTextField label="Email or Phone" id="reddit-input" variant="filled" style={{ marginTop: 11 }}/>
+                <StyledInput label="Email or Phone" id="reddit-input" variant="filled"/>
                 <Button variant="contained" sx={buttonStyle} onClick={onResetPasswordClicked}>Reset Password</Button>
                 {isValidUsername ? 
                     <div style={center}>
