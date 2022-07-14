@@ -12,7 +12,6 @@ export const FormMessage = ({...props}) => {
       props.onClick()
     }
   }
-  console.log({props})
   
   return (
     <>
