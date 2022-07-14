@@ -5,7 +5,7 @@ import { Checkboxes } from "./checboxes";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: "Example/Checkboxes",
+  title: "Atoms/Checkboxes",
   component: Checkboxes,
 } as ComponentMeta<typeof Checkboxes>;
 
