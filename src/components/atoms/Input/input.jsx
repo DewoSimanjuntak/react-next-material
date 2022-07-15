@@ -104,11 +104,11 @@ export const CustomInput = styled(({...props}) => {
             <div>Input Date of birth (under construction)</div>
           </>
         : <>
-              <RedditTextField 
-                variant="filled" 
-                style={{ marginTop: 11 }} 
-                sx={{ m: 1, backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }} 
-                {...props}/>
+            <RedditTextField 
+              variant="filled" 
+              style={{ marginTop: 11 }} 
+              sx={{ m: 1, backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }} 
+              {...props}/>
           </>
       }
       

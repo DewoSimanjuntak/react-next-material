@@ -1,40 +1,37 @@
-import React from 'react';
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import { Button } from './Button';
+import { StyledButton } from "./button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
-  title: 'Example/Button',
-  component: Button,
+  title: "Atoms/Button",
+  component: StyledButton,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    size: {
+      options: ['small', 'large'],
+      control: { type: 'radio' },
+    },
   },
 };
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template = (args) => <Button {...args} />;
+const Template = (args) => <StyledButton {...args} />;
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
   primary: true,
-  label: 'Button',
+  label: "Primary",
+  size: "large",
+  gradient: false
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: 'Button',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
+  primary: false,
+  label: "Secondary",
+  size: "small",
+  gradient: false
 };

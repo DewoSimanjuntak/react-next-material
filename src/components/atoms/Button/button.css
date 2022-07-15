@@ -1,0 +1,23 @@
+.custom-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-button:hover {
+  opacity: 0.75;
+}
+
+.custom-button--gradient {
+  background: linear-gradient(89.86deg, #0095A9 -3.29%, #00C6E0 102.48%) !important;
+  color: white !important;
+}
+
+.custom-button--small {
+  min-width: 100px !important;
+}
+
+.custom-button--large {
+  min-width: 322px !important;
+}
