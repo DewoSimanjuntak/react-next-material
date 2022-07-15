@@ -11,15 +11,23 @@ export default function Login() {
     return (
         <Box sx={{
             width: 300,
-            height: 500,
             padding: '20px 10px 15px',
-            backgroundColor: 'white'
+            backgroundColor: 'white',
+            alignSelf: 'center',
+            margin: 'auto'
         }}>
             <Stack spacing={2}>
             <TextField id="email" label="Email or Phone" />
             <TextField id="password" label="Password" type="password" />
             <FormControlLabel control={<Checkbox defaultChecked />} label="Keep me signed in on this device" />
-            <Button variant="contained">Login</Button>
+            <Button variant="contained" sx={{
+                backgroundColor:"#E5EDF8P",
+                borderRadius: 46,
+                color: "white",
+                '&:hover': {
+                    backgroundColor: '#E5EDF8P',
+                  },
+            }}>Login</Button>
             <Button variant="outlined">Continue as a guest</Button>
             <Link href="#">Forgot Username or Password</Link>
             </Stack>
