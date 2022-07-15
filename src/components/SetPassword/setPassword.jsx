@@ -9,6 +9,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Button } from "@mui/material";
+import {LabelWithIcon} from "../../components/atoms/LabelWithIcon/labelWithIcon"
 
 const headingStyles = {
     marginBottom: 30,
@@ -98,6 +99,10 @@ const setPasswordComponent = () => {
                         />
                     </FormControl>
                     <Button variant="contained" sx={buttonStyle}>Reset Password</Button>
+                    <LabelWithIcon label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"/>
+                    <LabelWithIcon error={true} label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"/>
+                    <LabelWithIcon label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"/>
+                    <LabelWithIcon label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"/>
                 </CardContent>
         </Card>
       
