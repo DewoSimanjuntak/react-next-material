@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { alpha, styled } from '@mui/material/styles';
 import {StyledInput} from "../atoms/Input/input"
+import LinkIcon from '@mui/icons-material/Link';
 
 const headingStyles = {
     marginBottom: 30,
@@ -15,9 +16,7 @@ const labelStyle = {
 }
 
 const center = {
-    margin: 'auto',
-    width: '50%',
-    padding: 10,
+    marginTop: 10,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -37,8 +36,14 @@ const securityQuestionContainer = {
 
 const buttonStyle = {
     marginTop: 2,
-    backgroundColor: "#003B4A",
+    backgroundColor: "#3EAFBD",
     borderRadius:'48pt'
+}
+
+const magicLinkStyle = {
+    color: "#3EAFBD",
+    borderRadius:'48pt',
+    borderColor: "#003B4A"
 }
 
 const regularFont = {
@@ -114,7 +119,8 @@ const ForgotPasswordComponent= () => {
                 <Button variant="contained" sx={buttonStyle} onClick={onResetPasswordClicked}>Reset Password</Button>
                 {isValidUsername ? 
                     <div style={center}>
-                        <Button variant="contained" sx={buttonStyle} onClick={onMagicLinkClicked}>Magic Link</Button>
+                        {/* <Button variant="contained" sx={buttonStyle} onClick={onMagicLinkClicked}>Magic Link</Button> */}
+                        <Button variant="outlined" startIcon={<LinkIcon />} onClick={onMagicLinkClicked} sx={magicLinkStyle}>Magic Link</Button>
                         {isMagicLinkClicked ? magicLinkUI() : null}
                         <Button variant="contained" sx={buttonStyle} onClick={onSetNewPasswordClicked}>Set New Password</Button>
                         {isShowSecurityQuestion ? getSecurityQuestionUI() : null}

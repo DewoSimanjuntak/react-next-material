@@ -8,6 +8,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import { Button } from "@mui/material";
 
 const headingStyles = {
     marginBottom: 30,
@@ -16,6 +17,12 @@ const headingStyles = {
 const cardContentStyle = {
     display: 'flex',
     flexDirection: 'column',
+}
+
+const buttonStyle = {
+    marginTop: 2,
+    backgroundColor: "#3EAFBD",
+    borderRadius:'48pt'
 }
 
 const setPasswordComponent = () => {
@@ -90,6 +97,7 @@ const setPasswordComponent = () => {
                             label="Confirm Password"
                         />
                     </FormControl>
+                    <Button variant="contained" sx={buttonStyle}>Reset Password</Button>
                 </CardContent>
         </Card>
       
