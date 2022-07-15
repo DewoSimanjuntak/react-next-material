@@ -1,7 +1,21 @@
-import '../styles/globals.css'
+import { NextIntlProvider } from "next-intl";
+import "../../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+function getStaticProps({ locale }) {
+  return {
+    props: {
+      messages: require(`../locales/${locale}.json`),
+    },
+  };
 }
 
-export default MyApp
+function MyApp({ Component, pageProps }) {
+  const intlProps = getStaticProps({ locale: "en" });
+  return (
+    <NextIntlProvider messages={intlProps.props.messages}>
+      <Component {...pageProps} />
+    </NextIntlProvider>
+  );
+}
+
+export default MyApp;
