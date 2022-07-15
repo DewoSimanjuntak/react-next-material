@@ -1,12 +1,9 @@
 import AuthLayout from '../../../components/templates/authLayout'
-import {StyledInput} from '@/components/atoms/Input/input'
-// import {StyledInput} from '../../../components/atoms/Input/input'
-import TestCom from 'src/components/testcom'
+import { StyledInput } from '../../../components/atoms/Input/input'
 
 export default function CreateAccountPage() {
   return (
     <section>
-      <TestCom />
       <StyledInput />
     </section>
   )

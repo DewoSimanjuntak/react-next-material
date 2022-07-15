@@ -8,15 +8,18 @@ export default function Layout({ children }) {
       <Head>
         <title>Layouts Example</title>
       </Head>
-      <main className={styles.main}
-        style={{
-          backgroundColor: colors.darkGreen
-        }}>
-        <div className="content">
+      <div className={styles.authLayout}>
+        <div className={styles.authContainer}>
           {children}
+          
+          <section className={styles.authImageContainer}>
+            <img
+              src="https://c4.wallpaperflare.com/wallpaper/930/115/679/panda-4k-high-quality-hd-wallpaper-preview.jpg"
+              className={styles.imageBanner}
+            />
+          </section>
         </div>
-        <div className={styles.backdrop}></div>
-      </main>
+      </div>
     </>
   )
 }
