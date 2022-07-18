@@ -110,6 +110,7 @@ export const CustomInput = styled(({...props}) => {
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label={props.label}
+                onChange={() => {}}
                 renderInput={(params) => <RedditTextField variant="filled" 
                   style={{ marginTop: 11 }} 
                   sx={{ m: 1, backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }}
