@@ -11,9 +11,12 @@ import Paper from '@mui/material/Paper';
 import { Grid} from "@mui/material";
 import Typography from '@mui/material/Typography';
 import {useState} from 'react'
+import {Error} from '../../molecules/FormMessage/formMessage.stories'
 export default function Login() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const limitMessage = {"Account Locked Too many login attempts. you account is looked. please contact customer supper to unlock your account`"}
+  const accountMessage = "Invalid username or password"
   return (
     <Box
       sx={{
@@ -24,6 +27,7 @@ export default function Login() {
         margin: "auto",
       }}
     >
+      <Error content={"Invalid username or password"}/>
       <Typography variant="h4" gutter Bottom component="div" margin={2}>
         Patient Login
       </Typography>
