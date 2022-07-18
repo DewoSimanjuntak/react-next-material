@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import styles from './authLayout.module.css'
+import styles from './authLayout.module.scss'
 import {colors} from '../../styles/theme'
 
 export default function Layout({ children }) {
@@ -10,7 +10,9 @@ export default function Layout({ children }) {
       </Head>
       <div className={styles.authLayout}>
         <div className={styles.authContainer}>
-          {children}
+          <section className={styles.authComponentContainer}>
+            {children}
+          </section>
           
           <section className={styles.authImageContainer}>
             <img
