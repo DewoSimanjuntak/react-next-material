@@ -4,7 +4,7 @@ import { StyledInput } from '../../../components/atoms/Input/input'
 export default function CreateAccountPage() {
   return (
     <section>
-      <StyledInput />
+      <StyledInput type="dob" />
     </section>
   )
 }

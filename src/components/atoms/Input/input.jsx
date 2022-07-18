@@ -2,7 +2,6 @@ import { ThemeProvider, styled, alpha } from '@mui/material/styles';
 import React, { useEffect } from "react";
 // import "./input.css";
 
-// import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
@@ -15,6 +14,9 @@ import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import { colors, primaryTheme, secondaryTheme } from "../../../styles/theme";
 
@@ -105,7 +107,15 @@ export const CustomInput = styled(({...props}) => {
         </>
       : props.type === 'dob'
         ? <>
-            <div>Input Date of birth (under construction)</div>
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
+              <DatePicker
+                label={props.label}
+                renderInput={(params) => <RedditTextField variant="filled" 
+                  style={{ marginTop: 11 }} 
+                  sx={{ m: 1, backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }}
+                  {...params} />}
+              />
+            </LocalizationProvider>
           </>
         : <>
             <RedditTextField 
