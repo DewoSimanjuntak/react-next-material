@@ -48,13 +48,16 @@ export default function Login() {
         <Grid
           container
           spacing={2}
+          columns={2}
+          justifyContent={'flex-end'}
         >
-          <Paper></Paper>
+          <Grid>
+          </Grid>
           <Grid item>  
             <Link href="/forgot-password">Forgot Username or Password</Link>
         </Grid>
         </Grid>
-        <Devider/>
+        <Devider margin={3}/>
         <Link href="/forgot-password">Don't have an account?</Link>
         <Button variant="outlined">Create Account</Button>
       </Stack>
