@@ -6,7 +6,10 @@ import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
-
+import Devider from '@mui/material/Divider'
+import Paper from '@mui/material/Paper';
+import { Grid} from "@mui/material";
+import Typography from '@mui/material/Typography';
 export default function Login() {
   return (
     <Box
@@ -18,6 +21,9 @@ export default function Login() {
         margin: "auto",
       }}
     >
+      <Typography variant="h4" gutter Bottom component="div" margin={2}>
+        Patient Login
+      </Typography>
       <Stack spacing={2}>
         <TextField id="email" label="Email or Phone" />
         <TextField id="password" label="Password" type="password" />
@@ -39,7 +45,18 @@ export default function Login() {
           Login
         </Button>
         <Button variant="outlined">Continue as a guest</Button>
-        <Link href="/forgot-password">Forgot Username or Password</Link>
+        <Grid
+          container
+          spacing={2}
+        >
+          <Paper></Paper>
+          <Grid item>  
+            <Link href="/forgot-password">Forgot Username or Password</Link>
+        </Grid>
+        </Grid>
+        <Devider/>
+        <Link href="/forgot-password">Don't have an account?</Link>
+        <Button variant="outlined">Create Account</Button>
       </Stack>
     </Box>
   );
