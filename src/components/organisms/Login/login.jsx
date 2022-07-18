@@ -10,7 +10,10 @@ import Devider from '@mui/material/Divider'
 import Paper from '@mui/material/Paper';
 import { Grid} from "@mui/material";
 import Typography from '@mui/material/Typography';
+import {useState} from 'react'
 export default function Login() {
+  const [username, setUsername] = useState();
+  const [password, setPassword] = useState();
   return (
     <Box
       sx={{
@@ -25,8 +28,18 @@ export default function Login() {
         Patient Login
       </Typography>
       <Stack spacing={2}>
-        <TextField id="email" label="Email or Phone" />
-        <TextField id="password" label="Password" type="password" />
+        <TextField id="email" label="Email or Phone" 
+           onChange={(event) => setUsername(event.target.value)}
+           error={username === ""}
+           helperText={username === "" ? "This field is required" : " "}
+        />
+        <TextField id="password" 
+        label="Password" 
+        type="password" 
+        onChange={(event) => setPassword(event.target.value)}
+        error={password === ""}
+        helperText={password === "" ? "This field is required" : " "}
+        />
         <FormControlLabel
           control={<Checkbox defaultChecked />}
           label="Keep me signed in on this device"
