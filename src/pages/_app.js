@@ -1,25 +1,12 @@
-import { NextIntlProvider } from "next-intl";
+import { I18nextProvider } from "react-i18next";
 import "../../styles/globals.css";
-
-function getStaticProps({ locale }) {
-  return {
-    props: {
-      messages: require(`../locales/${locale}.json`),
-    },
-  };
-}
+import i18n from "../i18n/i18n";
 
 function App({ Component, pageProps }) {
-  const intlProps = getStaticProps({ locale: "en" });
-
   // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout || ((page) => page)
+  const getLayout = Component.getLayout || ((page) => page);
 
-  return (
-    <NextIntlProvider messages={intlProps.props.messages}>
-      {getLayout(<Component {...pageProps} />)}
-    </NextIntlProvider>
-  );
+  return getLayout(<Component {...pageProps} />);
 }
 
 export default App;
