@@ -3,51 +3,17 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import RowRadioButtonsGroup from '../../../components/atoms/RowRadioButtonsGroup/rowRadioButtonsGroup';
-import StyledInput from '../../../components/atoms/Input/input'
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+// import {RowRadioButtonsGroup} from '../../atoms/RowRadioButtonsGroup/rowRadioButtonsGroup';
+import { StyledInput } from '../../atoms/Input/input'
 // import Link from "@mui/material/Link";
-import Typography from '@mui/material/Typography';
-import { useTranslations } from "next-intl";
-import Divider from '@mui/material/Divider'
-import Link from 'next/link'
+import { Divider } from '@mui/material/Divider'
+import { Link } from 'next/link'
 import { styles } from "./style"
 
 import { useForm, Controller } from "react-hook-form";
 
 // import {Error} from '../../molecules/FormMessage/formMessage.stories'
 
-const titleStyles = {
-    marginLeft: "8px",
-    marginRight: "8px",
-    paddingBottom: "6px",
-    color: "#366A70",
-    fontSize: "1.25rem",
-}
-
-const divMargin = {
-    marginLeft: "8px",
-    marginRight: "8px",
-    paddingBottom: "6px"
-}
-
-const bottomParagraph = {
-    color: "#366A70",
-    fontSize: "12px",
-    textAlign: "center",
-}
-
-const loginLink = {
-    color: "#3EAFBD",
-    textDecoration: "underline"
-}
-
-const buttonStyle = {
-    marginTop: 2,
-    backgroundColor: "#3EAFBD",
-    borderRadius: "48pt",
-};
 
 export default function Register() {
     const { handleSubmit, control } = useForm();
@@ -56,7 +22,6 @@ export default function Register() {
         console.log(data);
     };
 
-    const locale = useTranslations("userRegistration");
     const options = [
         { label: 'Email', value: 'email' },
         { label: 'Phone', value: 'phone' },
@@ -73,7 +38,7 @@ export default function Register() {
             }}
         >
             <Stack spacing={2}>
-                <label style={titleStyles}>{locale("title")}</label>
+                <label style={styles.titleStyles}>User Registration</label>
                 {/* <Error content={"Invalid use name or password"}/> */}
 
                 <form onSubmit={handleSubmit(onSubmit)} style={styles.form}>
@@ -112,25 +77,25 @@ export default function Register() {
                     <StyledInput type="dob" id="dob" label="Date of Birth" />
                     <StyledInput type="text" id="mobile" label="Mobile Number" />
                     <StyledInput type="password" id="password" label="Password" adorment={true} />
-                    <div style={divMargin}>
+                    {/* <div style={styles.divMargin}>
                         <RowRadioButtonsGroup label="Preferred mode of Communication" options={options} />
-                    </div>
+                    </div> */}
 
                     <Button
                         type="submit"
                         variant="contained"
-                        sx={buttonStyle}
+                        sx={styles.buttonStyle}
                     >
                         Register
                     </Button>
                 </form>
 
-                <p style={bottomParagraph}>
+                <p style={styles.bottomParagraph}>
                     By registering, you agree to our Terms &<br /> Conditions and Privacy Policy
                 </p>
                 <Divider margin={3} />
-                <p style={bottomParagraph}>
-                    Already have an account? <Link href="/login"><a style={loginLink}>Login</a></Link>
+                <p style={styles.bottomParagraph}>
+                    Already have an account? <Link href="/login"><a style={styles.loginLink}>Login</a></Link>
                 </p>
             </Stack>
         </Box>

@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import styles from './authLayout.module.scss'
-import {colors} from '../../styles/theme'
+import Head from "next/head";
+import styles from "./authLayout.module.scss";
+import { colors } from "../../styles/theme";
 
 export default function Layout({ children }) {
   return (
@@ -13,7 +13,7 @@ export default function Layout({ children }) {
           <section className={styles.authComponentContainer}>
             {children}
           </section>
-          
+
           <section className={styles.authImageContainer}>
             <img
               src="https://c4.wallpaperflare.com/wallpaper/930/115/679/panda-4k-high-quality-hd-wallpaper-preview.jpg"
@@ -23,5 +23,5 @@ export default function Layout({ children }) {
         </div>
       </div>
     </>
-  )
+  );
 }

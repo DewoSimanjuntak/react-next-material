@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import { alpha, styled } from "@mui/material/styles";
 import { StyledInput } from "../../atoms/Input/input";
 import LinkIcon from "@mui/icons-material/Link";
-import { useTranslations } from "next-intl";
+import { useTranslation } from "react-i18next";
 
 const headingStyles = {
   marginBottom: 30,
@@ -77,7 +77,9 @@ const RedditTextField = styled((props) => (
 }));
 
 const ForgotPasswordComponent = () => {
-  const locale = useTranslations("forgotPassword");
+  const { t } = useTranslation("translation", {
+    keyPrefix: "forgotPassword",
+  });
   const [isValidUsername, setValidUsername] = useState(false);
   const [isMagicLinkClicked, setMagicLinkClicked] = useState(false);
   const [isShowSecurityQuestion, setShowSecurityQuestion] = useState(false);
@@ -132,8 +134,8 @@ const ForgotPasswordComponent = () => {
   return (
     <Card sx={{ minWidth: 275, margin: 10 }}>
       <CardContent style={cardContentStyle}>
-        <h1 style={headingStyles}>{locale("title")}</h1>
-        <label style={labelStyle}>{locale("description")}</label>
+        <h1 style={headingStyles}>{t("title")}</h1>
+        <label style={labelStyle}>{t("description")}</label>
         <StyledInput
           label="Email or Phone"
           id="reddit-input"
