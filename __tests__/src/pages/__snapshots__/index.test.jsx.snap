@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home renders homepage unchanged 1`] = `
+<div>
+  <div
+    class="authLayout"
+  >
+    <div
+      class="authContainer"
+    >
+      <section
+        class="authComponentContainer"
+      />
+      <section
+        class="authImageContainer"
+      >
+        <img
+          class="imageBanner"
+          src="https://c4.wallpaperflare.com/wallpaper/930/115/679/panda-4k-high-quality-hd-wallpaper-preview.jpg"
+        />
+      </section>
+    </div>
+  </div>
+</div>
+`;
