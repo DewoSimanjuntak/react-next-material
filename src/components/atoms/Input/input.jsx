@@ -73,7 +73,7 @@ export const CustomFilledInput = styled((props) => <FilledInput {...props} />)(
 );
 
 export const RedditTextField = styled((props) => (
-  <TextField InputProps={{ disableUnderline: true }} {...props} />
+  <TextField {...props} />
 ))(({ theme }) => ({
   "& .MuiFilledInput-root": {
     border: "1px solid #e2e2e1",
@@ -226,3 +226,5 @@ export const StyledInput = ({
     </ThemeProvider>
   );
 };
+
+export default StyledInput

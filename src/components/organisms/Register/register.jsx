@@ -9,7 +9,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 // import Link from "@mui/material/Link";
 import Typography from '@mui/material/Typography';
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 import Divider from '@mui/material/Divider'
 import Link from 'next/link'
 import { styles } from "./style"
@@ -50,7 +50,7 @@ export default function Register() {
     console.log(data);
   };
 
-  const locale = useTranslations("userRegistration");
+  // const locale = useTranslations("userRegistration");
   const options = [
     { label: 'Email', value: 'email' },
     { label: 'Phone', value: 'phone' },
@@ -67,7 +67,7 @@ export default function Register() {
       }}
     >
       <Stack spacing={2}>
-        <label style={titleStyles}>{locale("title")}</label>
+        {/* <label style={titleStyles}>{locale("title")}</label> */}
         {/* <Error content={"Invalid use name or password"}/> */}
 
         <form onSubmit={handleSubmit(onSubmit)} style={styles.form}>
