@@ -19,15 +19,17 @@ export const styles = {
 
     },
     containedButton: {
-        backgroundColor: "#E5EDF8P",
+        backgroundColor: "#2095a9",
         borderRadius: 46,
         color: "white",
         "&:hover": {
-            backgroundColor: "#E5EDF8P",
+            backgroundColor: "#1c8696",
         },
     },
     outlinedButton: {
         borderRadius: 46,
+        borderColor : "#2095a9",
+        color : "#2095a9"
     },
 
 
