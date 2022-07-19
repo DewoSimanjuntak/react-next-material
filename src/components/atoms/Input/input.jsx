@@ -127,33 +127,6 @@ export const CustomInput = styled(({...props}) => {
     <>
       {props.type === 'password'
       ? <>
-          {/* <FormControl sx={{ m: 1, width: '25ch', backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }}
-            error={props.error}>
-            <InputLabel htmlFor="outlined-adornment-password" sx={{backgroundColor: 'white', paddingLeft:1, paddingRight:1, borderRadius: 1}}>Password</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={values.showPassword ? 'text' : 'password'}
-              value={values.value}
-              onChange={handleChange('value')}
-              label={props.label}
-              placeholder={props.placeholder}
-              variant={props.variant}
-              endAdornment={props.withIcon ? 
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-                : ''
-              }
-            />
-            <FormHelperText>{props.helperText}</FormHelperText>
-          </FormControl> */}
           <CustomFormControl sx={{ m: 1 }} variant="filled">
           <InputLabel htmlFor="filled-adornment-password" error={props.error}>
             {props.label}
