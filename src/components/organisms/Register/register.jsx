@@ -3,11 +3,10 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-// import {RowRadioButtonsGroup} from '../../atoms/RowRadioButtonsGroup/rowRadioButtonsGroup';
+import RowRadioButtonsGroup from '../../atoms/RowRadioButtonsGroup/rowRadioButtonsGroup';
 import { StyledInput } from '../../atoms/Input/input'
-// import Link from "@mui/material/Link";
-import { Divider } from '@mui/material/Divider'
-import { Link } from 'next/link'
+import { Divider, Typography } from "@mui/material";
+import Link from 'next/link'
 import { styles } from "./style"
 
 import { useForm, Controller } from "react-hook-form";
@@ -29,16 +28,12 @@ export default function Register() {
     ]
     return (
         <Box
-            sx={{
-                width: 400,
-                padding: "20px 10px 15px",
-                backgroundColor: "white",
-                alignSelf: "center",
-                margin: "auto",
-            }}
+            sx={styles.container}
         >
-            <Stack spacing={2}>
-                <label style={styles.titleStyles}>User Registration</label>
+            <Stack spacing={3}>
+                <Typography variant="h1" sx={styles.titleStyles}>
+                    User Registration
+                </Typography>
                 {/* <Error content={"Invalid use name or password"}/> */}
 
                 <form onSubmit={handleSubmit(onSubmit)} style={styles.form}>
@@ -49,9 +44,12 @@ export default function Register() {
                         render={({ field: { onChange, value }, fieldState: { error } }) => {
                             return (
                                 <StyledInput type="text" id="firstName" label="First Name"
+                                    required
                                     value={value}
                                     onChange={onChange}
                                     error={!!error}
+                                    size="small"
+                                    variant="filled"
                                     helperText={error ? error.message : null} />
                             )
                         }}
@@ -64,27 +62,68 @@ export default function Register() {
                         render={({ field: { onChange, value }, fieldState: { error } }) => {
                             return (
                                 <StyledInput type="text" id="lastName" label="Last Name"
+                                    required
                                     value={value}
                                     onChange={onChange}
                                     error={!!error}
+                                    size="small"
+                                    variant="filled"
                                     helperText={error ? error.message : null} />
                             )
                         }}
                         rules={{ required: 'Last name required' }}
                     />
-                    <StyledInput type="text" id="lastName" label="Last Name" variant="outlined" adorment={true} />
-                    <StyledInput type="email" id="email" label="Email" />
-                    <StyledInput type="dob" id="dob" label="Date of Birth" />
-                    <StyledInput type="text" id="mobile" label="Mobile Number" />
-                    <StyledInput type="password" id="password" label="Password" adorment={true} />
-                    {/* <div style={styles.divMargin}>
+                    <StyledInput type="text" id="lastName" label="Last Name" adorment={true} />
+                    <StyledInput type="email" id="email" label="Email" variant="filled" />
+                    <StyledInput type="dob" id="dob" label="Date of Birth" variant="filled" />
+                    <Controller
+                        name="mobile"
+                        control={control}
+                        defaultValue=""
+                        render={({ field: { onChange, value }, fieldState: { error } }) => {
+                            return (
+                                <StyledInput type="text" id="mobile" label="Mobile Number"
+                                    required
+                                    value={value}
+                                    onChange={onChange}
+                                    error={!!error}
+                                    size="small"
+                                    variant="filled"
+                                    helperText={error ? error.message : null} />
+                            )
+                        }}
+                        rules={{ required: 'Mobile Number required' }}
+                    />
+                    <Controller
+                        name="password"
+                        control={control}
+                        defaultValue=""
+                        render={({ field: { onChange, value }, fieldState: { error } }) => {
+                            return (
+                                <StyledInput type="password" id="password" label="Password"
+                                    required
+                                    value={value}
+                                    onChange={onChange}
+                                    error={!!error}
+                                    size="small"
+                                    variant="outlined"
+                                    adorment={true}
+                                    helperText={error ? error.message : null} />
+                            )
+                        }}
+                        rules={{ required: 'Password required' }}
+                    />
+                    {/* <StyledInput type="dob" id="dob" label="Date of Birth" variant="filled" />
+                    <StyledInput type="text" id="mobile" label="Mobile Number" variant="filled" />
+                    <StyledInput type="password" id="password" label="Password" variant="outlined" /> */}
+                    <div style={styles.divMargin}>
                         <RowRadioButtonsGroup label="Preferred mode of Communication" options={options} />
-                    </div> */}
+                    </div>
 
                     <Button
                         type="submit"
                         variant="contained"
-                        sx={styles.buttonStyle}
+                        sx={styles.containedButton}
                     >
                         Register
                     </Button>

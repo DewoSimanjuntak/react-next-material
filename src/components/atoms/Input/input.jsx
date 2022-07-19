@@ -37,24 +37,19 @@ export const CustomFormControl = styled((props) => <FormControl {...props} />)(
         boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
         borderColor: "transparent",
       },
-      // "&:MuiInputLabel-root": {
-      //   top: "-15px"
-      // },
     },
   })
 );
 
-export const CustomPInput = (props) => props.adorment ? <CustomOutlinedInput {...props} /> : <CustomFilledInput {...props} />
+export const CustomPasswordInput = (props) => props.adorment ? <CustomOutlinedInput {...props} /> : <CustomFilledInput {...props} />
 
 export const CustomOutlinedInput = styled((props) => <OutlinedInput {...props} />)(
   ({ theme }) => ({
-    // .css-o943dk-MuiFormLabel-root-MuiInputLabel-root
-    "&.MuiInputLabel-root": {
-      top: "-15px"
-    },
+
     "&.MuiFilledInput-root": {
       backgroundColor: "transparent",
       overflow: "hidden",
+      top: "-18px",
       "&:hover": {
         border: 0,
         backgroundColor: "transparent",
@@ -173,10 +168,10 @@ export const CustomInput = styled(({ ...props }) => {
       {props.type === "password" ? (
         <>
           <CustomFormControl sx={{ m: 1 }} variant="filled">
-            <InputLabel htmlFor="filled-adornment-password" error={props.error}>
+            <InputLabel htmlFor="filled-adornment-password" style={props.adorment ? { top: -16 } : null} error={props.error}>
               {props.label}
             </InputLabel>
-            <CustomPInput
+            <CustomPasswordInput
               error={props.error}
               variant="filled"
               id={props.id}
@@ -272,3 +267,5 @@ export const StyledInput = ({
     </ThemeProvider>
   );
 };
+
+export default StyledInput
