@@ -2,7 +2,7 @@
 export const styles = {
     container: {
         width: 300,
-        padding: "20px 10px 15px",
+        padding: "1rem 1rem ",
         backgroundColor: "white",
         alignSelf: "center",
         margin: "auto",
@@ -19,7 +19,7 @@ export const styles = {
 
     },
     containedButton: {
-        backgroundColor: "#E5EDF8P",
+        backgroundColor: "red",
         borderRadius: 46,
         color: "white",
         "&:hover": {
