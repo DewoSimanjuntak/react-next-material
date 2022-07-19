@@ -1,10 +1,10 @@
 import AuthLayout from '../../../components/templates/authLayout'
-import { StyledInput } from '../../../components/atoms/Input/input'
+import Register from "../../../components/organisms/Register/register";
 
 export default function CreateAccountPage() {
   return (
     <section>
-      <StyledInput type="dob" />
+      <Register />
     </section>
   )
 }
