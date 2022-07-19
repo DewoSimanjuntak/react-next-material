@@ -19,7 +19,7 @@ export const styles = {
 
     },
     containedButton: {
-        backgroundColor: "red",
+        backgroundColor: "#E5EDF8P",
         borderRadius: 46,
         color: "white",
         "&:hover": {
