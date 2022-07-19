@@ -1,4 +1,4 @@
-import AuthLayout from '../components/templates/authLayout'
+import AuthLayout from '../components/templates/authLayout';
 import Login from "../components/organisms/Login/login";
 import styles from "../../styles/Login.module.css";
 

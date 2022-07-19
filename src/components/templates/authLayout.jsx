@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <>
       <Head>
-        <title>Layouts Example</title>
+        <title>Layouts Auth</title>
       </Head>
       <div className={styles.authLayout}>
         <div className={styles.authContainer}>

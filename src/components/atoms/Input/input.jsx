@@ -123,7 +123,6 @@ export const CustomInput = styled(({...props}) => {
 
   useEffect(() => {
     // should send to parent page.
-    console.log({values})
   },[values.value])
 
   return (
