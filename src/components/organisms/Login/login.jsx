@@ -30,7 +30,7 @@ export default function Login() {
         <Grid container 
           justifyContent={"flex-end"}
         >
-         <Link href="/forgot-password">Forgot Password</Link>
+         <Link color={"#2095a9"} href="/forgot-password">Forgot Password</Link>
         </Grid>
         <Button
           variant="contained"
