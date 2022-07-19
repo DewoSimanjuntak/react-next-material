@@ -38,21 +38,6 @@ const setPasswordComponent = () => {
     showConfirmPassword: false,
   });
 
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-
-  const handleClickShowPassword = (passwordData) => {
-    setValues({
-      ...values,
-      ...passwordData,
-    });
-  };
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
   return (
     <Card sx={{ minWidth: 275, margin: 10 }}>
       <CardContent style={cardContentStyle}>

@@ -1,4 +1,4 @@
-import AuthLayout from '../components/templates/authLayout';
+import AuthLayout from "../components/templates/authLayout";
 import Login from "../components/organisms/Login/login";
 import styles from "../../styles/Login.module.css";
 
@@ -24,9 +24,5 @@ export default function LoginPage() {
 }
 
 LoginPage.getLayout = function getLayout(page) {
-  return (
-    <AuthLayout>
-      {page}
-    </AuthLayout>
-  )
-}
+  return <AuthLayout>{page}</AuthLayout>;
+};

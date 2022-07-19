@@ -1,8 +1,15 @@
-import AuthLayout from '../components/templates/authLayout';
-import ForgotPasswordComponent from "../components/organisms/ForgotPassword/forgotPassword";
 import SetPasswordComponent from "../components/organisms/SetPassword/setPassword";
-import styles from "../../styles/ForgotPassword.module.css";
+import styles from "../../styles/Login.module.css";
+import AuthLayout from "../components/templates/authLayout";
+import dynamic from "next/dynamic";
 
+//Prevent html being match between server and client
+const ForgotPasswordComponent = dynamic(
+  () => import("../components/organisms/ForgotPassword/forgotPassword"),
+  {
+    ssr: false,
+  }
+);
 export default function ForgotPasswordPage() {
   return (
     <div className={[styles.forgotPasswordPage, 'hide-scrollbar'].join(' ')}>
@@ -17,9 +24,5 @@ export default function ForgotPasswordPage() {
 }
 
 ForgotPasswordPage.getLayout = function getLayout(page) {
-  return (
-    <AuthLayout>
-      {page}
-    </AuthLayout>
-  )
-}
+  return <AuthLayout>{page}</AuthLayout>;
+};

@@ -1,25 +1,10 @@
-import { NextIntlProvider } from "next-intl";
-import "../../styles/globals.scss";
-
-function getStaticProps({ locale }) {
-  return {
-    props: {
-      messages: require(`../locales/${locale}.json`),
-    },
-  };
-}
+import "../../styles/globals.css";
 
 function App({ Component, pageProps }) {
-  const intlProps = getStaticProps({ locale: "en" });
-
   // Use the layout defined at the page level, if available
-  const getLayout = Component.getLayout || ((page) => page)
+  const getLayout = Component.getLayout || ((page) => page);
 
-  return (
-    <NextIntlProvider messages={intlProps.props.messages}>
-      {getLayout(<Component {...pageProps} />)}
-    </NextIntlProvider>
-  );
+  return getLayout(<Component {...pageProps} />);
 }
 
 export default App;
