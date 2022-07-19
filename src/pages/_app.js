@@ -9,7 +9,7 @@ function getStaticProps({ locale }) {
   };
 }
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   const intlProps = getStaticProps({ locale: "en" });
 
   // Use the layout defined at the page level, if available
@@ -22,4 +22,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default App;
