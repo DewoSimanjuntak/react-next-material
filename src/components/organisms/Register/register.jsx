@@ -35,7 +35,7 @@ const buttonStyle = {
     marginTop: 2,
     backgroundColor: "#3EAFBD",
     borderRadius: "48pt",
-  };
+};
 
 export default function Register() {
     const locale = useTranslations("userRegistration");
@@ -68,9 +68,9 @@ export default function Register() {
                 <p style={bottomParagraph}>
                     By registering, you agree to our Terms &<br /> Conditions and Privacy Policy
                 </p>
-                <Devider margin={3}/>
+                <Devider margin={3} />
                 <p style={bottomParagraph}>
-                    Already have an account? <a style={loginLink}>Login</a>
+                    Already have an account? <a style={loginLink} href="/">Login</a>
                 </p>
             </Stack>
         </Box>

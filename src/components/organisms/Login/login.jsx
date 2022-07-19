@@ -28,6 +28,7 @@ export default function Login() {
         <Divider variant="middle" />
         <Typography variant="caption">Don't have an account?</Typography>
         <Button
+          href="/register"
           variant="outlined"
           sx={styles.outlinedButton}>
           Create Account
