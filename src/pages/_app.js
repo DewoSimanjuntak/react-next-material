@@ -1,5 +1,5 @@
 import { NextIntlProvider } from "next-intl";
-import "../../styles/globals.css";
+import "../../styles/globals.scss";
 
 function getStaticProps({ locale }) {
   return {
