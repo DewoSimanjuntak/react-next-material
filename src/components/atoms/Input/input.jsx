@@ -123,6 +123,7 @@ export const CustomInput = styled(({...props}) => {
 
   useEffect(() => {
     // should send to parent page.
+    console.log({values})
   },[values.value])
 
   return (
@@ -188,7 +189,7 @@ export const CustomInput = styled(({...props}) => {
             <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DatePicker
                 label={props.label}
-                onChange={() => {}}
+                onChange={handleChange('value')}
                 renderInput={(params) => <RedditTextField variant="filled" 
                   style={{ marginTop: 11 }} 
                   sx={{ m: 1, backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }}
@@ -197,8 +198,10 @@ export const CustomInput = styled(({...props}) => {
             </LocalizationProvider>
           </>
         : <>
-            <RedditTextField 
-              variant="filled" 
+            <RedditTextField
+              variant="filled"
+              onChange={handleChange('value')}
+              value={values.value}
               style={{ marginTop: 11 }} 
               sx={{ m: 1, backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }}
               {...props}/>

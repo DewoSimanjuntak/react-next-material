@@ -10,8 +10,11 @@ import Checkbox from "@mui/material/Checkbox";
 // import Link from "@mui/material/Link";
 import Typography from '@mui/material/Typography';
 import { useTranslations } from "next-intl";
-import Devider from '@mui/material/Divider'
+import Divider from '@mui/material/Divider'
 import Link from 'next/link'
+import { styles } from "./style"
+
+import { useForm, Controller } from "react-hook-form";
 
 // import {Error} from '../../molecules/FormMessage/formMessage.stories'
 
@@ -41,6 +44,12 @@ const buttonStyle = {
 };
 
 export default function Register() {
+  const { handleSubmit, control } = useForm();
+
+  const onSubmit = data => {
+    console.log(data);
+  };
+
   const locale = useTranslations("userRegistration");
   const options = [
     { label: 'Email', value: 'email' },
@@ -61,26 +70,44 @@ export default function Register() {
         <label style={titleStyles}>{locale("title")}</label>
         {/* <Error content={"Invalid use name or password"}/> */}
 
-        <StyledInput type="text" id="firstName" label="First Name" />
-        <StyledInput type="text" id="lastName" label="Last Name" />
-        <StyledInput type="text" id="email" label="Email" />
-        <StyledInput type="text" id="dob" label="Date of Birth" />
-        <StyledInput type="text" id="mobile" label="Mobile Number" />
-        <StyledInput type="password" id="password" label="Password" />
-        <RowRadioButtonsGroup label="Preferred mode of Communication" options={options} />
+        <form onSubmit={handleSubmit(onSubmit)} style={styles.form}>
+          <Controller
+            name="firstName"
+            control={control}
+            defaultValue=""
+            render={({ field: { onChange, value }, fieldState: { error } }) => {
+              return (
+                <StyledInput type="text" id="firstName" label="First Name" 
+                  value={value}
+                  onChange={onChange}
+                  error={!!error}
+                  helperText={error ? error.message : null} />
+              )
+            }}
+            rules={{ required: 'First name required' }}
+          />
+          <StyledInput type="text" id="lastName" label="Last Name" />
+          <StyledInput type="text" id="email" label="Email" />
+          <StyledInput type="text" id="dob" label="Date of Birth" />
+          <StyledInput type="text" id="mobile" label="Mobile Number" />
+          <StyledInput type="password" id="password" label="Password" />
+          <RowRadioButtonsGroup label="Preferred mode of Communication" options={options} />
 
-        <Button
+          <Button
+            type="submit"
             variant="contained"
             sx={buttonStyle}
-        >
+            >
             Register
-        </Button>
+          </Button>
+        </form>
+        
         <p style={bottomParagraph}>
-            By registering, you agree to our Terms &<br /> Conditions and Privacy Policy
+          By registering, you agree to our Terms &<br /> Conditions and Privacy Policy
         </p>
-        <Devider margin={3}/>
+        <Divider margin={3}/>
         <p style={bottomParagraph}>
-            Already have an account? <Link href="/login"><a style={loginLink}>Login</a></Link>
+          Already have an account? <Link href="/login"><a style={loginLink}>Login</a></Link>
         </p>
       </Stack>
     </Box>
