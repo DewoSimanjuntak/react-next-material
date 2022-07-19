@@ -11,9 +11,13 @@ function getStaticProps({ locale }) {
 
 function App({ Component, pageProps }) {
   const intlProps = getStaticProps({ locale: "en" });
+
+  // Use the layout defined at the page level, if available
+  const getLayout = Component.getLayout || ((page) => page)
+
   return (
     <NextIntlProvider messages={intlProps.props.messages}>
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </NextIntlProvider>
   );
 }
