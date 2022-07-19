@@ -5,27 +5,29 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
+import {StyledInput} from '../../atoms/Input/input'
 import { Divider, Typography } from "@mui/material";
 import { styles } from "./style"
 export default function Login() {
   return (
     <Box sx={styles.container}>
       <Stack spacing={3}>
+       
         <Typography variant="h1" sx={styles.title}>Patient Login</Typography>
-        <TextField
-          id="email"
-          label="Email or Phone"
-          size="small"
-          style={{backgroundColor : 'white'}}
-          variant="filled"
-          type={"text"}
-          helperText="Enter your registered email or phone"
+        <StyledInput
+           id="email"
+           label="Email or Phone"
+           size="small"
+           style={{backgroundColor : 'white'}}
+           variant="filled"
+           type={"text"}
+           helperText="Enter your registered email or phone"
         />
-        <TextField
-         id="password" label="Password" type="password"
-          size="small"
-          style={{backgroundColor : 'white'}}
-          variant="filled"
+        <StyledInput
+           id="password" label="Password" type="password"
+           size="small"
+           style={{backgroundColor : 'white'}}
+           variant="filled"
         />
         <Grid container 
           justifyContent={"flex-end"}
