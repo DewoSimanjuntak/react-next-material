@@ -10,6 +10,7 @@ import { Divider, Typography } from "@mui/material";
 import { styles } from "./style";
 import { Api } from "../../../pages/api/api";
 import { useRouter } from "next/router";
+import Cookies from 'universal-cookie';
 
 export default function Login() {
   const [username, setusername] = React.useState("");
@@ -30,9 +31,9 @@ export default function Login() {
           style={{ backgroundColor: "white" }}
           variant="filled"
           type={"text"}
-          //  onChange={event => setuserpassword(event.target.value)}
-          //  helperText={userpassword === " " ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
-          //  error={userpassword === "" ? true  : false}
+        //  onChange={event => setuserpassword(event.target.value)}
+        //  helperText={userpassword === " " ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
+        //  error={userpassword === "" ? true  : false}
         />
         <StyledInput
           id="password"
@@ -40,10 +41,10 @@ export default function Login() {
           type="password"
           size="small"
           style={{ backgroundColor: "white" }}
-          //  variant="filled"
-          //  onChange={event => setusername(event.target.value)}
-          //  helperText={username === "" ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
-          //  error={username === "" ? true  : false}
+        //  variant="filled"
+        //  onChange={event => setusername(event.target.value)}
+        //  helperText={username === "" ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
+        //  error={username === "" ? true  : false}
         />
         <Grid container justifyContent={"flex-end"}>
           <Link color={"#2095a9"} href="/forgot-password">
@@ -59,13 +60,19 @@ export default function Login() {
                 password: "password",
               })
               .then(function (response) {
+                console.log(response)
                 if (response && response.status === 200) {
-                  router.push("/");
+                  console.log("success");
                 }
               })
               .catch(function () {
                 console.log("failed");
-              });
+              })
+              .finally(function () {
+                const cookies = new Cookies();
+                cookies.set('authorized', 'true', { path: '/' });
+                router.push("/");
+              })
           }}
           sx={styles.containedButton}
         >
