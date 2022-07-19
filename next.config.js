@@ -14,6 +14,21 @@ const nextConfig = {
     });
 
     return config;
+  },
+  async redirects() {
+    return [
+      {
+        source: '/:path((?!login$).* || (?!forgot-password$).*)',
+        has: [
+          {
+            type: 'cookie',
+            key: 'authorized',
+            value: 'false'
+          }
+        ], 
+        permanent: false,
+        destination: '/login',
+      }]
   }
 };
 
