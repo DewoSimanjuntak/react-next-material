@@ -157,31 +157,31 @@ export const CustomInput = styled(({...props}) => {
             <FormHelperText>{props.helperText}</FormHelperText>
           </FormControl> */}
           <CustomFormControl sx={{ m: 1 }} variant="filled">
-          <InputLabel htmlFor="filled-adornment-password" error={props.error}>
-            {props.label}
-          </InputLabel>
-          <CustomFilledInput
-            error={props.error}
-            variant="filled"
-            id={props.id}
-            type={values.showPassword ? 'text' : 'password'}
-            value={values.value}
-            onChange={handleChange('value')}
-            placeholder={props.placeholder}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end">
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label={props.label}
-          />
-        </CustomFormControl>
+            <InputLabel htmlFor="filled-adornment-password" error={props.error}>
+              {props.label}
+            </InputLabel>
+            <CustomFilledInput
+              error={props.error}
+              variant="filled"
+              id={props.id}
+              type={values.showPassword ? 'text' : 'password'}
+              value={values.value}
+              onChange={handleChange('value')}
+              placeholder={props.placeholder}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end">
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+              label={props.label}
+            />
+          </CustomFormControl>
         </>
       : props.type === 'dob'
         ? <>
@@ -200,7 +200,7 @@ export const CustomInput = styled(({...props}) => {
             <RedditTextField 
               variant="filled" 
               style={{ marginTop: 11 }} 
-              sx={{ m: 1, backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }} 
+              sx={{ m: 1, backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }}
               {...props}/>
           </>
       }
@@ -216,16 +216,14 @@ export const CustomInput = styled(({...props}) => {
 
 export const StyledInput = ({
   type,
-  variant = 'outlined',
   helperText = '',
   placeholder = '',
   label = '',
-  withIcon = true,
   ...props
 }) => {
   return (
     <ThemeProvider theme={primaryTheme}>
-      <CustomInput type={type} variant={variant} label={label} placeholder={placeholder} helperText={helperText} withIcon={withIcon} {...props}
+      <CustomInput type={type} label={label} placeholder={placeholder} helperText={helperText} {...props}
         className={[
           'custom-input',
           ].join(' ')}>
@@ -233,3 +231,5 @@ export const StyledInput = ({
     </ThemeProvider>
   );
 }
+
+export default StyledInput
