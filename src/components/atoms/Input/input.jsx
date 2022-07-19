@@ -18,6 +18,58 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 import { colors, primaryTheme, secondaryTheme } from "../../../styles/theme";
 
+export const CustomFormControl = styled((props) => <FormControl {...props} />)(
+  ({ theme }) => ({
+    "&.MuiFormControl-root": {
+      border: "1px solid #e2e2e1",
+      overflow: "hidden",
+      borderRadius: 4,
+      backgroundColor: theme.palette.mode === "light" ? "#fcfcfb" : "#2b2b2b",
+      transition: theme.transitions.create([
+        "border-color",
+        "background-color",
+        "box-shadow",
+      ]),
+      "&:focus": {
+        backgroundColor: "transparent",
+        boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+        borderColor: "transparent",
+      },
+    },
+  })
+);
+
+export const CustomFilledInput = styled((props) => <FilledInput {...props} />)(
+  ({ theme }) => ({
+    "&.MuiFilledInput-root": {
+      backgroundColor: "transparent",
+      overflow: "hidden",
+      "&:hover": {
+        border: 0,
+        backgroundColor: "transparent",
+      },
+      "&:not(.Mui-disabled):before": {
+        border: 0,
+      },
+      "&:before": {
+        border: 0,
+      },
+      "&:after": {
+        border: 0,
+      },
+      "&.Mui-error": {
+        border: "1px solid #FF0000",
+        backgroundColor: "#FF000010",
+      },
+      "&.Mui-focused": {
+        backgroundColor: "transparent",
+        boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+        borderColor: "transparent",
+      },
+    },
+  })
+);
+
 export const RedditTextField = styled((props) => (
   <TextField InputProps={{ disableUnderline: true }} {...props} />
 ))(({ theme }) => ({
@@ -75,33 +127,32 @@ export const CustomInput = styled(({...props}) => {
     <>
       {props.type === 'password'
       ? <>
-          <FormControl sx={{ m: 1, width: '25ch', backgroundColor: 'white', borderRadius: '4px', borderColor: '#B5B5B5' }}
-            error={props.error}>
-            <InputLabel htmlFor="outlined-adornment-password" sx={{backgroundColor: 'white', paddingLeft:1, paddingRight:1, borderRadius: 1}}>Password</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              type={values.showPassword ? 'text' : 'password'}
-              value={values.value}
-              onChange={handleChange('value')}
-              label={props.label}
-              placeholder={props.placeholder}
-              variant={props.variant}
-              endAdornment={props.withIcon ? 
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-                : ''
-              }
-            />
-            <FormHelperText>{props.helperText}</FormHelperText>
-          </FormControl>
+          <CustomFormControl sx={{ m: 1 }} variant="filled">
+          <InputLabel htmlFor="filled-adornment-password" error={props.error}>
+            {props.label}
+          </InputLabel>
+          <CustomFilledInput
+            error={props.error}
+            variant="filled"
+            id={props.id}
+            type={values.showPassword ? 'text' : 'password'}
+            value={values.value}
+            onChange={handleChange('value')}
+            placeholder={props.placeholder}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end">
+                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label={props.label}
+          />
+        </CustomFormControl>
         </>
       : props.type === 'dob'
         ? <>

@@ -3,43 +3,35 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
 import Link from "@mui/material/Link";
+import { Divider, Typography } from "@mui/material";
+import { styles } from "./style"
 
 export default function Login() {
   return (
-    <Box
-      sx={{
-        width: 300,
-        padding: "20px 10px 15px",
-        backgroundColor: "white",
-        alignSelf: "center",
-        margin: "auto",
-      }}
-    >
+    <Box sx={styles.container}>
       <Stack spacing={2}>
+        <Typography variant="h1" sx={styles.title}>Patient Login</Typography>
         <TextField id="email" label="Email or Phone" />
         <TextField id="password" label="Password" type="password" />
-        <FormControlLabel
-          control={<Checkbox defaultChecked />}
-          label="Keep me signed in on this device"
-        />
+        <Link href="/forgot-password">Forgot Password</Link>
         <Button
           variant="contained"
-          sx={{
-            backgroundColor: "#E5EDF8P",
-            borderRadius: 46,
-            color: "white",
-            "&:hover": {
-              backgroundColor: "#E5EDF8P",
-            },
-          }}
-        >
+          sx={styles.containedButton}>
           Login
         </Button>
-        <Button variant="outlined">Continue as a guest</Button>
-        <Link href="/forgot-password">Forgot Username or Password</Link>
+        <Button
+          variant="outlined"
+          sx={styles.outlinedButton}>
+          Continue as a guest
+        </Button>
+        <Divider variant="middle" />
+        <Typography variant="caption">Don't have an account?</Typography>
+        <Button
+          variant="outlined"
+          sx={styles.outlinedButton}>
+          Create Account
+        </Button>
       </Stack>
     </Box>
   );

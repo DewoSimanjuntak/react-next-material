@@ -9,7 +9,7 @@ function getStaticProps({ locale }) {
   };
 }
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   const intlProps = getStaticProps({ locale: "en" });
   return (
     <NextIntlProvider messages={intlProps.props.messages}>
@@ -18,4 +18,4 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-export default MyApp;
+export default App;
