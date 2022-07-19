@@ -9,25 +9,35 @@ import {StyledInput} from '../../atoms/Input/input'
 import { Divider, Typography } from "@mui/material";
 import { styles } from "./style"
 export default function Login() {
+  const [username, setusername] = React.useState("")
+  const [userpassword, setuserpassword] = React.useState("")
   return (
     <Box sx={styles.container}>
       <Stack spacing={3}>
        
         <Typography variant="h1" sx={styles.title}>Patient Login</Typography>
         <StyledInput
+          required
            id="email"
            label="Email or Phone"
            size="small"
            style={{backgroundColor : 'white'}}
            variant="filled"
            type={"text"}
-           helperText="Enter your registered email or phone"
+          //  onChange={event => setuserpassword(event.target.value)}
+          //  helperText={userpassword === " " ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
+          //  error={userpassword === "" ? true  : false}
         />
         <StyledInput
-           id="password" label="Password" type="password"
+           id="password" 
+           label="Password" 
+           type="password"
            size="small"
            style={{backgroundColor : 'white'}}
-           variant="filled"
+          //  variant="filled"
+          //  onChange={event => setusername(event.target.value)}
+          //  helperText={username === "" ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
+          //  error={username === "" ? true  : false}
         />
         <Grid container 
           justifyContent={"flex-end"}
@@ -53,7 +63,6 @@ export default function Login() {
         
         <Button
           variant="outlined"
-          
           sx={styles.outlinedButton}>
           Create Account 
         </Button>
