@@ -57,21 +57,19 @@ export default function Login() {
             api.client
               .post("https://patientlogin.mocklab.io/user/login", {
                 username: "user1",
-                password: "password",
+                password: "password1",
               })
               .then(function (response) {
                 console.log(response)
                 if (response && response.status === 200) {
+                  const cookies = new Cookies();
+                  cookies.set('authorized', 'true', { path: '/' });
+                  router.push("/");
                   console.log("success");
                 }
               })
               .catch(function () {
                 console.log("failed");
-              })
-              .finally(function () {
-                const cookies = new Cookies();
-                cookies.set('authorized', 'true', { path: '/' });
-                router.push("/");
               })
           }}
           sx={styles.containedButton}
