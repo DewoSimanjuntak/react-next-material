@@ -1,4 +1,3 @@
-import Document from "next/document";
 import LoginPage from "./login";
 import AuthLayout from "../components/templates/authLayout";
 
