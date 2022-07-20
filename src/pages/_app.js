@@ -1,5 +1,7 @@
-import "../../styles/globals.scss";
 import Cookies from 'universal-cookie';
+import { Provider } from 'react-redux';
+import store from '../store/store';
+import "../../styles/globals.scss";
 
 function App({ Component, pageProps }) {
   // Use the layout defined at the page level, if available
@@ -9,7 +11,12 @@ function App({ Component, pageProps }) {
   if (currentAuthorized === undefined) {
     cookies.set('authorized', 'false', { path: '/' });
   }
-  return getLayout(<Component {...pageProps} />);
+
+  return getLayout(
+    <Provider store={store}>
+      <Component {...pageProps} />
+    </Provider>
+  );
 }
 
 export default App;
