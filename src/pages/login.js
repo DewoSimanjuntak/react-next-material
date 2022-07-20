@@ -2,6 +2,7 @@ import AuthLayout from "../components/templates/authLayout";
 import Login from "../components/organisms/Login/login";
 import { Api } from "./api/api";
 import { useRouter } from "next/router";
+import Cookies from "universal-cookie";
 
 const loginProps = {
   OnLoginClicked: function (postbody, router) {
