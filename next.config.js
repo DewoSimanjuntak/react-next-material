@@ -20,6 +20,21 @@ const nextConfig = {
     // Will be available on both server and client
     staticFolder: '/static',
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path((?!login$).* || (?!forgot-password$).*)',
+        has: [
+          {
+            type: 'cookie',
+            key: 'authorized',
+            value: 'false'
+          }
+        ], 
+        permanent: false,
+        destination: '/login',
+      }]
+  }
 };
 
 module.exports = nextConfig;

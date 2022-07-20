@@ -1,6 +1,5 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
@@ -10,6 +9,9 @@ import { Divider, Typography } from "@mui/material";
 import { styles } from "./style";
 import { Api } from "../../../pages/api/api";
 import { useRouter } from "next/router";
+import Cookies from 'universal-cookie';
+
+import { StyledButton } from "../../atoms/Button/button";
 
 export default function Login() {
   const [username, setusername] = React.useState("");
@@ -23,16 +25,17 @@ export default function Login() {
           Patient Login
         </Typography>
         <StyledInput
-          required
-          id="email"
-          label="Email or Phone"
+          id="username"
+          label="Username"
           size="small"
           style={{ backgroundColor: "white" }}
           variant="filled"
           type={"text"}
-          //  onChange={event => setuserpassword(event.target.value)}
-          //  helperText={userpassword === " " ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
-          //  error={userpassword === "" ? true  : false}
+          error={false}
+          helperText={"Enter your registered email or phone number"}
+          onChange={event => setusername(event.target.value)}
+        //  helperText={userpassword === " " ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
+        //  error={userpassword === "" ? true  : false}
         />
         <StyledInput
           id="password"
@@ -40,52 +43,63 @@ export default function Login() {
           type="password"
           size="small"
           style={{ backgroundColor: "white" }}
-          //  variant="filled"
-          //  onChange={event => setusername(event.target.value)}
-          //  helperText={username === "" ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
-          //  error={username === "" ? true  : false}
+        //  variant="filled"
+          onChange={event => setuserpassword(event.target.value)}
+        //  helperText={username === "" ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
+        //  error={username === "" ? true  : false}
         />
         <Grid container justifyContent={"flex-end"}>
           <Link color={"#2095a9"} href="/forgot-password">
             Forgot Password
           </Link>
         </Grid>
-        <Button
-          variant="contained"
+        <StyledButton
+          primary={true}
+          size="large"
+          gradient={false}
           onClick={function () {
+            console.log(username,userpassword)
             api.client
               .post("https://patientlogin.mocklab.io/user/login", {
                 username: "user1",
-                password: "password",
+                password: "password1",
               })
               .then(function (response) {
+                console.log(response)
                 if (response && response.status === 200) {
+                  const cookies = new Cookies();
+                  cookies.set('authorized', 'true', { path: '/' });
                   router.push("/");
+                  console.log("success");
                 }
               })
               .catch(function () {
                 console.log("failed");
-              });
+              })
           }}
-          sx={styles.containedButton}
         >
           Login
-        </Button>
-        <Button variant="outlined" sx={styles.outlinedButton}>
+        </StyledButton>
+        <StyledButton
+          primary={false}
+          size="large"
+          gradient={false}
+        >
           Continue as a guest
-        </Button>
+        </StyledButton>
         <Divider variant="middle" />
         <Grid container justifyContent={"center"}>
           <Typography variant="caption">Don't have an account?</Typography>
         </Grid>
 
-        <Button
-          variant="outlined"
-          sx={styles.outlinedButton}
+        <StyledButton
+          primary={false}
+          size="large"
+          gradient={false}
           href="/auth/create-account"
         >
           Create Account
-        </Button>
+        </StyledButton>
       </Stack>
     </Box>
   );

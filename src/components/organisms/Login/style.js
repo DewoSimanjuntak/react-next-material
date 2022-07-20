@@ -1,7 +1,7 @@
 
 export const styles = {
     container: {
-        width: 300,
+        width: 400,
         padding: "1rem 1rem ",
         backgroundColor: "white",
         alignSelf: "center",
@@ -19,17 +19,30 @@ export const styles = {
 
     },
     containedButton: {
-        backgroundColor: "#2095a9",
-        borderRadius: 46,
+        backgroundColor: "#0095A9",
+        borderRadius: "30px",
+        height: "46px",
         color: "white",
+        textTransform: "none",
+        fontSize: "16px",
+        fontWeight: 600,
+        lineHeight: "20px",
         "&:hover": {
-            backgroundColor: "#1c8696",
+            backgroundColor: "#0095A9",
         },
     },
     outlinedButton: {
-        borderRadius: 46,
-        borderColor : "#2095a9",
-        color : "#2095a9"
+        borderRadius: "30px",
+        height: "46px",
+        borderColor : "#205A63",
+        color : "#0095A9",
+        textTransform: "none",
+        fontSize: "16px",
+        fontWeight: 600,
+        lineHeight: "20px",
+        "&:hover": {
+            borderColor: "#205A63",
+        },
     },
 
 
