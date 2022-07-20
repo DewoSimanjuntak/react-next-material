@@ -29,7 +29,7 @@ const center = {
 const cardContentStyle = {
   display: "flex",
   flexDirection: "column",
-  padding: 0
+  padding: 0,
 };
 
 const securityQuestionContainer = {
@@ -81,9 +81,7 @@ const RedditTextField = styled((props) => (
 
 const ForgotPasswordComponent = () => {
   const router = useRouter();
-  const { t } = useTranslation("translation", {
-    keyPrefix: "forgotPassword",
-  });
+  const { t } = useTranslation("forgotPassword");
   const [isValidUsername, setValidUsername] = useState(false);
   const [isMagicLinkClicked, setMagicLinkClicked] = useState(false);
   const [isShowSecurityQuestion, setShowSecurityQuestion] = useState(false);
