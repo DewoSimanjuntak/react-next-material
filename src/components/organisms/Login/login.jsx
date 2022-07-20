@@ -10,7 +10,6 @@ import styles from "./Style.module.scss";
 import globalStyles from "../../../styles/Global.module.scss";
 import { Api } from "../../../pages/api/api";
 import { useRouter } from "next/router";
-import Cookies from "universal-cookie";
 
 import { StyledButton } from "../../atoms/Button/button";
 
@@ -20,8 +19,8 @@ export default function Login({
   OnCreateAccountClicked,
   OnForgotPasswordClicked,
 }) {
-  const [username, setusername] = React.useState("");
-  const [userpassword, setuserpassword] = React.useState("");
+  const [username, setUsername] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const router = useRouter();
   return (
     <Box className={globalStyles.container}>
@@ -38,7 +37,7 @@ export default function Login({
           type={"text"}
           error={false}
           helperText={"Enter your registered email or phone number"}
-          onChange={(event) => setusername(event.target.value)}
+          onChange={(event) => setUsername(event.target.value)}
           //  helperText={userpassword === " " ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
           //  error={userpassword === "" ? true  : false}
         />
@@ -49,7 +48,7 @@ export default function Login({
           size="small"
           style={{ backgroundColor: "white" }}
           //  variant="filled"
-          onChange={(event) => setuserpassword(event.target.value)}
+          onChange={(event) => setPassword(event.target.value)}
           //  helperText={username === "" ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
           //  error={username === "" ? true  : false}
         />
@@ -68,7 +67,7 @@ export default function Login({
           size="large"
           gradient={false}
           onClick={function () {
-            OnLoginClicked({ username, userpassword }, router);
+            OnLoginClicked({ username, password }, router);
           }}
         >
           Login
