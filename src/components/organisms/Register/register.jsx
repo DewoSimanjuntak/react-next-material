@@ -148,13 +148,9 @@ export default function Register() {
                     </Button>
                 </form>
 
-                <p style={styles.bottomParagraph}>
-                    By registering, you agree to our Terms &<br /> Conditions and Privacy Policy
-                </p>
+                <Typography variant="caption" style={styles.bottomParagraph}>By registering, you agree to our Terms &<br /> Conditions and Privacy Policy</Typography>
                 <Divider margin={3} />
-                <p style={styles.bottomParagraph}>
-                    Already have an account? <Link href="/login"><a style={styles.loginLink}>Login</a></Link>
-                </p>
+                <Typography variant="caption" style={styles.bottomParagraph}>Already have an account? <Link href="/login"><a style={styles.loginLink}>Login</a></Link></Typography>
             </Stack>
         </Box>
     );

@@ -150,11 +150,25 @@ export const CustomInput = styled(({ ...props }) => {
               variant="filled"
               id={props.id}
               type={values.showPassword ? "text" : "password"}
-              value={values.value}
-              showPassword={values.showPassword}
-              onChange={handleChange("value")}
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
+              // value={values.value}
+              // showPassword={values.showPassword}
+              // onChange={handleChange("value")}
+              // onClick={handleClickShowPassword}
+              // onMouseDown={handleMouseDownPassword}
+              onChange={props.onChange}
+              placeholder={props.placeholder}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
               label={props.label}
               adorment={props.adorment}
             />
