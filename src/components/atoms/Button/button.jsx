@@ -1,16 +1,17 @@
 import { ThemeProvider, styled } from '@mui/material/styles';
 import React from "react";
-import "./button.css";
+//import "./button.css";
 
 import Button from "@mui/material/Button";
 import { colors, primaryTheme, secondaryTheme } from "../../../styles/theme";
-import { ThemeProviderProps } from '@mui/material/styles/ThemeProvider';
+//import { ThemeProviderProps } from '@mui/material/styles/ThemeProvider';
 
 export const CustomButton = styled(Button)
 (
   ({ theme }) => `
 
   background: ${theme.button.background};
+  border-color:${theme.button.borderColor};
   color: ${theme.button.color};
   border-radius: 46px;
   padding: 16px;
@@ -23,6 +24,7 @@ export const CustomButton = styled(Button)
 
   :hover {
     background:${theme.button.background};
+    border-color:${theme.button.borderColor};
   }
 `,
 )
@@ -37,7 +39,6 @@ export const CustomButton = styled(Button)
 export const StyledButton = ({
   primary = true,
   size = "large",
-  label = "Button",
   gradient,
   ...props
 }) => {
@@ -48,9 +49,8 @@ export const StyledButton = ({
           'custom-button',
           `custom-button--${size}`,
           gradient ? 'custom-button--gradient' : ''
-          ].join(' ')}>
-        {label}
-      </CustomButton>
+          ].join(' ')}  
+          {...props}/>
     </ThemeProvider>
   );
 }
