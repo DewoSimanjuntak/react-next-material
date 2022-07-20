@@ -48,6 +48,7 @@ export const primaryTheme = createTheme({
 export const secondaryTheme = createTheme({
   button: {
     background: 'white',
-    color: colors.teal
+    color: colors.teal,
+    borderColor: "#205A63",
   },
 });

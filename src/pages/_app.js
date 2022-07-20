@@ -1,6 +1,7 @@
 import Cookies from 'universal-cookie';
 import { Provider } from 'react-redux';
 import store from '../store/store';
+import i18n from "../i18n/i18n";
 import "../../styles/globals.scss";
 
 function App({ Component, pageProps }) {
@@ -18,5 +19,4 @@ function App({ Component, pageProps }) {
     </Provider>
   );
 }
-
 export default App;

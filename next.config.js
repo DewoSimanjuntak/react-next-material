@@ -18,18 +18,31 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/:path((?!login$).* || (?!forgot-password$).*)',
+        source: "/:path((?!login$).* || (?!forgot-password$).*)",
         has: [
           {
-            type: 'cookie',
-            key: 'authorized',
-            value: 'false'
-          }
-        ], 
+            type: "cookie",
+            key: "authorized",
+            value: "false",
+          },
+        ],
         permanent: false,
-        destination: '/login',
-      }]
-  }
+        destination: "/login",
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/patient/create-account",
+        destination: "/auth/create-account",
+      },
+      {
+        source: "/patient/forgot-password",
+        destination: "/forgot-password",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
