@@ -138,8 +138,7 @@ export const CustomInput = styled(({ ...props }) => {
               variant="filled"
               id={props.id}
               type={values.showPassword ? "text" : "password"}
-              value={values.value}
-              onChange={handleChange("value")}
+              onChange={props.onChange}
               placeholder={props.placeholder}
               endAdornment={
                 <InputAdornment position="end">
