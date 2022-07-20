@@ -44,7 +44,6 @@ export default function Register() {
                         render={({ field: { onChange, value }, fieldState: { error } }) => {
                             return (
                                 <StyledInput type="text" id="firstName" label="First Name"
-                                    required
                                     value={value}
                                     onChange={onChange}
                                     error={!!error}
@@ -62,7 +61,6 @@ export default function Register() {
                         render={({ field: { onChange, value }, fieldState: { error } }) => {
                             return (
                                 <StyledInput type="text" id="lastName" label="Last Name"
-                                    required
                                     value={value}
                                     onChange={onChange}
                                     error={!!error}
@@ -73,7 +71,7 @@ export default function Register() {
                         }}
                         rules={{ required: 'Last name required' }}
                     />
-                    <StyledInput type="text" id="lastName" label="Last Name" adorment={true} />
+                    {/* <StyledInput type="text" id="lastName" label="Last Name" adorment={true} /> */}
                     <StyledInput type="email" id="email" label="Email" variant="filled" />
                     <StyledInput type="dob" id="dob" label="Date of Birth" variant="filled" />
                     <Controller
@@ -83,7 +81,6 @@ export default function Register() {
                         render={({ field: { onChange, value }, fieldState: { error } }) => {
                             return (
                                 <StyledInput type="text" id="mobile" label="Mobile Number"
-                                    required
                                     value={value}
                                     onChange={onChange}
                                     error={!!error}
@@ -101,13 +98,11 @@ export default function Register() {
                         render={({ field: { onChange, value }, fieldState: { error } }) => {
                             return (
                                 <StyledInput type="password" id="password" label="Password"
-                                    required
                                     value={value}
                                     onChange={onChange}
                                     error={!!error}
                                     size="small"
-                                    variant="outlined"
-                                    adorment={true}
+                                    variant="filled"
                                     helperText={error ? error.message : null} />
                             )
                         }}
