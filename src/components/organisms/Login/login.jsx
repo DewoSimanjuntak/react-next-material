@@ -85,6 +85,7 @@ export default function Login() {
         </Grid>
 
         <Button
+          href="/register"
           variant="outlined"
           sx={styles.outlinedButton}
           href="/auth/create-account"

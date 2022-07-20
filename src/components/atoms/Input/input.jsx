@@ -24,7 +24,7 @@ export const CustomFormControl = styled((props) => <FormControl {...props} />)(
   ({ theme }) => ({
     "&.MuiFormControl-root": {
       border: "1px solid #e2e2e1",
-      overflow: "hidden",
+      // overflow: "hidden",
       borderRadius: 4,
       backgroundColor: theme.palette.mode === "light" ? "#fcfcfb" : "#2b2b2b",
       transition: theme.transitions.create([
@@ -33,6 +33,41 @@ export const CustomFormControl = styled((props) => <FormControl {...props} />)(
         "box-shadow",
       ]),
       "&:focus": {
+        backgroundColor: "transparent",
+        boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
+        borderColor: "transparent",
+      },
+    },
+  })
+);
+
+export const CustomPasswordInput = (props) => props.adorment ? <CustomOutlinedInput {...props} /> : <CustomFilledInput {...props} />
+
+export const CustomOutlinedInput = styled((props) => <OutlinedInput {...props} />)(
+  ({ theme }) => ({
+
+    "&.MuiFilledInput-root": {
+      backgroundColor: "transparent",
+      overflow: "hidden",
+      top: "-18px",
+      "&:hover": {
+        border: 0,
+        backgroundColor: "transparent",
+      },
+      "&:not(.Mui-disabled):before": {
+        border: 0,
+      },
+      "&:before": {
+        border: 0,
+      },
+      "&:after": {
+        border: 0,
+      },
+      "&.Mui-error": {
+        border: "1px solid #FF0000",
+        backgroundColor: "#FF000010",
+      },
+      "&.Mui-focused": {
         backgroundColor: "transparent",
         boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
         borderColor: "transparent",
@@ -73,7 +108,10 @@ export const CustomFilledInput = styled((props) => <FilledInput {...props} />)(
 );
 
 export const RedditTextField = styled((props) => (
-  <TextField {...props} />
+  <TextField InputProps={{
+    disableUnderline: true, endAdornment: props.adorment ? <InputAdornment position="start"><IconButton
+      aria-label="toggle password visibility" edge="end"><Visibility /></IconButton></InputAdornment> : null,
+  }} {...props} />
 ))(({ theme }) => ({
   "& .MuiFilledInput-root": {
     border: "1px solid #e2e2e1",
@@ -130,10 +168,10 @@ export const CustomInput = styled(({ ...props }) => {
       {props.type === "password" ? (
         <>
           <CustomFormControl sx={{ m: 1 }} variant="filled">
-            <InputLabel htmlFor="filled-adornment-password" error={props.error}>
+            <InputLabel htmlFor="filled-adornment-password" style={props.adorment ? { top: -16 } : null} error={props.error}>
               {props.label}
             </InputLabel>
-            <CustomFilledInput
+            <CustomPasswordInput
               error={props.error}
               variant="filled"
               id={props.id}
@@ -154,6 +192,7 @@ export const CustomInput = styled(({ ...props }) => {
                 </InputAdornment>
               }
               label={props.label}
+              adorment={props.adorment}
             />
           </CustomFormControl>
         </>
@@ -209,6 +248,7 @@ export const StyledInput = ({
   placeholder = "",
   label = "",
   withIcon = "true",
+  adorment = false,
   ...props
 }) => {
   return (
@@ -222,6 +262,7 @@ export const StyledInput = ({
         withicon={withIcon}
         {...props}
         className={["custom-input"].join(" ")}
+        adorment={adorment}
       ></CustomInput>
     </ThemeProvider>
   );
