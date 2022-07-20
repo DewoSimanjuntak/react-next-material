@@ -14,6 +14,7 @@ import { styled, alpha } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import FilledInput from "@mui/material/FilledInput";
 import { StyledInput } from "../../atoms/Input/input";
+import globalStyles from "../../../styles/Global.module.scss";
 
 const headingStyles = {
   marginBottom: 30,
@@ -22,6 +23,7 @@ const headingStyles = {
 const cardContentStyle = {
   display: "flex",
   flexDirection: "column",
+  padding: 0
 };
 
 const buttonStyle = {
@@ -39,7 +41,7 @@ const setPasswordComponent = () => {
   });
 
   return (
-    <Card sx={{ minWidth: 275, margin: 10 }}>
+    <Card className={globalStyles.container} sx={{ minWidth: 275, margin: 10 }}>
       <CardContent style={cardContentStyle}>
         <h1 style={headingStyles}>Set Password</h1>
         <StyledInput

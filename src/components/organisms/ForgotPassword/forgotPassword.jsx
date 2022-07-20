@@ -6,6 +6,8 @@ import { alpha, styled } from "@mui/material/styles";
 import { StyledInput } from "../../atoms/Input/input";
 import LinkIcon from "@mui/icons-material/Link";
 import { useTranslation } from "react-i18next";
+import globalStyles from "../../../styles/Global.module.scss";
+import { useRouter } from "next/router";
 
 const headingStyles = {
   marginBottom: 30,
@@ -27,6 +29,7 @@ const center = {
 const cardContentStyle = {
   display: "flex",
   flexDirection: "column",
+  padding: 0
 };
 
 const securityQuestionContainer = {
@@ -77,6 +80,7 @@ const RedditTextField = styled((props) => (
 }));
 
 const ForgotPasswordComponent = () => {
+  const router = useRouter();
   const { t } = useTranslation("translation", {
     keyPrefix: "forgotPassword",
   });
@@ -93,7 +97,8 @@ const ForgotPasswordComponent = () => {
   };
 
   const onSetNewPasswordClicked = () => {
-    setShowSecurityQuestion(!isShowSecurityQuestion);
+    //setShowSecurityQuestion(!isShowSecurityQuestion);
+    router.push("/set-password");
   };
 
   const magicLinkUI = () => {
@@ -132,7 +137,7 @@ const ForgotPasswordComponent = () => {
   };
 
   return (
-    <Card sx={{ minWidth: 275, margin: 10 }}>
+    <Card className={globalStyles.container} sx={{ minWidth: 275, margin: 10 }}>
       <CardContent style={cardContentStyle}>
         <h1 style={headingStyles}>{t("title")}</h1>
         <label style={labelStyle}>{t("description")}</label>

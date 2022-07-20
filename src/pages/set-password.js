@@ -3,22 +3,22 @@ import AuthLayout from "../components/templates/authLayout";
 import dynamic from "next/dynamic";
 
 //Prevent html being match between server and client
-const ForgotPasswordComponent = dynamic(
-  () => import("../components/organisms/ForgotPassword/forgotPassword"),
+const SetPasswordComponent = dynamic(
+  () => import("../components/organisms/SetPassword/setPassword"),
   {
     ssr: false,
   }
 );
-export default function ForgotPasswordPage() {
+export default function SetPasswordPage() {
   return (
     <div className={styles.forgotPasswordPage}>
       <section className={styles.forgotPasswordComponentContainer}>
-        <ForgotPasswordComponent />
+        <SetPasswordComponent />
       </section>
     </div>
   );
 }
 
-ForgotPasswordPage.getLayout = function getLayout(page) {
+SetPasswordPage.getLayout = function getLayout(page) {
   return <AuthLayout>{page}</AuthLayout>;
 };

@@ -6,7 +6,8 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import { StyledInput } from "../../atoms/Input/input";
 import { Divider, Typography } from "@mui/material";
-import { styles } from "./style";
+import styles from "./Style.module.scss";
+import globalStyles from "../../../styles/Global.module.scss";
 import { Api } from "../../../pages/api/api";
 import { useRouter } from "next/router";
 import Cookies from 'universal-cookie';
@@ -19,9 +20,9 @@ export default function Login() {
   const api = new Api();
   const router = useRouter();
   return (
-    <Box sx={styles.container}>
+    <Box className={globalStyles.container}>
       <Stack spacing={3}>
-        <Typography variant="h1" sx={styles.title}>
+        <Typography variant="h1" className={styles.title}>
           Patient Login
         </Typography>
         <StyledInput
