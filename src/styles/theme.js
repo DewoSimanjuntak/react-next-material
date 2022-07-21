@@ -52,3 +52,21 @@ export const secondaryTheme = createTheme({
     borderColor: "#205A63",
   },
 });
+
+export const patientButtonPrimary = createTheme({
+  button: {
+    background: colors.teal, // "linear-gradient(89.86deg, #0095A9 -3.29%, #00C6E0 102.48%)",
+    color: 'white'
+  },
+});
+export const patientButtonSecondary = createTheme({
+  button: {
+    background: 'white',
+    color: colors.teal,
+    borderColor: "#205A63",
+  },
+});
+export const providerButtonPrimary = createTheme({
+});
+export const providerButtonSecondary = createTheme({
+});
