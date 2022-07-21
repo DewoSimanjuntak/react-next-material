@@ -49,13 +49,19 @@ app.prepare().then(() => {
     return handle(req, res);
   });
 
-  mainServer.use(vhost("provider.lvh.me", providerServer));
-  mainServer.use(vhost("patient.lvh.me", patientServer));
-  mainServer.use(vhost("lvh.me", server));
+  mainServer.use(
+    vhost("provider.patient-provider-portal.herokuapp.com", providerServer)
+  );
+  mainServer.use(
+    vhost("patient.patient-provider-portal.herokuapp.com", patientServer)
+  );
+  mainServer.use(vhost("patient-provider-portal.herokuapp.com", server));
   mainServer.listen(port, (err) => {
     console.log("err: ", err);
     if (err) throw err;
 
-    console.log(`> Ready on http://www.lvk.me:${port}`);
+    console.log(
+      `> Ready on http://patient.patient-provider-portal.herokuapp.com:${port}`
+    );
   });
 });
