@@ -74,6 +74,7 @@ export default function Login({
           Login
         </StyledButton>
         <StyledButton
+          theme="patient"
           type = "primary"
           size="large"
           gradient={false}
@@ -87,6 +88,7 @@ export default function Login({
         </Grid>
 
         <StyledButton
+          theme="patient"
           type = "primary"
           size="large"
           gradient={false}
