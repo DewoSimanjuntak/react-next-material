@@ -10,6 +10,7 @@ import Link from 'next/link'
 import { styles } from "./style"
 import { LabelWithIcon } from "../../atoms/LabelWithIcon/labelWithIcon";
 
+import globalStyles from "../../../styles/Global.module.scss";
 import { useForm, Controller } from "react-hook-form";
 
 // import {Error} from '../../molecules/FormMessage/formMessage.stories'
@@ -28,9 +29,7 @@ export default function Register() {
         { label: 'Both', value: 'both' }
     ]
     return (
-        <Box
-            sx={styles.container}
-        >
+        <Box className={globalStyles.container}>
             <Stack spacing={3}>
                 <Typography variant="h1" sx={styles.titleStyles}>
                     User Registration
