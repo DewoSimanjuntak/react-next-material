@@ -24,7 +24,7 @@ import { colors, primaryTheme, secondaryTheme } from "../../../styles/theme";
 export const CustomFormControl = styled((props) => <FormControl {...props} />)(
   ({ theme }) => ({
     "&.MuiFormControl-root": {
-      border: "1px solid #e2e2e1",
+      border: "none",
       overflow: "hidden",
       borderRadius: 4,
       backgroundColor: theme.palette.mode === "light" ? "#fcfcfb" : "#2b2b2b",
@@ -85,9 +85,11 @@ export const CustomPasswordInput = styled((props) => <TextField InputProps={{
 export const RedditTextField = styled((props) => (
   <TextField InputProps={{
     disableUnderline: true,
-    endAdornment: props.adorment ? <InputAdornment position="start"><IconButton
-      aria-label="toggle password visibility" edge="end">
-      <PersonOutlinedIcon sx={{ fontSize: "20px" }} /></IconButton></InputAdornment> : null,
+    endAdornment: props.adorment ?
+      <InputAdornment position="end"><IconButton
+        aria-label="toggle password visibility" edge="end">
+        <PersonOutlinedIcon sx={{ fontSize: "20px" }} /></IconButton>
+      </InputAdornment> : null,
   }}
     {...props} />
 ))(({ theme }) => ({
@@ -158,20 +160,9 @@ export const CustomInput = styled(({ ...props }) => {
               mouseDown={handleMouseDownPassword}
               onChange={props.onChange}
               placeholder={props.placeholder}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
               label={props.label}
               adorment={props.adorment}
+              helperText={props.helperText}
             />
           </CustomFormControl>
         </>

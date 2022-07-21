@@ -10,14 +10,21 @@ export const styles = {
   },
   form: {
     display: "grid",
-    marginTop: "12px"
+    marginTop: "8px"
   },
   titleStyles: {
+    paddingTop: "6px",
     marginLeft: "8px",
     marginRight: "8px",
-    paddingBottom: "6px",
     color: "#366A70",
     fontSize: "1.25rem",
+  },
+  passwordLabel: {
+    marginLeft: "8px",
+    marginRight: "8px",
+    paddingTop: "6px",
+    paddingBottom: "6px",
+    fontSize: "1rem",
   },
   divMargin: {
     marginLeft: "8px",

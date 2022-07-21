@@ -92,6 +92,9 @@ export default function Register() {
                         }}
                         rules={{ required: 'Mobile Number required' }}
                     />
+                    <Typography variant="h1" sx={styles.passwordLabel}>
+                        Please Create a Password
+                    </Typography>
                     <Controller
                         name="password"
                         control={control}
