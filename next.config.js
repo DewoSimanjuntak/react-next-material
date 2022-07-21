@@ -7,18 +7,18 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
-  env:{
+  env: {
     // Set PORT to environtment variable (e.g: PORT=3005 npm run dev)
-    PORT: process.env.PORT
+    PORT: process.env.PORT,
   },
   serverRuntimeConfig: {
     // Will only be available on the server side
-    mySecret: 'secret',
+    mySecret: "secret",
     secondSecret: process.env.SECOND_SECRET, // Pass through env variables
   },
   publicRuntimeConfig: {
     // Will be available on both server and client
-    staticFolder: '/static',
+    staticFolder: "/static",
   },
   async redirects() {
     return [
@@ -38,14 +38,14 @@ const nextConfig = {
   },
   async rewrites() {
     return [
-      {
-        source: "/patient/create-account",
-        destination: "/auth/create-account",
-      },
-      {
-        source: "/patient/forgot-password",
-        destination: "/forgot-password",
-      },
+      // {
+      //   source: "/patient/create-account",
+      //   destination: "/auth/create-account",
+      // },
+      // {
+      //   source: "/patient/forgot-password",
+      //   destination: "/forgot-password",
+      // },
     ];
   },
 };
