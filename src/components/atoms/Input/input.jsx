@@ -17,14 +17,15 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 
 import { colors, primaryTheme, secondaryTheme } from "../../../styles/theme";
 
 export const CustomFormControl = styled((props) => <FormControl {...props} />)(
   ({ theme }) => ({
     "&.MuiFormControl-root": {
-      border: "1px solid #e2e2e1",
-      // overflow: "hidden",
+      border: "none",
+      overflow: "hidden",
       borderRadius: 4,
       backgroundColor: theme.palette.mode === "light" ? "#fcfcfb" : "#2b2b2b",
       transition: theme.transitions.create([
@@ -41,67 +42,41 @@ export const CustomFormControl = styled((props) => <FormControl {...props} />)(
   })
 );
 
-export const CustomPasswordInput = (props) => props.adorment ? <CustomOutlinedInput {...props} /> : <CustomFilledInput {...props} />
-
-export const CustomOutlinedInput = styled((props) => <OutlinedInput {...props} />)(
+export const CustomPasswordInput = styled((props) => <TextField InputProps={{
+  disableUnderline: true,
+  endAdornment: <InputAdornment position="end">
+    <IconButton
+      aria-label="toggle password visibility"
+      onClick={props.clickIcon}
+      onMouseDown={props.mouseDown}
+      edge="end"
+    >
+      {props.showPassword ? <VisibilityOff /> : <Visibility />}
+    </IconButton>
+  </InputAdornment>,
+}} {...props} />)(
   ({ theme }) => ({
-
-    "&.MuiFilledInput-root": {
-      backgroundColor: "transparent",
+    "& .MuiFilledInput-root": {
+      border: "1px solid #e2e2e1",
       overflow: "hidden",
-      top: "-18px",
+      borderRadius: 4,
+      backgroundColor: theme.palette.mode === "light" ? "#fcfcfb" : "#2b2b2b",
+      transition: theme.transitions.create([
+        "border-color",
+        "background-color",
+        "box-shadow",
+      ]),
       "&:hover": {
-        border: 0,
         backgroundColor: "transparent",
       },
-      "&:not(.Mui-disabled):before": {
-        border: 0,
-      },
-      "&:before": {
-        border: 0,
-      },
-      "&:after": {
-        border: 0,
-      },
       "&.Mui-error": {
-        border: "1px solid #FF0000",
+        borderColor: "#FF0000",
         backgroundColor: "#FF000010",
       },
       "&.Mui-focused": {
         backgroundColor: "transparent",
         boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-        borderColor: "transparent",
-      },
-    },
-  })
-);
-
-export const CustomFilledInput = styled((props) => <FilledInput {...props} />)(
-  ({ theme }) => ({
-    "&.MuiFilledInput-root": {
-      backgroundColor: "transparent",
-      overflow: "hidden",
-      "&:hover": {
-        border: 0,
-        backgroundColor: "transparent",
-      },
-      "&:not(.Mui-disabled):before": {
-        border: 0,
-      },
-      "&:before": {
-        border: 0,
-      },
-      "&:after": {
-        border: 0,
-      },
-      "&.Mui-error": {
-        border: "1px solid #FF0000",
-        backgroundColor: "#FF000010",
-      },
-      "&.Mui-focused": {
-        backgroundColor: "transparent",
-        boxShadow: `${alpha(theme.palette.primary.main, 0.25)} 0 0 0 2px`,
-        borderColor: "transparent",
+        borderColor: theme.palette.primary.main,
       },
     },
   })
@@ -109,9 +84,14 @@ export const CustomFilledInput = styled((props) => <FilledInput {...props} />)(
 
 export const RedditTextField = styled((props) => (
   <TextField InputProps={{
-    disableUnderline: true, endAdornment: props.adorment ? <InputAdornment position="start"><IconButton
-      aria-label="toggle password visibility" edge="end"><Visibility /></IconButton></InputAdornment> : null,
-  }} {...props} />
+    disableUnderline: true,
+    endAdornment: props.adorment ?
+      <InputAdornment position="end"><IconButton
+        aria-label="toggle password visibility" edge="end">
+        <PersonOutlinedIcon sx={{ fontSize: "20px" }} /></IconButton>
+      </InputAdornment> : null,
+  }}
+    {...props} />
 ))(({ theme }) => ({
   "& .MuiFilledInput-root": {
     border: "1px solid #e2e2e1",
@@ -168,30 +148,21 @@ export const CustomInput = styled(({ ...props }) => {
       {props.type === "password" ? (
         <>
           <CustomFormControl sx={{ m: 1 }} variant="filled">
-            <InputLabel htmlFor="filled-adornment-password" style={props.adorment ? { top: -16 } : null} error={props.error}>
+            {/* <InputLabel htmlFor="filled-adornment-password" style={props.adorment ? { top: -16 } : null} error={props.error}>
               {props.label}
-            </InputLabel>
+            </InputLabel> */}
             <CustomPasswordInput
-              error={props.error}
+              error={(!Boolean(values.value) && props.error)}
               variant="filled"
               id={props.id}
               type={values.showPassword ? "text" : "password"}
+              clickIcon={handleClickShowPassword}
+              mouseDown={handleMouseDownPassword}
               onChange={props.onChange}
               placeholder={props.placeholder}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                  </IconButton>
-                </InputAdornment>
-              }
               label={props.label}
               adorment={props.adorment}
+              helperText={props.helperText}
             />
           </CustomFormControl>
         </>
@@ -200,7 +171,7 @@ export const CustomInput = styled(({ ...props }) => {
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DatePicker
               label={props.label}
-              onChange={() => {}}
+              onChange={() => { }}
               renderInput={(params) => (
                 <RedditTextField
                   variant="filled"

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import DefaultLayout from '../components/templates/default';
 import { increment } from '../store';
 import { fetchUser } from '../store/user';
+import LoginPage from "./login";
 import AuthLayout from "../components/templates/authLayout";
 import Cookies from "universal-cookie";
 import { StyledButton } from "../components/atoms/Button/button";
