@@ -26,21 +26,6 @@ export async function getServerSideProps({ req, res }) {
   };
 }
 
-export async function getServerSideProps({ req, res }) {
-  // const cookies = new Cookies(req.headers.cookie);
-
-  // if (!cookies.get("authorized")) {
-  //   return {
-  //     redirect: {
-  //       destination: "/login",
-  //       permanent: false,
-  //     },
-  //   };
-  // }
-  return {
-    props: {},
-  };
-}
 export default function Home() {
   const api = new Api();
   const router = useRouter();
