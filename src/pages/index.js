@@ -11,6 +11,22 @@ import { Api } from "./api/api";
 import { useRouter } from "next/router";
 
 export async function getServerSideProps({ req, res }) {
+  const cookies = new Cookies(req.headers.cookie);
+
+  if (!cookies.get("authorized")) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
+
+export async function getServerSideProps({ req, res }) {
   // const cookies = new Cookies(req.headers.cookie);
 
   // if (!cookies.get("authorized")) {
@@ -121,10 +137,3 @@ export default function Home() {
   )
 }
 
-Home.getLayout = function getLayout(page) {
-  return (
-    <AuthLayout>
-      {page}
-    </AuthLayout>
-  )
-}

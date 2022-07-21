@@ -3,7 +3,7 @@ import React from "react";
 //import "./button.css";
 
 import Button from "@mui/material/Button";
-import { colors, primaryTheme, secondaryTheme } from "../../../styles/theme";
+import { colors, primaryTheme, patientButtonPrimary, patientButtonSecondary, secondaryTheme} from "../../../styles/theme";
 //import { ThemeProviderProps } from '@mui/material/styles/ThemeProvider';
 
 export const CustomButton = styled(Button)
@@ -35,21 +35,25 @@ export const CustomButton = styled(Button)
 //   borderRadius: theme.button.primary.borderRadius,
 //   color: 'white'
 // }));
-
 export const StyledButton = ({
-  primary = true,
+  theme = "patient" || "provider",
+  type = "primary" || "secondary",
   size = "large",
   gradient,
   ...props
 }) => {
+  const isPatient = theme === "patient"
+  const isPrimary = type === "primary"
+  let themeSelector = isPatient ? isPrimary ? patientButtonPrimary : patientButtonSecondary :
+  isPrimary ? providerButtonPrimary : providerButtonPrimary
   return (
-    <ThemeProvider theme={primary ? primaryTheme : secondaryTheme}>
-      <CustomButton variant={primary ? 'text' : 'outlined'}
+    <ThemeProvider theme={themeSelector}>
+      <CustomButton variant={type === isPrimary ? 'contained' : 'outlined'}
         className={[
           'custom-button',
           `custom-button--${size}`,
           gradient ? 'custom-button--gradient' : ''
-          ].join(' ')}  
+          ].join(' ')}
           {...props}/>
     </ThemeProvider>
   );

@@ -35,5 +35,5 @@ export default function LoginPage() {
 }
 
 LoginPage.getLayout = function getLayout(page) {
-  return <AuthLayout>{page}</AuthLayout>;
+  return <AuthLayout showImage={true}>{page}</AuthLayout>;
 };

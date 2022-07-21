@@ -63,7 +63,8 @@ export default function Login({
           </Link>
         </Grid>
         <StyledButton
-          primary={true}
+          theme="patient"
+          type="primary"
           size="large"
           gradient={false}
           onClick={function () {
@@ -73,7 +74,8 @@ export default function Login({
           Login
         </StyledButton>
         <StyledButton
-          primary={false}
+          theme="patient"
+          type="secondary"
           size="large"
           gradient={false}
           onClick={OnGuestClicked}
@@ -86,7 +88,8 @@ export default function Login({
         </Grid>
 
         <StyledButton
-          primary={false}
+          theme="patient"
+          type="secondary"
           size="large"
           gradient={false}
           onClick={function () {
