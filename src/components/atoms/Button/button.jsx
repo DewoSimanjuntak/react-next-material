@@ -3,7 +3,7 @@ import React from "react";
 //import "./button.css";
 
 import Button from "@mui/material/Button";
-import { colors, primaryTheme,patientButtonPrimary,patientButtonSecondary,secondaryTheme} from "../../../styles/theme";
+import { colors, primaryTheme, patientButtonPrimary, patientButtonSecondary, secondaryTheme} from "../../../styles/theme";
 //import { ThemeProviderProps } from '@mui/material/styles/ThemeProvider';
 
 export const CustomButton = styled(Button)
