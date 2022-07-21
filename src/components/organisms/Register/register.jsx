@@ -72,7 +72,7 @@ export default function Register() {
                         }}
                         rules={{ required: 'Last name required' }}
                     />
-                    {/* <StyledInput type="text" id="lastName" label="Last Name" adorment={true} /> */}
+                    <StyledInput type="text" id="lastName" label="Last Name" adorment={true} />
                     <StyledInput type="email" id="email" label="Email" variant="filled" />
                     <StyledInput type="dob" id="dob" label="Date of Birth" variant="filled" />
                     <Controller

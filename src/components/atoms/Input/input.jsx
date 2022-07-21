@@ -17,6 +17,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 
 import { colors, primaryTheme, secondaryTheme } from "../../../styles/theme";
 
@@ -83,9 +84,12 @@ export const CustomPasswordInput = styled((props) => <TextField InputProps={{
 
 export const RedditTextField = styled((props) => (
   <TextField InputProps={{
-    disableUnderline: true, endAdornment: props.adorment ? <InputAdornment position="start"><IconButton
-      aria-label="toggle password visibility" edge="end"><Visibility /></IconButton></InputAdornment> : null,
-  }} {...props} />
+    disableUnderline: true,
+    endAdornment: props.adorment ? <InputAdornment position="start"><IconButton
+      aria-label="toggle password visibility" edge="end">
+      <PersonOutlinedIcon sx={{ fontSize: "20px" }} /></IconButton></InputAdornment> : null,
+  }}
+    {...props} />
 ))(({ theme }) => ({
   "& .MuiFilledInput-root": {
     border: "1px solid #e2e2e1",
