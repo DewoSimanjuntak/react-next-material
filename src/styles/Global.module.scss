@@ -1,0 +1,13 @@
+.container {
+    width: 400px!important;
+    padding: 1rem 1rem;
+    background-color: white;
+    align-self: center;
+    margin: auto!important;
+    border-radius: 5px;
+    @media (max-width: 768px) {
+      max-width: 358px!important;
+      width: 90vw!important;
+      margin-bottom: 32px!important;
+    }
+  }
