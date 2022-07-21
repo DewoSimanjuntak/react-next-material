@@ -44,7 +44,6 @@ export default function Register() {
                         render={({ field: { onChange, value }, fieldState: { error } }) => {
                             return (
                                 <StyledInput type="text" id="firstName" label="First Name"
-                                    required
                                     value={value}
                                     onChange={onChange}
                                     error={!!error}
@@ -62,7 +61,6 @@ export default function Register() {
                         render={({ field: { onChange, value }, fieldState: { error } }) => {
                             return (
                                 <StyledInput type="text" id="lastName" label="Last Name"
-                                    required
                                     value={value}
                                     onChange={onChange}
                                     error={!!error}
@@ -83,7 +81,6 @@ export default function Register() {
                         render={({ field: { onChange, value }, fieldState: { error } }) => {
                             return (
                                 <StyledInput type="text" id="mobile" label="Mobile Number"
-                                    required
                                     value={value}
                                     onChange={onChange}
                                     error={!!error}
@@ -101,7 +98,6 @@ export default function Register() {
                         render={({ field: { onChange, value }, fieldState: { error } }) => {
                             return (
                                 <StyledInput type="password" id="password" label="Password"
-                                    required
                                     value={value}
                                     onChange={onChange}
                                     error={!!error}
