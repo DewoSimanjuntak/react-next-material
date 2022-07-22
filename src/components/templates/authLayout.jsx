@@ -17,7 +17,7 @@ export default function Layout({ children, showMobileImage=false }) {
             {children}
           </Container>
 
-          <Container className={styles.authImageContainer} sx={{display: { xs: showMobileImage ? 'flex' : 'none'}, padding: 0}}>
+          <Container className={styles.authImageContainer} sx={{display: { xs: showMobileImage ? 'flex' : 'none', md: 'flex'}, padding: 0}}>
             <img
               src="https://c4.wallpaperflare.com/wallpaper/930/115/679/panda-4k-high-quality-hd-wallpaper-preview.jpg"
               className={styles.imageBanner}
