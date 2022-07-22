@@ -74,13 +74,19 @@ export const typography = createTheme({
 });
 
 export const primaryTheme = createTheme({
+  typography:{
+    fontFamily: "Libre Franklin",
+  },
   button: {
     background: colors.teal, // "linear-gradient(89.86deg, #0095A9 -3.29%, #00C6E0 102.48%)",
     color: 'white'
-  },
+  }
 });
 
 export const secondaryTheme = createTheme({
+  typography:{
+    fontFamily: "Libre Franklin",
+  },
   button: {
     background: 'white',
     color: colors.teal,
