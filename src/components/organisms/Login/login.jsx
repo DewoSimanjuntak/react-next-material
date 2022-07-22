@@ -84,7 +84,7 @@ export default function Login({
         </StyledButton>
         <Divider variant="middle" />
         <Grid container justifyContent={"center"}>
-          <Typography variant="caption">Don&apos;t have an account?</Typography>
+          <Typography variant="bodyRegular">Don&apos;t have an account?</Typography>
         </Grid>
 
         <StyledButton

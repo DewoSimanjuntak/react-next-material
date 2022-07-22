@@ -3,10 +3,11 @@ import styles from "./authLayout.module.scss";
 import { colors } from "../../styles/theme";
 import BaseHeader from "../organisms/BaseHeader/baseHeader";
 import Container from '@mui/material/Container';
-import { typography } from "../../styles/theme"
+import { patientTypography, providerTypography } from "../../styles/theme"
 import { ThemeProvider} from "@mui/material/styles";
 
-export default function Layout({ children, showMobileImage=false }) {
+export default function Layout({ children, showMobileImage=false, theme = "patient" }) {
+  const isPatient = theme === "patient"
   return (
     <>
       <Head>
@@ -15,7 +16,7 @@ export default function Layout({ children, showMobileImage=false }) {
       <div className={styles.authLayout}>
         <BaseHeader></BaseHeader>
         <div className={styles.authContainer}>
-          <ThemeProvider theme={typography}>
+          <ThemeProvider theme={isPatient ? patientTypography : providerTypography}>
             <Container className={styles.authComponentContainer} sx={{paddingTop: { xs: showMobileImage ? '35px!important' : '75px!important', md: '100px!important'}, padding: 0}}>
               {children}
             </Container>

@@ -1,5 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 import "@fontsource/libre-franklin"
+import "@fontsource/roboto"
 
 export const colors = {
   darkGreen: '#003B4A',
@@ -38,34 +39,122 @@ export const colors = {
 //   }
 // };
 
-export const typography = createTheme({
+export const patientTypography = createTheme({
   typography:{
     fontFamily: "Libre Franklin",
     fontWeight: "normal",
-    fontSize: 16,
+    fontSize: "16px",
     h1: {
       fontFamily: "Bw Nista Geometric DEMO",
       color:"#003B4A",
-      fontWeight: "bold",
-      fontSize: 36, 
+      fontWeight: 500,
+      fontSize: "46px", 
+      lineHeight:"60px"
     },
     h2:{
       fontFamily: 'Bw Nista Geometric DEMO',
       color:"#003B4A",
-      fontWeight: "bold",
-      fontSize: 28, 
+      fontWeight: 500,
+      fontSize: "34px", 
+      lineHeight:"44px"
     },
     h3:{
       fontFamily: 'Bw Nista Geometric DEMO',
       color:"#003B4A",
       fontWeight: "bold",
-      fontSize: 22, 
+      fontSize: "22px", 
+      lineHeight:"32px"
     },
-    heroTitle: {
-      fontFamily: "Bw Nista Geometric DEMO",
+    h4:{
+      fontFamily: 'Bw Nista Geometric DEMO',
       color:"#003B4A",
-      fontSize:38,
-      fontWeight: 800,
+      fontWeight: "bold",
+      fontSize: "18px", 
+      lineHeight:"24px"
+    },
+    bodyLarge:{
+      fontFamily: 'Libre Franklin',
+      fontWeight: "bold",
+      fontSize: "18px", 
+      lineHeight:"26px"
+    },
+    bodyRegular:{
+      fontFamily: 'Libre Franklin',
+      fontWeight: "bold",
+      fontSize: "16px", 
+      lineHeight:"24px"
+    },
+    bodySmallRegular:{
+      fontFamily: 'Libre Franklin',
+      fontWeight: "bold",
+      fontSize: "14px", 
+      lineHeight:"22px"
+    },
+    bodySmallMedium:{
+      fontFamily: 'Libre Franklin',
+      fontWeight: 500,
+      fontSize: "14px",
+    },
+    bodyTinyRegular:{
+      fontFamily: 'Libre Franklin',
+      fontWeight: "normal",
+      fontSize: "12px", 
+    },
+    bodyTinyMedium:{
+      fontFamily: 'Libre Franklin',
+      fontWeight: 500,
+      fontSize: "12px",
+    },
+    allVariants: {
+      color: "#292929"
+    }
+  }
+});
+
+export const providerTypography = createTheme({
+  typography:{
+    fontFamily: "Roboto",
+    fontWeight: "normal",
+    fontSize: "16px",
+    h1: {
+      fontFamily: "Roboto",
+      fontWeight: 500,
+      fontSize: "24px", 
+    },
+    h2:{
+      fontFamily: "Roboto",
+      fontWeight: 500,
+      fontSize: "20px", 
+    },
+    h3:{
+      fontFamily: "Roboto",
+      fontWeight: 500,
+      fontSize: "16px", 
+    },
+    bodyLarge:{
+      fontFamily: "Roboto",
+      fontWeight: "normal",
+      fontSize: "16px", 
+    },
+    bodySmallRegular:{
+      fontFamily: "Roboto",
+      fontWeight: "normal",
+      fontSize: "14px", 
+    },
+    bodySmallMedium:{
+      fontFamily: 'Roboto',
+      fontWeight: 500,
+      fontSize: "14px",
+    },
+    bodyTinyRegular:{
+      fontFamily: 'Roboto',
+      fontWeight: "normal",
+      fontSize: "12px", 
+    },
+    bodyTinyMedium:{
+      fontFamily: 'Roboto',
+      fontWeight: 500,
+      fontSize: "12px",
     },
     allVariants: {
       color: "#292929"
@@ -115,7 +204,7 @@ export const patientButtonSecondary = createTheme({
 });
 export const providerButtonPrimary = createTheme({
   typography:{
-    fontFamily: "Libre Franklin",
+    fontFamily: "Roboto",
   },
   button: {
     background: "darkGray",
@@ -124,7 +213,7 @@ export const providerButtonPrimary = createTheme({
 });
 export const providerButtonSecondary = createTheme({
   typography:{
-    fontFamily: "Libre Franklin",
+    fontFamily: "Roboto",
   },
   button: {
     background: 'white',
