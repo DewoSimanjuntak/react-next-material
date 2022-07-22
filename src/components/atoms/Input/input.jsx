@@ -84,7 +84,6 @@ export const CustomPasswordInput = styled((props) => <TextField InputProps={{
 
 export const RedditTextField = styled((props) => (
   <TextField InputProps={{
-    disableUnderline: true,
     endAdornment: props.adorment ?
       <InputAdornment position="end"><IconButton
         aria-label="toggle password visibility" edge="end">
@@ -218,7 +217,7 @@ export const StyledInput = ({
   placeholder = "",
   label = "",
   withIcon = "true",
-  adorment = false,
+  adorment = null,
   ...props
 }) => {
   return (
