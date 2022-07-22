@@ -22,7 +22,7 @@ export default function Layout({ children, showMobileImage=false }) {
       <div className={styles.authLayout}>
         <BaseHeader></BaseHeader>
         <div className={styles.authContainer}>
-          <Container className={styles.authComponentContainer} sx={{paddingTop: { xs: showMobileImage ? '35px' : '75px'}, padding: 0}}>
+          <Container className={styles.authComponentContainer} sx={{paddingTop: { xs: showMobileImage ? '35px!important' : '75px!important', md: '100px!important'}, padding: 0}}>
             {children}
           </Container>
 
