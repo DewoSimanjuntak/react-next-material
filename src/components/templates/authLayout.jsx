@@ -1,10 +1,19 @@
 import Head from "next/head";
 import styles from "./authLayout.module.scss";
 import { colors } from "../../styles/theme";
-import BaseHeader from "../organisms/BaseHeader/baseHeader"; "../../components/organisms/BaseHeader/baseHeader"
 import Container from '@mui/material/Container';
 
-export default function Layout({ children, showImage=false }) {
+import dynamic from "next/dynamic";
+
+//Prevent html being match between server and client
+const BaseHeader = dynamic(
+  () => import("../organisms/BaseHeader/baseHeader"),
+  {
+    ssr: false,
+  }
+);
+
+export default function Layout({ children, showMobileImage=false }) {
   return (
     <>
       <Head>
