@@ -55,7 +55,7 @@ export const secondaryTheme = createTheme({
 
 export const patientButtonPrimary = createTheme({
   button: {
-    background: colors.teal, // "linear-gradient(89.86deg, #0095A9 -3.29%, #00C6E0 102.48%)",
+    background: colors.teal,
     color: 'white'
   },
 });
@@ -67,6 +67,15 @@ export const patientButtonSecondary = createTheme({
   },
 });
 export const providerButtonPrimary = createTheme({
+  button: {
+    background: "darkGray",
+    color: 'white'
+  },
 });
 export const providerButtonSecondary = createTheme({
+  button: {
+    background: 'white',
+    color: "darkGray",
+    borderColor: "darkGray",
+  },
 });
