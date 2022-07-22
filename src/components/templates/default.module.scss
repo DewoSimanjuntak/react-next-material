@@ -4,6 +4,7 @@
   min-height: 100vh;
 
   .defaultContainer {
+    padding-top: calc(64px + 16px);
     flex: 1;
   }
 }

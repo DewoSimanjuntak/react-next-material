@@ -122,6 +122,7 @@ export default function BaseHeader() {
               anchorEl={anchorElUser}
               anchorOrigin={{
                 vertical: 'top',
+                horizontal: 'left'
               }}
               keepMounted
               // transformOrigin={{
