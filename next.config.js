@@ -7,10 +7,13 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  eslint: {
+    dirs: ["src"], // Only run ESLint on the 'pages' and 'utils' directories during production builds (next build)
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"]
+      use: ["@svgr/webpack"],
     });
 
     return config;
@@ -34,12 +37,24 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/patient/create-account",
+        has: [
+          {
+            type: "host",
+            value: "(?<host>.*)",
+          },
+        ],
+        source: "/:host/create-account",
         destination: "/auth/create-account",
       },
       {
-        source: "/patient/forgot-password",
-        destination: "/forgot-password",
+        has: [
+          {
+            type: "host",
+            value: "(?<host>.*)",
+          },
+        ],
+        source: "/:host/:path*",
+        destination: "/:path*",
       },
     ];
   },
