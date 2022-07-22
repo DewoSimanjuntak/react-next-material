@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-
+import {RedditTextField} from '../../components/atoms/Input/input'
 // expected props
 const props = {
   fields: {
@@ -22,7 +22,7 @@ export const normalField = ({ ...props }) => {
     </>
   );
 };
-
+//solve form this
 export const FormFieldsGenerator = ({ ...props }) => {
   let element = normalField(props);
   switch (type) {

@@ -124,3 +124,7 @@ export default function Home() {
   )
 }
 
+Home.getLayout = function getLayout(page) {
+  return <DefaultLayout>{page}</DefaultLayout>;
+};
+
