@@ -11,7 +11,7 @@ export default function CreateAccountPage() {
 
 CreateAccountPage.getLayout = function getLayout(page) {
   return (
-    <AuthLayout showImage={true}>
+    <AuthLayout>
       {page}
     </AuthLayout>
   )
