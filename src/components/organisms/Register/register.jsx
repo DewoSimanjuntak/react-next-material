@@ -9,18 +9,24 @@ import { Divider, Typography } from "@mui/material";
 import Link from 'next/link'
 import { styles } from "./style"
 import { LabelWithIcon } from "../../atoms/LabelWithIcon/labelWithIcon";
-
 import globalStyles from "../../../styles/Global.module.scss";
 import { useForm, Controller } from "react-hook-form";
-
 // import {Error} from '../../molecules/FormMessage/formMessage.stories'
 
 
 export default function Register() {
-    const { handleSubmit, control } = useForm();
+    const { handleSubmit, setError, control, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-        console.log(data);
+        console.log({data});
+        setError("firstName", { type: 'custom', message: 'An error occured' })
+        setError("lastName", { type: 'custom', message: 'An error occured' })
+        setError("mobile", { type: 'custom', message: 'An error occured' })
+        setError("password", { type: 'custom', message: 'An error occured' })
+        // Object.keys(data).map((_, i) =>
+        //     console.log(i, maped, 'indexsmap'),
+            // setError(data[i], { type: 'custom', message: 'An error occured' }))
+        // setError("lastName", {type: 'custom', message: 'An error occured'})
     };
 
     const options = [
@@ -35,7 +41,6 @@ export default function Register() {
                     User Registration
                 </Typography>
                 {/* <Error content={"Invalid use name or password"}/> */}
-
                 <form onSubmit={handleSubmit(onSubmit)} style={styles.form}>
                     <Controller
                         name="firstName"
@@ -71,8 +76,8 @@ export default function Register() {
                         }}
                         rules={{ required: 'Last name required' }}
                     />
-                    <StyledInput type="text" id="lastName" label="Last Name" adorment={true} />
-                    <StyledInput type="email" id="email" label="Email" variant="filled" />
+                    {/* <StyledInput type="text" id="lastName" label="Last Name" adorment={true} /> */}
+                    <StyledInput type="text" id="email" label="Email" variant="filled" />
                     <StyledInput type="dob" id="dob" label="Date of Birth" variant="filled" />
                     <Controller
                         name="mobile"
