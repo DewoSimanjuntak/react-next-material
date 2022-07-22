@@ -43,6 +43,22 @@ const nextConfig = {
       },
     ];
   },
+  env: {
+    // Set PORT to environtment variable (e.g: PORT=3005 npm run dev)
+    PORT: process.env.PORT,
+  },
+  serverRuntimeConfig: {
+    // Will only be available on the server side
+    mySecret: "secret",
+    secondSecret: process.env.SECOND_SECRET, // Pass through env variables
+  },
+  publicRuntimeConfig: {
+    // Will be available on both server and client
+    staticFolder: "/static",
+  },
+  images: {
+    domains: ['https://c4.wallpaperflare.com'],
+  },
 };
 
 module.exports = nextConfig;
