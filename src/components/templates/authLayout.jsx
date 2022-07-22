@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "./authLayout.module.scss";
 import { colors } from "../../styles/theme";
-import BaseHeader from "../organisms/BaseHeader/baseHeader"; "../../components/organisms/BaseHeader/baseHeader"
+import BaseHeader from "../organisms/BaseHeader/baseHeader";
 import Container from '@mui/material/Container';
 
 export default function Layout({ children, showMobileImage=false }) {
