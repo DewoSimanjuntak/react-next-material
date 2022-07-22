@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+import "@fontsource/libre-franklin"
 
 export const colors = {
   darkGreen: '#003B4A',
@@ -37,6 +38,40 @@ export const colors = {
 //   }
 // };
 
+export const typography = createTheme({
+  typography:{
+    fontFamily: "Libre Franklin",
+    fontWeight: "normal",
+    fontSize: 16,
+    h1: {
+      fontFamily: "Bw Nista Geometric DEMO",
+      color:"#003B4A",
+      fontWeight: "bold",
+      fontSize: 36, 
+    },
+    h2:{
+      fontFamily: 'Bw Nista Geometric DEMO',
+      color:"#003B4A",
+      fontWeight: "bold",
+      fontSize: 28, 
+    },
+    h3:{
+      fontFamily: 'Bw Nista Geometric DEMO',
+      color:"#003B4A",
+      fontWeight: "bold",
+      fontSize: 22, 
+    },
+    heroTitle: {
+      fontFamily: "Bw Nista Geometric DEMO",
+      color:"#003B4A",
+      fontSize:38,
+      fontWeight: 800,
+    },
+    allVariants: {
+      color: "#292929"
+    }
+  }
+});
 
 export const primaryTheme = createTheme({
   button: {
@@ -54,12 +89,18 @@ export const secondaryTheme = createTheme({
 });
 
 export const patientButtonPrimary = createTheme({
+  typography:{
+    fontFamily: "Libre Franklin",
+  },
   button: {
     background: colors.teal,
     color: 'white'
   },
 });
 export const patientButtonSecondary = createTheme({
+  typography:{
+    fontFamily: "Libre Franklin",
+  },
   button: {
     background: 'white',
     color: colors.teal,
@@ -67,12 +108,18 @@ export const patientButtonSecondary = createTheme({
   },
 });
 export const providerButtonPrimary = createTheme({
+  typography:{
+    fontFamily: "Libre Franklin",
+  },
   button: {
     background: "darkGray",
     color: 'white'
   },
 });
 export const providerButtonSecondary = createTheme({
+  typography:{
+    fontFamily: "Libre Franklin",
+  },
   button: {
     background: 'white',
     color: "darkGray",
