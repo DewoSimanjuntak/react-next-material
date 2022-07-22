@@ -4,7 +4,7 @@ import { colors } from "../../styles/theme";
 import BaseHeader from "../organisms/BaseHeader/baseHeader"; "../../components/organisms/BaseHeader/baseHeader"
 import Container from '@mui/material/Container';
 
-export default function Layout({ children, showImage=false }) {
+export default function Layout({ children, showMobileImage=false }) {
   return (
     <>
       <Head>
@@ -13,11 +13,11 @@ export default function Layout({ children, showImage=false }) {
       <div className={styles.authLayout}>
         <BaseHeader></BaseHeader>
         <div className={styles.authContainer}>
-          <Container className={styles.authComponentContainer} sx={{paddingTop: { xs: showImage ? '35px' : '75px'}, padding: 0}}>
+          <Container className={styles.authComponentContainer} sx={{paddingTop: { xs: showMobileImage ? '35px' : '75px'}, padding: 0}}>
             {children}
           </Container>
 
-          <Container className={styles.authImageContainer} sx={{display: { xs: showImage ? 'flex' : 'none'}, padding: 0}}>
+          <Container className={styles.authImageContainer} sx={{display: { xs: showMobileImage ? 'flex' : 'none'}, padding: 0}}>
             <img
               src="https://c4.wallpaperflare.com/wallpaper/930/115/679/panda-4k-high-quality-hd-wallpaper-preview.jpg"
               className={styles.imageBanner}

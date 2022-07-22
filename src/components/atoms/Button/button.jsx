@@ -1,10 +1,9 @@
 import { ThemeProvider, styled } from '@mui/material/styles';
 import React from "react";
-//import "./button.css";
+import styles from "./button.module.css";
 
 import Button from "@mui/material/Button";
-import { colors, primaryTheme, patientButtonPrimary, patientButtonSecondary, secondaryTheme} from "../../../styles/theme";
-//import { ThemeProviderProps } from '@mui/material/styles/ThemeProvider';
+import { patientButtonPrimary, patientButtonSecondary, providerButtonPrimary, providerButtonSecondary} from "../../../styles/theme";
 
 export const CustomButton = styled(Button)
 (
@@ -28,13 +27,7 @@ export const CustomButton = styled(Button)
   }
 `,
 )
-// (({theme}) => ({
-//   // color: theme.status.danger,
-//   fontSize: theme.button.primary.fontSize,
-//   background: theme.button.primary.background,
-//   borderRadius: theme.button.primary.borderRadius,
-//   color: 'white'
-// }));
+
 export const StyledButton = ({
   theme = "patient" || "provider",
   type = "primary" || "secondary",
@@ -44,15 +37,17 @@ export const StyledButton = ({
 }) => {
   const isPatient = theme === "patient"
   const isPrimary = type === "primary"
+  const isLarge = size === "large"
   let themeSelector = isPatient ? isPrimary ? patientButtonPrimary : patientButtonSecondary :
-  isPrimary ? providerButtonPrimary : providerButtonPrimary
+  isPrimary ? providerButtonPrimary : providerButtonSecondary
+  let sizeSelector = isLarge ? styles.customButtonLarge : styles.customButtonSmall
   return (
     <ThemeProvider theme={themeSelector}>
       <CustomButton variant={type === isPrimary ? 'contained' : 'outlined'}
         className={[
-          'custom-button',
-          `custom-button--${size}`,
-          gradient ? 'custom-button--gradient' : ''
+          `${styles.customButton}`,
+          `${sizeSelector}`,
+          gradient ? `${styles.customButtonGradient}` : ``
           ].join(' ')}
           {...props}/>
     </ThemeProvider>
