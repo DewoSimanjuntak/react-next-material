@@ -46,16 +46,16 @@ const nextConfig = {
         source: "/:host/create-account",
         destination: "/auth/create-account",
       },
-      {
-        has: [
-          {
-            type: "host",
-            value: "(?<host>.*)",
-          },
-        ],
-        source: "/:host/:path*",
-        destination: "/:path*",
-      },
+      // {
+      //   has: [
+      //     {
+      //       type: "host",
+      //       value: "(?<host>.*)",
+      //     },
+      //   ],
+      //   source: "/:host/:path*",
+      //   destination: "/:path*",
+      // },
     ];
   },
   env: {
