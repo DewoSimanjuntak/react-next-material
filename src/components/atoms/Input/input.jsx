@@ -135,7 +135,6 @@ export const CustomInput = styled(({ ...props }) => {
       ...values,
       showPassword: !values.showPassword,
     });
-    // return true
   };
 
   const handleMouseDownPassword = (event) => {

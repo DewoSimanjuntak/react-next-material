@@ -16,7 +16,7 @@ import { useForm, Controller } from "react-hook-form";
 
 
 export default function Register() {
-    const [isShowValidation, setShowValidation] = React.useState(true)
+    const [isShowValidation, setShowValidation] = React.useState(false)
     const [isCharLengthPass, setCharLengthPass] = React.useState(false)
     const [isAlphabethPass, setAlphabethPass] = React.useState(false)
     const [isSpecialCharPass, setSpecialCharPass] = React.useState(false)
