@@ -30,8 +30,8 @@ export default function Login({
         <StyledInput
           id="username"
           label="Username"
+          className={styles.inputStyle}
           size={constants.SMALL}
-          style={{ backgroundColor: "white" }}
           variant={constants.FILLED}
           type={constants.INPUT_TEXT}
           error={false}
@@ -43,9 +43,9 @@ export default function Login({
         <StyledInput
           id="password"
           label="Password"
+          className ={styles.inputStyle}
           type={constants.INPUT_PASSWORD}
           size={constants.SMALL}
-          style={{ backgroundColor: "white" }}
           //  variant="filled"
           onChange={(event) => setPassword(event.target.value)}
           //  helperText={username === "" ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
@@ -53,7 +53,7 @@ export default function Login({
         />
         <Grid container justifyContent={constants.FLEX_END}>
           <Link
-            color={"#2095a9"}
+            className={styles.linkStyle}
             onClick={function () {
               OnForgotPasswordClicked(router);
             }}
