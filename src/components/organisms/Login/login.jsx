@@ -9,6 +9,7 @@ import styles from "./Style.module.scss";
 import globalStyles from "../../../styles/Global.module.scss";
 import { useRouter } from "next/router";
 import { StyledButton } from "../../atoms/Button/button";
+import { useForm, Controller } from "react-hook-form";
 
 const constants = require('../../../utils/constants');
 
@@ -23,55 +24,57 @@ export default function Login({
   const router = useRouter();
   return (
     <Box className={globalStyles.container}>
-      <Stack spacing={3}>
         <Typography variant={constants.H1} className={styles.title}>
           Patient Login
         </Typography>
-        <StyledInput
-          id="username"
-          label="Username"
-          className={styles.inputStyle}
-          size={constants.SMALL}
-          variant={constants.FILLED}
-          type={constants.INPUT_TEXT}
-          error={false}
-          helperText={"Enter your registered email or phone number"}
-          onChange={(event) => setUsername(event.target.value)}
-          //  helperText={userpassword === " " ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
-          //  error={userpassword === "" ? true  : false}
-        />
-        <StyledInput
-          id="password"
-          label="Password"
-          className ={styles.inputStyle}
-          type={constants.INPUT_PASSWORD}
-          size={constants.SMALL}
-          //  variant="filled"
-          onChange={(event) => setPassword(event.target.value)}
-          //  helperText={username === "" ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
-          //  error={username === "" ? true  : false}
-        />
-        <Grid container justifyContent={constants.FLEX_END}>
-          <Link
-            className={styles.linkStyle}
-            onClick={function () {
-              OnForgotPasswordClicked(router);
-            }}
-          >
-            Forgot Password
-          </Link>
-        </Grid>
-        <StyledButton
-          theme={constants.PATIENT}
-          type={constants.PRIMARY}
-          size={constants.LARGE}
-          gradient={false}
-          onClick={function () {
-            OnLoginClicked({ username, password }, router);
-          }}
-        >
-          Login
-        </StyledButton>
+        <Stack spacing={2}>
+        <form onSubmit={OnLoginClicked({ username, password }, router)}>
+        <Stack spacing={2}>
+            <StyledInput
+              id="username"
+              label="Username"
+              size={constants.SMALL}
+              variant={constants.FILLED}
+              type={constants.INPUT_TEXT}
+              error={false}
+              helperText={"Enter your registered email or phone number"}
+              onChange={(event) => setUsername(event.target.value)}
+            //  helperText={userpassword === " " ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
+            //  error={userpassword === "" ? true  : false}
+            />
+            <StyledInput
+              id="password"
+              label="Password"
+              type={constants.INPUT_PASSWORD}
+              size={constants.SMALL}
+              variant={constants.FILLED}
+              onChange={(event) => setPassword(event.target.value)}
+            //  helperText={username === "" ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
+            //  error={username === "" ? true  : false}
+            />
+            <Grid container justifyContent={constants.FLEX_END}>
+              <Link
+                className={styles.link}
+                onClick={function () {
+                  OnForgotPasswordClicked(router);
+                }}
+              >
+                Forgot Password
+              </Link>
+            </Grid>
+            <StyledButton
+              theme={constants.PATIENT}
+              type={constants.PRIMARY}
+              size={constants.LARGE}
+              gradient={false}
+              onClick={function () {
+                OnLoginClicked({ username, password }, router);
+              }}
+            >
+              Login
+            </StyledButton>
+            </Stack>
+        </form>
         <StyledButton
           theme={constants.PATIENT}
           type={constants.SECONDARY}
@@ -81,7 +84,8 @@ export default function Login({
         >
           Continue as a guest
         </StyledButton>
-        <Divider variant={constants.MIDDLE} />
+        <Divider variant={constants.MIDDLE} className={styles.divider} />
+
         <Grid container justifyContent={constants.CENTER}>
           <Typography variant="bodyRegular">Don&apos;t have an account?</Typography>
         </Grid>

@@ -18,7 +18,7 @@ const loginProps = {
   OnLoginClicked: function (postbody, router) {
     const api = new Api();
     api.client
-      .post("https://patientlogin.mocklab.io/user/login", postbody)
+      .post("https://patientlogin.mocklab.io/ecp/patient/login", postbody)
       .then(function (response) {
         console.log(response);
         if (response && response.status === 200) {
@@ -46,5 +46,5 @@ export default function AuthPage() {
 }
 
 AuthPage.getLayout = function getLayout(page) {
-  return <AuthLayout>{page}</AuthLayout>;
+  return <AuthLayout showMobileImage={true}>{page}</AuthLayout>;
 };
