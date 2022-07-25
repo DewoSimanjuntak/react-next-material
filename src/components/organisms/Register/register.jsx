@@ -18,7 +18,21 @@ import { useForm, Controller } from "react-hook-form";
 export default function Register() {
     const [isShowValidation, setShowValidation] = React.useState(true)
     const [isCharLengthPass, setCharLengthPass] = React.useState(false)
-    const { handleSubmit, setError, control, formState: { errors }, watch } = useForm();
+    const [isAlphabethPass, setAlphabethPass] = React.useState(false)
+    const [isSpecialCharPass, setSpecialCharPass] = React.useState(false)
+
+    // const { handleSubmit, setError, control, formState: { errors }, watch } = useForm();
+    const { handleSubmit, setError, control, watch, formState: { errors } } = useForm(
+        {
+            defaultValues: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                mobile: '',
+                password: ''
+            }
+        }
+    );
 
     const onSubmit = data => {
         setShowValidation(true);
@@ -34,18 +48,33 @@ export default function Register() {
         { label: 'Both', value: 'both' }
     ]
 
+    const [watchedEmail, watchedMobile] = watch(["email", "mobile"]); // you can also target specific fields by their names
+    const getRegisteredUsername = () => {
+        return watchedEmail || watchedMobile || '(auto-populated email id/phone number)'
+    }
+
     const password = useRef({});
     password.current = watch("password", "");
 
+    // const checkPass = (use, pwd) => {
+    //     console.log(use, pwd, 'dfv')
+    //     return pwd.match(/[a-z]+/ig).filter(a=> a.length > 4 && use.includes(a)).length > 0? true:false;
+    //     }
+
     useEffect(() => {
         let lengthRegex = new RegExp('.{8,20}');
-        let alphabethRegex = new RegExp('.{8,20}');
-        let specialRegex = new RegExp('.{8,20}');
-        
-        setCharLengthPass(lengthRegex.test(password.current));
+        let alphabethRegex = new RegExp('[A-Za-z]');
+        let specialRegex = new RegExp('[@#$%^&-+=()]');
 
-        console.log(password.current, 'password.current', regex.test(password.current))
-      }, [password.current]);
+        setCharLengthPass(lengthRegex.test(password.current));
+        setAlphabethPass(alphabethRegex.test(password.current));
+        setSpecialCharPass(specialRegex.test(password.current));
+
+        console.log(password.current, 'password.current')
+        // console.log(checkPass("Npasandarshana@gmail.com","S@pasan123"))//true
+        // console.log(checkPass("Npasandarshana@gmail.com","S@pasysan123"))//false
+        // console.log(checkPass(getRegisteredUsername(), password.current), 'password.cek')
+    }, [password.current]);
 
     return (
         <Box className={globalStyles.container}>
@@ -94,7 +123,7 @@ export default function Register() {
                             }
                         }}
                     />
-                    {/* <StyledInput type="text" id="lastName" label="Last Name" adorment={true} /> */}
+                    <StyledInput type="text" id="lastName" label="Last Name" adorment={true} />
                     {/* <StyledInput type="text" id="email" label="Email" variant="filled" /> */}
                     <Controller
                         name="email"
@@ -156,6 +185,11 @@ export default function Register() {
                         }}
                         rules={{ required: 'Password required' }}
                     />
+
+                    <div style={styles.registeredUsernameWrapper}>
+                        <div>Your username will be {getRegisteredUsername()}</div>
+                    </div>
+
                     {/* <StyledInput type="dob" id="dob" label="Date of Birth" variant="filled" />
                     <StyledInput type="text" id="mobile" label="Mobile Number" variant="filled" />
                     <StyledInput type="password" id="password" label="Password" variant="outlined" /> */}
@@ -163,15 +197,15 @@ export default function Register() {
                         <div style={{ display: "block" }}>
                             <LabelWithIcon error={!isCharLengthPass} label="Password length should range from 8 to 20 characters" />
                             <LabelWithIcon
-                                error={!isCharLengthPass}
+                                error={!isAlphabethPass}
                                 label="Password should contain at least one alphabet (a-z)"
                             />
                             <LabelWithIcon
-                                error={true}
+                                error={!isSpecialCharPass}
                                 label="Password should contain at least one special character"
                             />
                             <LabelWithIcon
-                                error={true}
+                                error={!isSpecialCharPass}
                                 label="Password should not contain your username"
                             />
                             <LabelWithIcon
