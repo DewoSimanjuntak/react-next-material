@@ -1,4 +1,5 @@
-import * as React from "react";
+// import * as React from "react";
+import React, { useEffect, useRef } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
@@ -16,7 +17,8 @@ import { useForm, Controller } from "react-hook-form";
 
 export default function Register() {
     const [isShowValidation, setShowValidation] = React.useState(true)
-    const { handleSubmit, setError, control, formState: { errors } } = useForm();
+    const [isCharLengthPass, setCharLengthPass] = React.useState(false)
+    const { handleSubmit, setError, control, formState: { errors }, watch } = useForm();
 
     const onSubmit = data => {
         setShowValidation(true);
@@ -31,6 +33,20 @@ export default function Register() {
         { label: 'Phone', value: 'phone' },
         { label: 'Both', value: 'both' }
     ]
+
+    const password = useRef({});
+    password.current = watch("password", "");
+
+    useEffect(() => {
+        let lengthRegex = new RegExp('.{8,20}');
+        let alphabethRegex = new RegExp('.{8,20}');
+        let specialRegex = new RegExp('.{8,20}');
+        
+        setCharLengthPass(lengthRegex.test(password.current));
+
+        console.log(password.current, 'password.current', regex.test(password.current))
+      }, [password.current]);
+
     return (
         <Box className={globalStyles.container}>
             <Stack spacing={3}>
@@ -145,9 +161,9 @@ export default function Register() {
                     <StyledInput type="password" id="password" label="Password" variant="outlined" /> */}
                     {isShowValidation ?
                         <div style={{ display: "block" }}>
-                            <LabelWithIcon error={false} label="Password length should range from 8 to 20 characters" />
+                            <LabelWithIcon error={!isCharLengthPass} label="Password length should range from 8 to 20 characters" />
                             <LabelWithIcon
-                                error={true}
+                                error={!isCharLengthPass}
                                 label="Password should contain at least one alphabet (a-z)"
                             />
                             <LabelWithIcon
