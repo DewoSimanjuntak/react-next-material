@@ -1,19 +1,26 @@
 import styles from "../../styles/Login.module.css";
 import AuthLayout from "../components/templates/authLayout";
-import dynamic from "next/dynamic";
+import ForgotPasswordComponent from "../components/organisms/ForgotPassword/forgotPassword";
+import SetOptionComponent from "../components/organisms/SelectOption/selectOption";
 
-//Prevent html being match between server and client
-const ForgotPasswordComponent = dynamic(
-  () => import("../components/organisms/ForgotPassword/forgotPassword"),
-  {
-    ssr: false,
+const forgotPasswordProps = {
+  OnBackToLoginClicked: function (router) {
+    router.push("/login");
   }
-);
+};
+
+const setOptionProps = {
+  OnBackToLoginClicked: function (router) {
+    router.push("/login");
+  }
+};
 export default function ForgotPasswordPage() {
+
   return (
     <div className={[styles.forgotPasswordPage, 'hide-scrollbar'].join(' ')}>
       <section className={styles.forgotPasswordComponentContainer}>
-        <ForgotPasswordComponent />
+        {/* <ForgotPasswordComponent {...forgotPasswordProps}/> */}
+        <SetOptionComponent {...setOptionProps}/>
       </section>
     </div>
   );
