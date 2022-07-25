@@ -4,7 +4,7 @@ import React from "react";
 import Link from 'next/link';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const linkAtoms = {
   title: "Atoms/Link",
   component: Link,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
@@ -12,6 +12,9 @@ export default {
 
   },
 }
+
+// 👇️ use default export
+export default linkAtoms;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <Link {...args}>{args.content}</Link>;

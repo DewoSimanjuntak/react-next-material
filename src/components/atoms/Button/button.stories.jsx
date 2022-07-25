@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { StyledButton } from "./button";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const buttonComponents = {
   title: "Atoms/Button",
   component: StyledButton,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
@@ -23,6 +23,9 @@ export default {
     },
   },
 };
+
+// 👇️ use default export
+export default buttonComponents;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <StyledButton {...args} >{args.label}</StyledButton>;

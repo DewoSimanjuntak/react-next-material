@@ -3,7 +3,7 @@ import React from "react";
 import MenuIcon from "./menu"
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-export default {
+const iconMenuAtoms = {
   title: "Icons/Menu",
   component: MenuIcon,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
@@ -11,6 +11,9 @@ export default {
 
   },
 }
+
+// 👇️ use default export
+export default iconMenuAtoms;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <MenuIcon {...args} />;

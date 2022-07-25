@@ -2,7 +2,7 @@ import BlockIcon from '@mui/icons-material/Block';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Box } from '@mui/material';
 
-import './formMessage.css'
+// import './formMessage.css'
 
 export const FormMessage = ({...props}) => {
 
@@ -15,12 +15,12 @@ export const FormMessage = ({...props}) => {
   
   return (
     <>
-      <Box sx={{backgroundColor: props.success ? 'success.main' : 'error.main', width: 'fit-content', p: 2, borderRadius: '4px', display: 'flex'}}>
+      <Box sx={{backgroundColor: props.success ? 'success.main' : 'error.main', width: 'auto', p: 2, borderRadius: '4px', display: 'flex', ...props.sx}}>
         { props.success
-          ? <CheckCircleOutlineIcon sx={{ color: '#fff' }} />
-          : <BlockIcon sx={{ color: '#fff' }} />
+          ? <CheckCircleOutlineIcon sx={{ color: '#fff', marginRight:"12.92px", width:"1.3750em", height:"1.3750em" }} />
+          : <BlockIcon sx={{ color: '#fff', marginRight:"12.92px", width:"1.3750em", height:"1.3750em" }} />
         }
-        <span className='form-message-content'>{props.children}</span>
+        <span style={{color:"#fff", fontSize: "16px",lineHeight: "24px",letterSpacing: "0.0016em"}}>{props.children}</span>
       </Box>
     </>
     
