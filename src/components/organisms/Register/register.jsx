@@ -20,6 +20,7 @@ export default function Register() {
     const [isCharLengthPass, setCharLengthPass] = React.useState(false)
     const [isAlphabethPass, setAlphabethPass] = React.useState(false)
     const [isSpecialCharPass, setSpecialCharPass] = React.useState(false)
+    const [isNotContainPass, setNotContainPass] = React.useState(false)
 
     // const { handleSubmit, setError, control, formState: { errors }, watch } = useForm();
     const { handleSubmit, setError, control, watch, formState: { errors } } = useForm(
@@ -48,33 +49,22 @@ export default function Register() {
         { label: 'Both', value: 'both' }
     ]
 
+    const watchedPassword = watch("password", "");
     const [watchedEmail, watchedMobile] = watch(["email", "mobile"]); // you can also target specific fields by their names
     const getRegisteredUsername = () => {
         return watchedEmail || watchedMobile || '(auto-populated email id/phone number)'
     }
-
-    const password = useRef({});
-    password.current = watch("password", "");
-
-    // const checkPass = (use, pwd) => {
-    //     console.log(use, pwd, 'dfv')
-    //     return pwd.match(/[a-z]+/ig).filter(a=> a.length > 4 && use.includes(a)).length > 0? true:false;
-    //     }
 
     useEffect(() => {
         let lengthRegex = new RegExp('.{8,20}');
         let alphabethRegex = new RegExp('[A-Za-z]');
         let specialRegex = new RegExp('[@#$%^&-+=()]');
 
-        setCharLengthPass(lengthRegex.test(password.current));
-        setAlphabethPass(alphabethRegex.test(password.current));
-        setSpecialCharPass(specialRegex.test(password.current));
-
-        console.log(password.current, 'password.current')
-        // console.log(checkPass("Npasandarshana@gmail.com","S@pasan123"))//true
-        // console.log(checkPass("Npasandarshana@gmail.com","S@pasysan123"))//false
-        // console.log(checkPass(getRegisteredUsername(), password.current), 'password.cek')
-    }, [password.current]);
+        setCharLengthPass(lengthRegex.test(watchedPassword));
+        setAlphabethPass(alphabethRegex.test(watchedPassword));
+        setSpecialCharPass(specialRegex.test(watchedPassword));
+        setNotContainPass(watchedPassword.indexOf(watchedEmail || watchedMobile) == -1);
+    }, [watchedPassword, watchedEmail, watchedMobile]);
 
     return (
         <Box className={globalStyles.container}>
@@ -123,7 +113,7 @@ export default function Register() {
                             }
                         }}
                     />
-                    <StyledInput type="text" id="lastName" label="Last Name" adorment={true} />
+                    {/* <StyledInput type="text" id="lastName" label="Last Name" adorment="true" /> */}
                     {/* <StyledInput type="text" id="email" label="Email" variant="filled" /> */}
                     <Controller
                         name="email"
@@ -141,7 +131,8 @@ export default function Register() {
                             )
                         }}
                         rules={{
-                            required: 'Email required', pattern: {
+                            required: 'Email required',
+                            pattern: {
                                 value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/i,
                                 message: "Email is invalid"
                             }
@@ -163,7 +154,13 @@ export default function Register() {
                                     helperText={error ? error.message : null} />
                             )
                         }}
-                        rules={{ required: 'Mobile Number required' }}
+                        rules={{
+                            required: 'Mobile Number required',
+                            pattern: {
+                                value: /[0-9]{9,12}/i,
+                                message: "Mobile Number is invalid"
+                            }
+                        }}
                     />
                     <Typography variant="h1" sx={styles.passwordLabel}>
                         Please Create a Password
@@ -205,7 +202,7 @@ export default function Register() {
                                 label="Password should contain at least one special character"
                             />
                             <LabelWithIcon
-                                error={!isSpecialCharPass}
+                                error={!isNotContainPass}
                                 label="Password should not contain your username"
                             />
                             <LabelWithIcon

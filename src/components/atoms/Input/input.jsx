@@ -44,11 +44,12 @@ export const CustomFormControl = styled((props) => <FormControl {...props} />)(
 
 export const CustomPasswordInput = styled((props) => <TextField InputProps={{
   disableUnderline: true,
+  autoComplete: "current-password",
   endAdornment: <InputAdornment position="end">
     <IconButton
       aria-label="toggle password visibility"
-      onClick={props.clickIcon}
-      onMouseDown={props.mouseDown}
+      onClick={props.clickicon}
+      onMouseDown={props.mousedown}
       edge="end"
     >
       {props.showPassword ? <VisibilityOff /> : <Visibility />}
@@ -84,7 +85,9 @@ export const CustomPasswordInput = styled((props) => <TextField InputProps={{
 
 export const RedditTextField = styled((props) => (
   <TextField InputProps={{
-    endAdornment: props.adorment ?
+    disableUnderline: true,
+    autoComplete: "current-password",
+    endAdornment: props.adorment === "true" ?
       <InputAdornment position="end"><IconButton
         aria-label="toggle password visibility" edge="end">
         <PersonOutlinedIcon sx={{ fontSize: "20px" }} /></IconButton>
@@ -132,10 +135,12 @@ export const CustomInput = styled(({ ...props }) => {
       ...values,
       showPassword: !values.showPassword,
     });
+    // return true
   };
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
+    return true
   };
 
   useEffect(() => {
@@ -155,8 +160,8 @@ export const CustomInput = styled(({ ...props }) => {
               variant="filled"
               id={props.id}
               type={values.showPassword ? "text" : "password"}
-              clickIcon={handleClickShowPassword}
-              mouseDown={handleMouseDownPassword}
+              clickicon={handleClickShowPassword}
+              mousedown={handleMouseDownPassword}
               onChange={props.onChange}
               placeholder={props.placeholder}
               label={props.label}
@@ -217,7 +222,7 @@ export const StyledInput = ({
   placeholder = "",
   label = "",
   withIcon = "true",
-  adorment = null,
+  adorment = "false",
   ...props
 }) => {
   return (
