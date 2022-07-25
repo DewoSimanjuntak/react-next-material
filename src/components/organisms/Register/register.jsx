@@ -18,15 +18,10 @@ export default function Register() {
     const { handleSubmit, setError, control, formState: { errors } } = useForm();
 
     const onSubmit = data => {
-        console.log({data});
         setError("firstName", { type: 'custom', message: 'An error occured' })
         setError("lastName", { type: 'custom', message: 'An error occured' })
         setError("mobile", { type: 'custom', message: 'An error occured' })
         setError("password", { type: 'custom', message: 'An error occured' })
-        // Object.keys(data).map((_, i) =>
-        //     console.log(i, maped, 'indexsmap'),
-            // setError(data[i], { type: 'custom', message: 'An error occured' }))
-        // setError("lastName", {type: 'custom', message: 'An error occured'})
     };
 
     const options = [
@@ -74,10 +69,37 @@ export default function Register() {
                                     helperText={error ? error.message : null} />
                             )
                         }}
-                        rules={{ required: 'Last name required' }}
+                        rules={{
+                            required: 'Last name required', pattern: {
+                                value: /^([A-Za-z ])+$/i,
+                                message: "Last name is invalid"
+                            }
+                        }}
                     />
                     {/* <StyledInput type="text" id="lastName" label="Last Name" adorment={true} /> */}
-                    <StyledInput type="text" id="email" label="Email" variant="filled" />
+                    {/* <StyledInput type="text" id="email" label="Email" variant="filled" /> */}
+                    <Controller
+                        name="email"
+                        control={control}
+                        defaultValue=""
+                        render={({ field: { onChange, value }, fieldState: { error } }) => {
+                            return (
+                                <StyledInput type="text" id="email" label="Email"
+                                    value={value}
+                                    onChange={onChange}
+                                    error={!!error}
+                                    size="small"
+                                    variant="filled"
+                                    helperText={error ? error.message : null} />
+                            )
+                        }}
+                        rules={{
+                            required: 'Email required', pattern: {
+                                value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/i,
+                                message: "Email is invalid"
+                            }
+                        }}
+                    />
                     <StyledInput type="dob" id="dob" label="Date of Birth" variant="filled" />
                     <Controller
                         name="mobile"
