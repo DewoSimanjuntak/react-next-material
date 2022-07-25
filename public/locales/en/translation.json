@@ -27,5 +27,23 @@
     "errorEmptyField": "This field is required",
     "continueButton": "Continue",
     "backButtonLink": "Back to Log in"
+  },
+  "OneTimeLink":{
+    "title": "One-time link",
+    "successSentLikTitle": "One-time link sent",
+    "subtitle": "Choose a mode of communication where we should send you the magic link.",
+    "additionalText":"Mode of Communication",
+    "description":"Click on the one-time link sent to your email or phone number to access your account",
+    "primaryButton":"Send one-time link"
+  },
+  "PasswordReset":{
+    "title": "Password Reset",
+    "subtitle":"Choose a mode of communication where we should send you the link to reset your password.",
+    "additionalText":"Mode of Communication",
+    "linkSentToMail":"Link sent to your email",
+    "linkSentToPhone":"Link sent to your phone number",
+    "description":"If you did not receive the link, try to answer security questions.",
+    "primaryButtonText":"Answer security questions",
+    "backButtonLink": "Back to Log in"
   }
 }

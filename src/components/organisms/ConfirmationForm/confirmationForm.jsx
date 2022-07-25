@@ -7,54 +7,51 @@ import globalStyles from "../../../styles/Global.module.scss";
 import { useRouter } from "next/router";
 import { StyledButton } from "../../atoms/Button/button";
 import { styles } from "./style"
+import FormMessage from "../../molecules/FormMessage/formMessage";
 
-const SetOptionComponent = ({
+const ConfirmFormComponent = ({
   OnBackToLoginClicked,
   OnContinueButtonClicked,
-  hasSecurityQuestion = false
+  title,
+  subtitle,
+  description,
+  additional,
+  postMessage,
+  isSuccessPostMessage = true,
+  buttonLabel
 }) => {
   const router = useRouter();
   const { t } = useTranslation('translation', { keyPrefix: 'SetOption' });
+  const [showPostMessage, setShowPostMessage] = useState(true);
 
   return (
     <Card className={globalStyles.container} sx={{ minWidth: 275, padding: "16px" }}>
       <CardContent style={styles.cardContentStyle}>
-        <Typography variant="h2">
-          {t("title")}
+        <Typography variant="h2" style={styles.margin}>
+          {title}
         </Typography>
+        {showPostMessage ? <FormMessage success={isSuccessPostMessage} sx={styles.postMessage}>{postMessage}</FormMessage> :<></>}
+        <Typography variant="bodyMedium" style={styles.margin}>
+          {subtitle}
+        </Typography>
+        {
+          additional ? {additional} :  
+          <Typography variant="bodyRegular" style={styles.marginDescription}>
+            {description}
+          </Typography>
+        }
         <StyledButton
           theme="patient"
           type="primary"
           size="large"
           gradient={false}
-          onClick={()=>{
-            OnContinueButtonClicked("securityQuestion")
-          }}
-          style={{...styles.margin, ...styles.primaryButtoMargin}}
+          onClick={()=>{}}
+          style={styles.margin}
         >
-            {hasSecurityQuestion ? t("securityButtonText") : t("noSecurityButtonText")}
-        </StyledButton>
-        <Box style={styles.dividerContainer}>
-            <Divider>
-            <Typography style={styles.informativeText}>
-            or
-            </Typography>
-            </Divider>
-        </Box>
-        <StyledButton
-          theme="patient"
-          type="secondary"
-          size="large"
-          gradient={false}
-          onClick={()=>{
-            OnContinueButtonClicked("oneTimeLink")
-          }}
-          style={{...styles.margin, ...styles.secondaryButtoMargin}}
-        >
-          {t("oneTimeLoginButtonText")}
+          {buttonLabel}
         </StyledButton>
         <Link
-            style={{...styles.margin, ...styles.backToLoginMargin}}
+            style={{...styles.margin, ...styles.textAlign, ...styles.backToLoginMargin}}
             color={"#2095a9"}
             onClick={function () {
               OnBackToLoginClicked(router);
@@ -66,4 +63,4 @@ const SetOptionComponent = ({
   );
 };
 
-export default SetOptionComponent;
+export default ConfirmFormComponent;
