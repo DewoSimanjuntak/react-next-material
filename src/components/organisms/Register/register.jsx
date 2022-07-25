@@ -15,7 +15,17 @@ import { useForm, Controller } from "react-hook-form";
 
 
 export default function Register() {
-    const { handleSubmit, setError, control, formState: { errors } } = useForm();
+    const { handleSubmit, setError, control, watch, formState: { errors } } = useForm(
+        {
+            defaultValues: {
+                firstName: '',
+                lastName: '',
+                email: '',
+                mobile: '',
+                password: ''
+            }
+        }
+    );
 
     const onSubmit = data => {
         setError("firstName", { type: 'custom', message: 'An error occured' })
@@ -29,6 +39,12 @@ export default function Register() {
         { label: 'Phone', value: 'phone' },
         { label: 'Both', value: 'both' }
     ]
+
+    const [watchedEmail, watchedMobile] = watch(["email", "mobile"]); // you can also target specific fields by their names
+    const getRegisteredUsername = () => {
+        return watchedEmail || watchedMobile || '(auto-populated email id/phone number)'
+    }
+
     return (
         <Box className={globalStyles.container}>
             <Stack spacing={3}>
@@ -138,6 +154,11 @@ export default function Register() {
                         }}
                         rules={{ required: 'Password required' }}
                     />
+
+                    <div style={styles.registeredUsernameWrapper}>
+                        <div>Your username will be {getRegisteredUsername()}</div>
+                    </div>
+
                     {/* <StyledInput type="dob" id="dob" label="Date of Birth" variant="filled" />
                     <StyledInput type="text" id="mobile" label="Mobile Number" variant="filled" />
                     <StyledInput type="password" id="password" label="Password" variant="outlined" /> */}
