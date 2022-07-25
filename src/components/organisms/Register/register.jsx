@@ -21,6 +21,7 @@ export default function Register() {
     const [isAlphabethPass, setAlphabethPass] = React.useState(false)
     const [isSpecialCharPass, setSpecialCharPass] = React.useState(false)
     const [isNotContainPass, setNotContainPass] = React.useState(false)
+    const [isNotTriplePass, setNotTriplePass] = React.useState(false)
 
     // const { handleSubmit, setError, control, formState: { errors }, watch } = useForm();
     const { handleSubmit, setError, control, watch, formState: { errors } } = useForm(
@@ -59,11 +60,13 @@ export default function Register() {
         let lengthRegex = new RegExp('.{8,20}');
         let alphabethRegex = new RegExp('[A-Za-z]');
         let specialRegex = new RegExp('[@#$%^&-+=()]');
+        let noTripleRegex = new RegExp('([a-z\\d])\\1\\1');
 
         setCharLengthPass(lengthRegex.test(watchedPassword));
         setAlphabethPass(alphabethRegex.test(watchedPassword));
         setSpecialCharPass(specialRegex.test(watchedPassword));
         setNotContainPass(watchedPassword.indexOf(watchedEmail || watchedMobile) == -1);
+        setNotTriplePass(noTripleRegex.test(watchedPassword));
     }, [watchedPassword, watchedEmail, watchedMobile]);
 
     return (
@@ -206,11 +209,11 @@ export default function Register() {
                                 label="Password should not contain your username"
                             />
                             <LabelWithIcon
-                                error={true}
+                                error={false}
                                 label="Password should not be match with your previously used password"
                             />
                             <LabelWithIcon
-                                error={true}
+                                error={!isNotTriplePass}
                                 label="Password should not contain 3 or more identical characters consecutively (ex. Emploooooye, Sys@@@tem, abcabcabc, 123123123, etc.) "
                             />
                         </div> : null}

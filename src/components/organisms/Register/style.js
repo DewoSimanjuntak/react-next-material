@@ -19,13 +19,16 @@ export const styles = {
     marginRight: "8px",
     color: "#366A70",
     fontSize: "1.25rem",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: "26px",
   },
   passwordLabel: {
-    marginLeft: "8px",
-    marginRight: "8px",
-    paddingTop: "6px",
-    paddingBottom: "6px",
+    margin: "8px",
     fontSize: "1rem",
+    fontWeight: "400",
+    fontSize: "18px",
+    lineHeight: "26px",
   },
   divMargin: {
     marginLeft: "8px",
@@ -34,8 +37,10 @@ export const styles = {
   },
   bottomParagraph: {
     color: "#366A70",
-    fontSize: "12px",
+    fontSize: "14px",
     textAlign: "center",
+    fontWeight: 400,
+    lineHeight: "18px",
   },
   loginLink: {
     color: "#3EAFBD",
