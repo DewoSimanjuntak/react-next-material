@@ -119,6 +119,7 @@ export default function Home() {
       >
         Logout
       </StyledButton>
+
     </>
   )
 }
