@@ -60,6 +60,7 @@ export const CustomPasswordInput = styled((props) => <TextField InputProps={{
       border: "1px solid #e2e2e1",
       overflow: "hidden",
       borderRadius: 4,
+      height:52,
       backgroundColor: theme.palette.mode === "light" ? "#fcfcfb" : "#2b2b2b",
       transition: theme.transitions.create([
         "border-color",
@@ -96,6 +97,7 @@ export const RedditTextField = styled((props) => (
     border: "1px solid #e2e2e1",
     overflow: "hidden",
     borderRadius: 4,
+    height:52,
     backgroundColor: theme.palette.mode === "light" ? "#fcfcfb" : "#2b2b2b",
     transition: theme.transitions.create([
       "border-color",
@@ -146,7 +148,7 @@ export const CustomInput = styled(({ ...props }) => {
     <>
       {props.type === "password" ? (
         <>
-          <CustomFormControl sx={{ m: 1 }} variant="filled">
+          <CustomFormControl variant="filled">
             {/* <InputLabel htmlFor="filled-adornment-password" style={props.adorment ? { top: -16 } : null} error={props.error}>
               {props.label}
             </InputLabel> */}
@@ -176,7 +178,6 @@ export const CustomInput = styled(({ ...props }) => {
                   variant="filled"
                   style={{ marginTop: 11 }}
                   sx={{
-                    m: 1,
                     backgroundColor: "white",
                     borderRadius: "4px",
                     borderColor: "#B5B5B5",
@@ -193,7 +194,6 @@ export const CustomInput = styled(({ ...props }) => {
             variant="filled"
             style={{ marginTop: 11 }}
             sx={{
-              m: 1,
               backgroundColor: "white",
               borderRadius: "4px",
               borderColor: "#B5B5B5",

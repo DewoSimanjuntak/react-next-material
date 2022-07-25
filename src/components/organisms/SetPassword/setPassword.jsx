@@ -15,6 +15,7 @@ import TextField from "@mui/material/TextField";
 import FilledInput from "@mui/material/FilledInput";
 import { StyledInput } from "../../atoms/Input/input";
 import globalStyles from "../../../styles/Global.module.scss";
+import Stack from "@mui/material/Stack";
 
 const headingStyles = {
   marginBottom: 30,
@@ -44,6 +45,7 @@ const SetPasswordComponent = () => {
     <Card className={globalStyles.container} sx={{ minWidth: 275, margin: 10 }}>
       <CardContent style={cardContentStyle}>
         <h1 style={headingStyles}>Set Password</h1>
+        <Stack spacing={2}>
         <StyledInput
           label="Password"
           id="outlined-adornment-password"
@@ -54,6 +56,7 @@ const SetPasswordComponent = () => {
           id="outlined-adornment-confirm-password"
           type='password'
         />
+        
         <Button variant="contained" sx={buttonStyle}>
           Reset Password
         </Button>
@@ -64,6 +67,7 @@ const SetPasswordComponent = () => {
         />
         <LabelWithIcon label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua" />
         <LabelWithIcon label="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua" />
+        </Stack>
       </CardContent>
     </Card>
   );

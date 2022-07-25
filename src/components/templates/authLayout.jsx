@@ -25,7 +25,7 @@ export default function Layout({ children, showMobileImage=false, theme = "patie
         <BaseHeader></BaseHeader>
         <div className={styles.authContainer}>
           <ThemeProvider theme={isPatient ? patientTypography : providerTypography}>
-            <Container className={styles.authComponentContainer} sx={{paddingTop: { xs: showMobileImage ? '35px!important' : '75px!important', md: '100px!important'}, padding: 0}}>
+            <Container className={styles.authComponentContainer} sx={{paddingTop: { xs: showMobileImage ? '35px!important' : '75px!important', md: '146px!important'}, padding: 0}}>
               {children}
             </Container>
           </ThemeProvider>
