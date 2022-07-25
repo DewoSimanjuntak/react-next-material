@@ -43,67 +43,67 @@ export const patientTypography = createTheme({
   typography:{
     fontFamily: "Libre Franklin",
     fontWeight: "normal",
-    fontSize: "16px",
+    fontSize: 16,
     h1: {
       fontFamily: "Bw Nista Geometric DEMO",
       color:"#003B4A",
       fontWeight: 500,
-      fontSize: "46px", 
+      fontSize: 46, 
       lineHeight:"60px"
     },
     h2:{
       fontFamily: 'Bw Nista Geometric DEMO',
       color:"#003B4A",
       fontWeight: 500,
-      fontSize: "34px", 
+      fontSize: 34, 
       lineHeight:"44px"
     },
     h3:{
       fontFamily: 'Bw Nista Geometric DEMO',
       color:"#003B4A",
       fontWeight: "bold",
-      fontSize: "22px", 
+      fontSize: 22, 
       lineHeight:"32px"
     },
     h4:{
       fontFamily: 'Bw Nista Geometric DEMO',
       color:"#003B4A",
       fontWeight: "bold",
-      fontSize: "18px", 
+      fontSize: 18,
       lineHeight:"24px"
     },
     bodyLarge:{
       fontFamily: 'Libre Franklin',
       fontWeight: "bold",
-      fontSize: "18px", 
+      fontSize: 18, 
       lineHeight:"26px"
     },
     bodyRegular:{
       fontFamily: 'Libre Franklin',
       fontWeight: "bold",
-      fontSize: "16px", 
+      fontSize: 16,
       lineHeight:"24px"
     },
     bodySmallRegular:{
       fontFamily: 'Libre Franklin',
       fontWeight: "bold",
-      fontSize: "14px", 
+      fontSize: 14, 
       lineHeight:"22px"
     },
     bodySmallMedium:{
       fontFamily: 'Libre Franklin',
       fontWeight: 500,
-      fontSize: "14px",
+      fontSize: 14,
     },
     bodyTinyRegular:{
       fontFamily: 'Libre Franklin',
       fontWeight: "normal",
-      fontSize: "12px", 
+      fontSize: 12, 
     },
     bodyTinyMedium:{
       fontFamily: 'Libre Franklin',
       fontWeight: 500,
-      fontSize: "12px",
+      fontSize: 12,
     },
     allVariants: {
       color: "#292929"
@@ -115,46 +115,46 @@ export const providerTypography = createTheme({
   typography:{
     fontFamily: "Roboto",
     fontWeight: "normal",
-    fontSize: "16px",
+    fontSize: 16,
     h1: {
       fontFamily: "Roboto",
       fontWeight: 500,
-      fontSize: "24px", 
+      fontSize: 24, 
     },
     h2:{
       fontFamily: "Roboto",
       fontWeight: 500,
-      fontSize: "20px", 
+      fontSize: 20, 
     },
     h3:{
       fontFamily: "Roboto",
       fontWeight: 500,
-      fontSize: "16px", 
+      fontSize: 16, 
     },
     bodyLarge:{
       fontFamily: "Roboto",
       fontWeight: "normal",
-      fontSize: "16px", 
+      fontSize: 16, 
     },
     bodySmallRegular:{
       fontFamily: "Roboto",
       fontWeight: "normal",
-      fontSize: "14px", 
+      fontSize: 16, 
     },
     bodySmallMedium:{
       fontFamily: 'Roboto',
       fontWeight: 500,
-      fontSize: "14px",
+      fontSize: 16,
     },
     bodyTinyRegular:{
       fontFamily: 'Roboto',
       fontWeight: "normal",
-      fontSize: "12px", 
+      fontSize: 16, 
     },
     bodyTinyMedium:{
       fontFamily: 'Roboto',
       fontWeight: 500,
-      fontSize: "12px",
+      fontSize: 16,
     },
     allVariants: {
       color: "#292929"
