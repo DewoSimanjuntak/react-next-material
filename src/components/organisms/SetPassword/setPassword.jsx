@@ -32,7 +32,7 @@ const buttonStyle = {
   borderRadius: "48pt",
 };
 
-const setPasswordComponent = () => {
+const SetPasswordComponent = () => {
   const [values, setValues] = useState({
     password: "",
     confirmPassword: "",
@@ -69,4 +69,4 @@ const setPasswordComponent = () => {
   );
 };
 
-export default setPasswordComponent;
+export default SetPasswordComponent;
