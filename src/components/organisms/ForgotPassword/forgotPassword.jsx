@@ -11,13 +11,14 @@ import FormMessage from "../../molecules/FormMessage/formMessage";
 import { styles } from "./style"
 
 const ForgotPasswordComponent = ({
-  OnBackToLoginClicked
+  OnBackToLoginClicked,
+  OnContinueButtonClicked
 }) => {
   const router = useRouter();
   const { t } = useTranslation('translation', { keyPrefix: 'ForgotPassword' });
   const [username, setUsername] = useState("");
   const [showPostMessage, setShowPostMessage] = useState(false);
-
+ 
   return (
     <Card className={globalStyles.container} sx={{ minWidth: 275, padding: "16px" }}>
       <CardContent style={styles.cardContentStyle}>
@@ -37,7 +38,9 @@ const ForgotPasswordComponent = ({
           type="primary"
           size="large"
           gradient={false}
-          onClick={()=>{}}
+          onClick={()=>{
+            OnContinueButtonClicked("setOption")
+          }}
           style={styles.margin}
         >
           {t("resetPasswordText")}

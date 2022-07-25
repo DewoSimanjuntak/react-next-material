@@ -15,7 +15,7 @@ export const FormMessage = ({...props}) => {
   
   return (
     <>
-      <Box sx={{backgroundColor: props.success ? 'success.main' : 'error.main', width: 'fit-content', p: 2, borderRadius: '4px', display: 'flex', ...props.sx}}>
+      <Box sx={{backgroundColor: props.success ? 'success.main' : 'error.main', width: 'auto', p: 2, borderRadius: '4px', display: 'flex', ...props.sx}}>
         { props.success
           ? <CheckCircleOutlineIcon sx={{ color: '#fff', marginRight:"12.92px", width:"1.3750em", height:"1.3750em" }} />
           : <BlockIcon sx={{ color: '#fff', marginRight:"12.92px", width:"1.3750em", height:"1.3750em" }} />

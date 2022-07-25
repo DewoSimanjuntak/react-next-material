@@ -1,20 +1,23 @@
 import React, { useState } from "react";
-import {Box, Divider, Link, Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import { StyledInput } from "../../atoms/Input/input";
 import { useTranslation } from "react-i18next";
 import globalStyles from "../../../styles/Global.module.scss";
 import { useRouter } from "next/router";
 import { StyledButton } from "../../atoms/Button/button";
+import FormMessage from "../../molecules/FormMessage/formMessage";
 import { styles } from "./style"
 
-const SetOptionComponent = ({
+const PasswordSecurityQuestionComponent = ({
   OnBackToLoginClicked,
   OnContinueButtonClicked,
-  hasSecurityQuestion = false
+  securityQuestionData = []
 }) => {
   const router = useRouter();
-  const { t } = useTranslation('translation', { keyPrefix: 'SetOption' });
+  const { t } = useTranslation('translation', { keyPrefix: 'PasswordSecurityQuestion' });
+  const [showPostMessage, setShowPostMessage] = useState(false);
 
   return (
     <Card className={globalStyles.container} sx={{ minWidth: 275, padding: "16px" }}>
@@ -22,34 +25,27 @@ const SetOptionComponent = ({
         <Typography variant="h2">
           {t("title")}
         </Typography>
+        <Typography variant="bodyRegular" style={styles.subTitleMargin}>
+          {t("subtitle")}
+        </Typography>
+        {showPostMessage ? <FormMessage success={false} sx={styles.postMessage}>{t("errorAccountLock")}</FormMessage> :<></>}
+        {securityQuestionData.map(function(question, i){
+            return <StyledInput
+            label={question[`SecurityQuestion-${(i+1)}`]}
+            id={`securityQuestion-${i}`}
+            variant="filled"
+            style={styles.margin}
+          />;
+        })}
         <StyledButton
           theme="patient"
           type="primary"
           size="large"
           gradient={false}
-          onClick={()=>{
-            OnContinueButtonClicked("securityQuestion")
-          }}
-          style={{...styles.margin, ...styles.primaryButtoMargin}}
-        >
-            {hasSecurityQuestion ? t("securityButtonText") : t("noSecurityButtonText")}
-        </StyledButton>
-        <Box style={styles.dividerContainer}>
-            <Divider>
-            <Typography style={styles.informativeText}>
-            or
-            </Typography>
-            </Divider>
-        </Box>
-        <StyledButton
-          theme="patient"
-          type="secondary"
-          size="large"
-          gradient={false}
           onClick={()=>{}}
-          style={{...styles.margin, ...styles.secondaryButtoMargin}}
+          style={styles.margin}
         >
-          {t("oneTimeLoginButtonText")}
+          {t("continueButton")}
         </StyledButton>
         <Link
             style={{...styles.margin, ...styles.backToLoginMargin}}
@@ -64,4 +60,4 @@ const SetOptionComponent = ({
   );
 };
 
-export default SetOptionComponent;
+export default PasswordSecurityQuestionComponent;

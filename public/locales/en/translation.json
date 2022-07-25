@@ -13,10 +13,19 @@
     "backButtonLink": "Back to Log in"
   },
   "SetOption":{
-    "title":"Select an option",
+    "title": "Select an option",
     "securityButtonText": "Answer security questions",
     "noSecurityButtonText": "Receive link to reset password",
     "oneTimeLoginButtonText": "Login with one-time link",
+    "backButtonLink": "Back to Log in"
+  },
+  "PasswordSecurityQuestion":{
+    "title": "Password Recovery Security Questions",
+    "subtitle": "Answer the following questions to reset your password.",
+    "errorIncorrectAnswer": "Incorrect answer(s)",
+    "errorAccountLock": "Your account is locked. Please contact customer support to unlock your account",
+    "errorEmptyField": "This field is required",
+    "continueButton": "Continue",
     "backButtonLink": "Back to Log in"
   }
 }
