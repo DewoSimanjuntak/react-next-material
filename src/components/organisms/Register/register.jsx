@@ -10,6 +10,7 @@ import { styles } from "./style"
 import globalStyles from "../../../styles/Global.module.scss";
 import { useForm, Controller } from "react-hook-form";
 import { PasswordValidator } from "../../molecules/PasswordValidator/passwordValidator";
+import FormMessage from "../../molecules/FormMessage/formMessage";
 // import {Error} from '../../molecules/FormMessage/formMessage.stories'
 
 
@@ -143,6 +144,7 @@ export default function Register() {
                             }
                         }}
                     />
+                    <FormMessage success="true" title="Title">Please Create a PasswordPlease Create a PasswordPlease Create a PasswordPlease Create a PasswordPlease Create a Password</FormMessage>
                     <Typography variant="h1" sx={styles.passwordLabel}>
                         Please Create a Password
                     </Typography>
