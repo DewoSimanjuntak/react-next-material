@@ -54,6 +54,7 @@ export default function Register() {
                 <Typography variant="h1" sx={styles.titleStyles}>
                     User Registration
                 </Typography>
+                {/* <FormMessage success="true" title="Title">Please Create a PasswordPlease Create a PasswordPlease Create a PasswordPlease Create a PasswordPlease Create a Password</FormMessage> */}
                 {/* <Error content={"Invalid use name or password"}/> */}
                 <form onSubmit={handleSubmit(onSubmit)} style={styles.form}>
                     <Controller
@@ -144,7 +145,6 @@ export default function Register() {
                             }
                         }}
                     />
-                    <FormMessage success="true" title="Title">Please Create a PasswordPlease Create a PasswordPlease Create a PasswordPlease Create a PasswordPlease Create a Password</FormMessage>
                     <Typography variant="h1" sx={styles.passwordLabel}>
                         Please Create a Password
                     </Typography>
