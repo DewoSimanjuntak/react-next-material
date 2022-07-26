@@ -1,7 +1,5 @@
-// import * as React from "react";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
-import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import RowRadioButtonsGroup from '../../atoms/RowRadioButtonsGroup/rowRadioButtonsGroup';
@@ -9,21 +7,14 @@ import { StyledInput } from '../../atoms/Input/input'
 import { Divider, Typography } from "@mui/material";
 import Link from 'next/link'
 import { styles } from "./style"
-import { LabelWithIcon } from "../../atoms/LabelWithIcon/labelWithIcon";
 import globalStyles from "../../../styles/Global.module.scss";
 import { useForm, Controller } from "react-hook-form";
+import { PasswordValidator } from "../../molecules/PasswordValidator/passwordValidator";
 // import {Error} from '../../molecules/FormMessage/formMessage.stories'
 
 
 export default function Register() {
     const [isShowValidation, setShowValidation] = React.useState(false)
-    const [isCharLengthPass, setCharLengthPass] = React.useState(false)
-    const [isAlphabethPass, setAlphabethPass] = React.useState(false)
-    const [isSpecialCharPass, setSpecialCharPass] = React.useState(false)
-    const [isNotContainPass, setNotContainPass] = React.useState(false)
-    const [isNotTriplePass, setNotTriplePass] = React.useState(false)
-
-    // const { handleSubmit, setError, control, formState: { errors }, watch } = useForm();
     const { handleSubmit, setError, control, watch, formState: { errors } } = useForm(
         {
             defaultValues: {
@@ -55,19 +46,6 @@ export default function Register() {
     const getRegisteredUsername = () => {
         return watchedEmail || watchedMobile || '(auto-populated email id/phone number)'
     }
-
-    useEffect(() => {
-        let lengthRegex = new RegExp('.{8,20}');
-        let alphabethRegex = new RegExp('[A-Za-z]');
-        let specialRegex = new RegExp('[@#$%^&-+=()]');
-        let noTripleRegex = new RegExp('([a-z\\d])\\1\\1');
-
-        setCharLengthPass(lengthRegex.test(watchedPassword));
-        setAlphabethPass(alphabethRegex.test(watchedPassword));
-        setSpecialCharPass(specialRegex.test(watchedPassword));
-        setNotContainPass(watchedPassword.indexOf(watchedEmail || watchedMobile) == -1);
-        setNotTriplePass(noTripleRegex.test(watchedPassword));
-    }, [watchedPassword, watchedEmail, watchedMobile]);
 
     return (
         <Box className={globalStyles.container}>
@@ -185,38 +163,12 @@ export default function Register() {
                         }}
                         rules={{ required: 'Password required' }}
                     />
-
+                    <PasswordValidator isShowValidation={isShowValidation} password={watchedPassword} username={getRegisteredUsername()} />
+                    
                     <div style={styles.registeredUsernameWrapper}>
                         <div>Your username will be {getRegisteredUsername()}</div>
                     </div>
-
-                    {/* <StyledInput type="dob" id="dob" label="Date of Birth" variant="filled" />
-                    <StyledInput type="text" id="mobile" label="Mobile Number" variant="filled" />
-                    <StyledInput type="password" id="password" label="Password" variant="outlined" /> */}
-                    {isShowValidation ?
-                        <div style={{ display: "block" }}>
-                            <LabelWithIcon error={!isCharLengthPass} label="Password length should range from 8 to 20 characters" />
-                            <LabelWithIcon
-                                error={!isAlphabethPass}
-                                label="Password should contain at least one alphabet (a-z)"
-                            />
-                            <LabelWithIcon
-                                error={!isSpecialCharPass}
-                                label="Password should contain at least one special character"
-                            />
-                            <LabelWithIcon
-                                error={!isNotContainPass}
-                                label="Password should not contain your username"
-                            />
-                            <LabelWithIcon
-                                error={false}
-                                label="Password should not be match with your previously used password"
-                            />
-                            <LabelWithIcon
-                                error={!isNotTriplePass}
-                                label="Password should not contain 3 or more identical characters consecutively (ex. Emploooooye, Sys@@@tem, abcabcabc, 123123123, etc.) "
-                            />
-                        </div> : null}
+                    
                     <div style={styles.divMargin}>
                         <RowRadioButtonsGroup label="Preferred mode of Communication" options={options} />
                     </div>
