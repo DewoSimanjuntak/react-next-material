@@ -31,6 +31,7 @@ const PasswordSecurityQuestionComponent = ({
         {showPostMessage ? <FormMessage success={false} sx={styles.postMessage}>{t("errorAccountLock")}</FormMessage> :<></>}
         {securityQuestionData.map(function(question, i){
             return <StyledInput
+            key={i}
             label={question[`SecurityQuestion-${(i+1)}`]}
             id={`securityQuestion-${i}`}
             variant="filled"

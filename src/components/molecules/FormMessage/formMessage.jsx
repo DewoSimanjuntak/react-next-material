@@ -20,7 +20,10 @@ export const FormMessage = ({...props}) => {
           ? <CheckCircleOutlineIcon sx={{ color: '#fff', marginRight:"12.92px", width:"1.3750em", height:"1.3750em" }} />
           : <BlockIcon sx={{ color: '#fff', marginRight:"12.92px", width:"1.3750em", height:"1.3750em" }} />
         }
-        <span style={{color:"#fff", fontSize: "16px",lineHeight: "24px",letterSpacing: "0.0016em"}}>{props.children}</span>
+        <div style={{color:"#fff", fontSize: "16px",lineHeight: "24px",letterSpacing: "0.0016em"}}>
+          <div style={{fontWeight: 'bold'}}>{props.title}</div>
+          <div>{props.children}</div>
+        </div>
       </Box>
     </>
     

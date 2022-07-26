@@ -30,6 +30,7 @@ export default function Register() {
 
     const onSubmit = data => {
         setShowValidation(true);
+        // dummy error validation
         setError("firstName", { type: 'custom', message: 'An error occured' })
         setError("lastName", { type: 'custom', message: 'An error occured' })
         setError("mobile", { type: 'custom', message: 'An error occured' })
@@ -47,6 +48,20 @@ export default function Register() {
     const getRegisteredUsername = () => {
         return watchedEmail || watchedMobile || '(auto-populated email id/phone number)'
     }
+    
+    let lengthRegex = new RegExp('.{8,20}');
+    let numberRegex = new RegExp('[0-9]');
+    let alphabethRegex = new RegExp('[A-Za-z]');
+    let specialRegex = new RegExp('[@#$%^&-+=()]');
+    let hasTripleRegex = new RegExp('([a-z\\d])\\1\\1');
+    const passwordValidator = [
+        { label: 'Password length should range from 8 to 20 characters', validate: !lengthRegex.test(watchedPassword) },
+        { label: 'Password should contain at least one numerical character (0-9)', validate: !numberRegex.test(watchedPassword) },
+        { label: 'Password should contain at least one alphabet (a-z)', validate: !alphabethRegex.test(watchedPassword) },
+        { label: 'Password should contain at least one special character', validate: !specialRegex.test(watchedPassword) },
+        { label: 'Password should not contain your username', validate: watchedPassword.indexOf(watchedEmail || watchedMobile) == -1 },
+        { label: 'Password should not contain 3 or more identical characters consecutively', validate: hasTripleRegex.test(watchedPassword) },
+    ]
 
     return (
         <Box className={globalStyles.container}>
@@ -54,7 +69,8 @@ export default function Register() {
                 <Typography variant="h1" sx={styles.titleStyles}>
                     User Registration
                 </Typography>
-                <FormMessage success={false} sx={styles.postMessage}>{t("errorExistingUser")}</FormMessage>
+                {/* <FormMessage success="true" title="Title">Please Create a PasswordPlease Create a PasswordPlease Create a PasswordPlease Create a PasswordPlease Create a Password</FormMessage> */}
+                {/* <Error content={"Invalid use name or password"}/> */}
                 <form onSubmit={handleSubmit(onSubmit)} style={styles.form}>
                     <Controller
                         name="firstName"
@@ -164,7 +180,12 @@ export default function Register() {
                         }}
                         rules={{ required: 'Password required' }}
                     />
-                    <PasswordValidator isShowValidation={isShowValidation} password={watchedPassword} username={getRegisteredUsername()} isRegistration={true} />
+                    <PasswordValidator
+                        validator={passwordValidator}
+                        isShowValidation={isShowValidation}
+                        password={watchedPassword}
+                        username={getRegisteredUsername()}
+                        isRegistration={true} />
                     
                     <div style={styles.registeredUsernameWrapper}>
                         <div>Your username will be {getRegisteredUsername()}</div>
