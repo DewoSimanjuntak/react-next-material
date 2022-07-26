@@ -21,11 +21,12 @@ export default function Login({
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const router = useRouter();
+  
   return (
     <Box className={globalStyles.container}>
       <Stack spacing={3}>
         <Typography variant={constants.H1} className={styles.title}>
-          Patient Login
+          Provider Login
         </Typography>
         <StyledInput
           id="username"
@@ -35,7 +36,7 @@ export default function Login({
           variant={constants.FILLED}
           type={constants.INPUT_TEXT}
           error={false}
-          helperText={"Enter your registered email or phone number"}
+         // helperText={"Enter your registered email or phone number"}
           onChange={(event) => setUsername(event.target.value)}
           //  helperText={userpassword === " " ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
           //  error={userpassword === "" ? true  : false}
@@ -51,16 +52,6 @@ export default function Login({
           //  helperText={username === "" ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
           //  error={username === "" ? true  : false}
         />
-        <Grid container justifyContent={constants.FLEX_END}>
-          <Link
-            className={styles.linkStyle}
-            onClick={function () {
-              OnForgotPasswordClicked(router);
-            }}
-          >
-            Forgot Password
-          </Link>
-        </Grid>
         <StyledButton
           theme={constants.PATIENT}
           type={constants.PRIMARY}
@@ -72,31 +63,27 @@ export default function Login({
         >
           Login
         </StyledButton>
-        <StyledButton
-          theme={constants.PATIENT}
-          type={constants.SECONDARY}
-          size={constants.LARGE}
-          gradient={false}
-          onClick={OnGuestClicked}
-        >
-          Continue as a guest
-        </StyledButton>
         <Divider variant={constants.MIDDLE} />
+        <Grid container justifyContent={"center"}>
+          <Link
+            className={styles.linkStyle}
+            onClick={function () {
+              OnForgotPasswordClicked(router);
+            }}
+          >
+            Forgot Password or Username
+          </Link>
+        </Grid>
+        
         <Grid container justifyContent={constants.CENTER}>
-          <Typography variant="bodyRegular">Don&apos;t have an account?</Typography>
+          <Typography variant="bodyRegular">Don&apos;Not a Member?
+          <Link        >
+          Create An Account
+        </Link>
+          </Typography>
         </Grid>
 
-        <StyledButton
-          theme={constants.PATIENT}
-          type={constants.SECONDARY}
-          size={constants.LARGE}
-          gradient={false}
-          onClick={function () {
-            OnCreateAccountClicked(router);
-          }}
-        >
-          Create Account
-        </StyledButton>
+        
       </Stack>
     </Box>
   );
