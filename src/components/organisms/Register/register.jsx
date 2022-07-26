@@ -10,10 +10,11 @@ import { styles } from "./style"
 import globalStyles from "../../../styles/Global.module.scss";
 import { useForm, Controller } from "react-hook-form";
 import { PasswordValidator } from "../../molecules/PasswordValidator/passwordValidator";
-// import {Error} from '../../molecules/FormMessage/formMessage.stories'
-
+import { useTranslation } from "react-i18next";
+import FormMessage from "../../molecules/FormMessage/formMessage";
 
 export default function Register() {
+    const { t } = useTranslation('translation', { keyPrefix: 'Register' });
     const [isShowValidation, setShowValidation] = React.useState(false)
     const { handleSubmit, setError, control, watch, formState: { errors } } = useForm(
         {
@@ -53,7 +54,7 @@ export default function Register() {
                 <Typography variant="h1" sx={styles.titleStyles}>
                     User Registration
                 </Typography>
-                {/* <Error content={"Invalid use name or password"}/> */}
+                <FormMessage success={false} sx={styles.postMessage}>{t("errorExistingUser")}</FormMessage>
                 <form onSubmit={handleSubmit(onSubmit)} style={styles.form}>
                     <Controller
                         name="firstName"
@@ -163,7 +164,7 @@ export default function Register() {
                         }}
                         rules={{ required: 'Password required' }}
                     />
-                    <PasswordValidator isShowValidation={isShowValidation} password={watchedPassword} username={getRegisteredUsername()} />
+                    <PasswordValidator isShowValidation={isShowValidation} password={watchedPassword} username={getRegisteredUsername()} isRegistration={true} />
                     
                     <div style={styles.registeredUsernameWrapper}>
                         <div>Your username will be {getRegisteredUsername()}</div>

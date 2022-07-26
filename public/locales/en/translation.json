@@ -27,5 +27,9 @@
     "errorEmptyField": "This field is required",
     "continueButton": "Continue",
     "backButtonLink": "Back to Log in"
-  }
+  },
+  "Register":{
+    "title": "Existing User",
+    "errorExistingUser": "You are already a registered user. Please login to the application using your username and password. Login`",
+  },
 }
