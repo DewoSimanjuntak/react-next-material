@@ -3,7 +3,7 @@ import React from "react";
 import EyeCare from "../../atoms/EyeCareLogo/eyeCareLogo"
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const logoAtoms = {
+export default {
   title: "Icons/EyeCareLogo",
   component: EyeCare,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
@@ -11,9 +11,6 @@ const logoAtoms = {
 
   },
 }
-
-// 👇️ use default export
-export default logoAtoms;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <EyeCare {...args} />;

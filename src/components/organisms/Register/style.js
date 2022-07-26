@@ -1,4 +1,3 @@
-import { colors } from '../../../styles/theme'
 
 export const styles = {
   container: {
@@ -45,16 +44,8 @@ export const styles = {
     backgroundColor: "#2095a9",
     borderRadius: 46,
     color: "white",
-    margin: 1,
     "&:hover": {
       backgroundColor: "#1c8696",
     },
   },
-  registeredUsernameWrapper: {
-    padding: 16,
-    borderRadius: 4,
-    color: "#366A70",
-    backgroundColor: `${colors.teal}0d`,
-    margin: 8
-  }
 }

@@ -2,9 +2,8 @@ import React from "react";
 
 import FormMessage from './formMessage';
 
-
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
-const formMolecules = {
+export default {
   title: "Molecules/FormMessage",
   component: FormMessage,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
@@ -12,9 +11,6 @@ const formMolecules = {
 
   },
 }
-
-// 👇️ use default export
-export default formMolecules;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <div style={{maxWidth: '322px'}}><FormMessage {...args} success={args.success}>{args.content}</FormMessage></div>;

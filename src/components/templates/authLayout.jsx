@@ -1,18 +1,10 @@
 import Head from "next/head";
 import styles from "./authLayout.module.scss";
 import { colors } from "../../styles/theme";
+import BaseHeader from "../organisms/BaseHeader/baseHeader";
 import Container from '@mui/material/Container';
 import { patientTypography, providerTypography } from "../../styles/theme"
 import { ThemeProvider} from "@mui/material/styles";
-import dynamic from "next/dynamic";
-
-//Prevent html being match between server and client
-const BaseHeader = dynamic(
-  () => import("../organisms/BaseHeader/baseHeader"),
-  {
-    ssr: false,
-  }
-);
 
 export default function Layout({ children, showMobileImage=false, theme = "patient" }) {
   const isPatient = theme === "patient"
@@ -25,7 +17,7 @@ export default function Layout({ children, showMobileImage=false, theme = "patie
         <BaseHeader></BaseHeader>
         <div className={styles.authContainer}>
           <ThemeProvider theme={isPatient ? patientTypography : providerTypography}>
-            <Container className={styles.authComponentContainer} sx={{paddingTop: { xs: showMobileImage ? '35px!important' : '75px!important', md: '146px!important'}, padding: 0}}>
+            <Container className={styles.authComponentContainer} sx={{paddingTop: { xs: showMobileImage ? '35px!important' : '75px!important', md: '100px!important'}, padding: 0}}>
               {children}
             </Container>
           </ThemeProvider>
