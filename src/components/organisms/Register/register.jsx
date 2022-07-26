@@ -49,7 +49,7 @@ export default function Register() {
         return watchedEmail || watchedMobile || '(auto-populated email id/phone number)'
     }
     
-    let lengthRegex = new RegExp('.{8,20}');
+    let lengthRegex = new RegExp(/^[^-\s]{8,20}$/);
     let numberRegex = new RegExp('[0-9]');
     let alphabethRegex = new RegExp('[A-Za-z]');
     let specialRegex = new RegExp('[@#$%^&-+=()]');
@@ -59,7 +59,7 @@ export default function Register() {
         { label: 'Password should contain at least one numerical character (0-9)', validate: !numberRegex.test(watchedPassword) },
         { label: 'Password should contain at least one alphabet (a-z)', validate: !alphabethRegex.test(watchedPassword) },
         { label: 'Password should contain at least one special character', validate: !specialRegex.test(watchedPassword) },
-        { label: 'Password should not contain your username', validate: watchedPassword.indexOf(watchedEmail || watchedMobile) == -1 },
+        { label: 'Password should not contain your username', validate: watchedPassword.indexOf(watchedEmail || watchedMobile) > -1 },
         { label: 'Password should not contain 3 or more identical characters consecutively', validate: hasTripleRegex.test(watchedPassword) },
     ]
 
