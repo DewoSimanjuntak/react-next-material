@@ -30,6 +30,7 @@ export default function Register() {
 
     const onSubmit = data => {
         setShowValidation(true);
+        // dummy error validation
         setError("firstName", { type: 'custom', message: 'An error occured' })
         setError("lastName", { type: 'custom', message: 'An error occured' })
         setError("mobile", { type: 'custom', message: 'An error occured' })
@@ -47,6 +48,18 @@ export default function Register() {
     const getRegisteredUsername = () => {
         return watchedEmail || watchedMobile || '(auto-populated email id/phone number)'
     }
+    
+    let lengthRegex = new RegExp('.{8,20}');
+    let alphabethRegex = new RegExp('[A-Za-z]');
+    let specialRegex = new RegExp('[@#$%^&-+=()]');
+    let hasTripleRegex = new RegExp('([a-z\\d])\\1\\1');
+    const passwordValidator = [
+        { label: 'Password length should range from 8 to 20 characters', rules: lengthRegex.test(watchedPassword) },
+        { label: 'Password should contain at least one alphabet (a-z)', rules: alphabethRegex.test(watchedPassword) },
+        { label: 'Password should contain at least one special character', rules: specialRegex.test(watchedPassword) },
+        { label: 'Password should not contain your username', rules: watchedPassword.indexOf(watchedEmail || watchedMobile) == -1 },
+        { label: 'Password should not contain 3 or more identical characters consecutively (ex. Emploooooye, Sys@@@tem, abcabcabc, 123123123, etc.)', rules: hasTripleRegex.test(watchedPassword) },
+    ]
 
     return (
         <Box className={globalStyles.container}>
@@ -165,7 +178,11 @@ export default function Register() {
                         }}
                         rules={{ required: 'Password required' }}
                     />
-                    <PasswordValidator isShowValidation={isShowValidation} password={watchedPassword} username={getRegisteredUsername()} />
+                    <PasswordValidator
+                        validator={passwordValidator}
+                        isShowValidation={isShowValidation}
+                        password={watchedPassword}
+                        username={getRegisteredUsername()} />
                     
                     <div style={styles.registeredUsernameWrapper}>
                         <div>Your username will be {getRegisteredUsername()}</div>
