@@ -148,7 +148,7 @@ export const CustomInput = styled(({ ...props }) => {
     <>
       {props.type === "password" ? (
         <>
-          <CustomFormControl variant="filled">
+          <CustomFormControl variant="outlined">
             {/* <InputLabel htmlFor="filled-adornment-password" style={props.adorment ? { top: -16 } : null} error={props.error}>
               {props.label}
             </InputLabel> */}
@@ -191,7 +191,7 @@ export const CustomInput = styled(({ ...props }) => {
       ) : (
         <>
           <RedditTextField
-            variant="filled"
+            variant="outlined"
             style={{ marginTop: 11 }}
             sx={{
               backgroundColor: "white",

@@ -9,8 +9,11 @@ import styles from "./Style.module.scss";
 import globalStyles from "../../../styles/Global.module.scss";
 import { useRouter } from "next/router";
 import { StyledButton } from "../../atoms/Button/button";
+import { useForm, Controller } from "react-hook-form";
+import FormMessage from "../../molecules/FormMessage/formMessage";
+import Button from "@mui/material/Button";
 
-const constants = require('../../../utils/constants');
+const constants = require("../../../utils/constants");
 
 export default function Login({
   OnLoginClicked,
@@ -18,51 +21,119 @@ export default function Login({
   OnCreateAccountClicked,
   OnForgotPasswordClicked,
 }) {
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [postMessage, setPostMessage] = React.useState("")
   const router = useRouter();
-  
+
+  const { handleSubmit, setError, control } = useForm({
+    defaultValues: {
+      email: '',
+      password: ''
+  }
+  });
+
+  const onSubmit = data => {
+    console.log(data);
+};
+
+  // const [watchedEmail] = watch(["email"]); // you can also target specific fields by their names
+  // const getRegisteredUsername = () => {
+  //     return watchedEmail  || '(auto-populated email id)'
+  // }
+
+  // const onSubmit = ({ username, password }) => {
+  //   OnLoginClicked({ username, password }, router, checkMessage)
+  //   console.log({ username, password });
+  // };
+
+  // const checkMessage = (message) => {
+  //   const messageStatus = postMessage.status === "failed"
+  //   if (messageStatus) {
+  //     setError("username", { type: 'custom', message: "Enter a valid Email" })
+  //     setError("password", { type: 'custom', message: "This password is required" })
+  //   }
+  //   setPostMessage(message)
+  //   console.log("this", postMessage, message)
+  // }
+
+  // const renderFromMessage = () => {
+  //   console.log("sas", postMessage)
+  //   return (
+  //     postMessage.status === "failed" && <FormMessage error>{postMessage.message.description}</FormMessage>
+  //   )
+  // }
+
   return (
     <Box className={globalStyles.container}>
-      <Stack spacing={3}>
-        <Typography variant={constants.H1} className={styles.title}>
-          Provider Login
-        </Typography>
-        <StyledInput
-          id="username"
-          label="Username"
-          className={styles.inputStyle}
-          size={constants.SMALL}
-          variant={constants.FILLED}
-          type={constants.INPUT_TEXT}
-          error={false}
-         // helperText={"Enter your registered email or phone number"}
-          onChange={(event) => setUsername(event.target.value)}
-          //  helperText={userpassword === " " ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
-          //  error={userpassword === "" ? true  : false}
-        />
-        <StyledInput
-          id="password"
-          label="Password"
-          className ={styles.inputStyle}
-          type={constants.INPUT_PASSWORD}
-          size={constants.SMALL}
-          //  variant="filled"
-          onChange={(event) => setPassword(event.target.value)}
-          //  helperText={username === "" ?  'Enter Your Registered email or phone number' : 'This field required (Enter email or phone number)' }
-          //  error={username === "" ? true  : false}
-        />
-        <StyledButton
-          theme={constants.PATIENT}
-          type={constants.PRIMARY}
-          size={constants.LARGE}
-          gradient={false}
-          onClick={function () {
-            OnLoginClicked({ username, password }, router);
-          }}
-        >
-          Login
-        </StyledButton>
+      <Typography variant={constants.H1} className={styles.title}>
+        Provider Login
+      </Typography>
+      {/* {renderFromMessage()} */}
+      <Stack spacing={2}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Stack spacing={2}>
+            <Controller
+              name="username"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value }, fieldState: { error } }) => {
+                return (
+                  <StyledInput
+                    id="username"
+                    label="Username or Email"
+                    adorment={true}
+                    size={constants.SMALL}
+                    variant={constants.FILLED}
+                    type={constants.INPUT_TEXT}
+                    value={value}
+                    onChange={onChange}
+                    error={!!error}
+                    helperText={error ? error.message : null}
+                  />
+                )
+              }}
+              rules={{
+                required: 'Please Enter your Username or Email', pattern: {
+                    value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/i,
+                    message: "Please Enter Valid Username or Email"
+                }
+            }}
+            />
+            <Controller
+              name="password"
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value }, fieldState: { error } }) => {
+                return (
+                  <StyledInput
+                    id="password"
+                    label="Password"
+                    type={constants.INPUT_PASSWORD}
+                    size={constants.SMALL}
+                    variant={constants.OUTLINED}
+                    value={value}
+                    onChange={onChange}
+                    error={!!error}
+                    helperText={error ? error.message : null}
+                  />
+                )
+              }}
+              rules={{ required: "Please Enter your Password" }}
+            />
+            <Button
+              //theme={constants.PATIENT}
+             // mode={constants.SECONDARY}
+              variant={constants.CONTAINED}
+              type="submit"
+              //size={constants.LARGE}
+              //gradient={false}
+            //  onClick={function () {
+            //    OnLoginClicked({ username, password }, router);
+            //  }}
+            >
+              Login
+            </Button>
+          </Stack>
+        </form>
         <Divider variant={constants.MIDDLE} />
         <Grid container justifyContent={"center"}>
           <Link
@@ -74,16 +145,20 @@ export default function Login({
             Forgot Password or Username
           </Link>
         </Grid>
-        
+
         <Grid container justifyContent={constants.CENTER}>
-          <Typography variant="bodyRegular">Don&apos;Not a Member?
-          <Link        >
+          <Typography variant="caption">
+            Not a Member?
+          </Typography>
+        <Link
+          onClick={function () {
+            OnCreateAccountClicked(router);
+          }}
+        >
           Create An Account
         </Link>
-          </Typography>
-        </Grid>
 
-        
+        </Grid>
       </Stack>
     </Box>
   );

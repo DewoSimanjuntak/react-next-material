@@ -11,6 +11,8 @@ module.exports = {
     BODY_REGULAR:"bodyRegular",
     FILLED:"filled",
     INPUT_TEXT:"text",
-    INPUT_PASSWORD:"password"
+    INPUT_PASSWORD:"password",
+    OUTLINED:"outlined",
+    CONTAINED:"contained"
 
 }
