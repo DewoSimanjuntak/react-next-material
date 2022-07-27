@@ -44,10 +44,23 @@ export const styles = {
       width: "100%"
     },
     addPractice:{
-      marginTop: "15px"
+      marginTop: "15px",
+      color: "#003b4a",
+      float: "left"
+    },
+    removePractice: {
+      marginTop: "15px",
+      color: "#003b4a",
+      float: "right",
+      marginBottom: "20px"
     },
     addPracticeTitle:{
-      fontSize: "20px"
+      fontSize: "16px",
+      marginLeft: "6px"
+    },
+    removePracticeTitle:{
+      fontSize: "16px",
+      marginLeft: "6px"
     },
     containedButton: {
       marginTop: "25px",
