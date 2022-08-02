@@ -4,6 +4,7 @@ export const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 8,
-    borderBottom: 'solid 1px black'
+    borderBottom: 'solid 1px black',
+    backgroundColor: "#015064",
   }
 }

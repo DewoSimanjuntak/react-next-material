@@ -1,17 +1,18 @@
-import React, { useState } from "react";
-import { Button, TextField } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import { alpha, styled } from "@mui/material/styles";
+import * as React from "react";
+import Box from "@mui/material";
+import Stack from "@mui/material/Stack";
+import Link from "@mui/material/Link";
 import { StyledInput } from "../../atoms/Input/input";
-import LinkIcon from "@mui/icons-material/Link";
-import { useTranslation } from "react-i18next";
+import { alpha, styled } from "@mui/material/styles";
 import globalStyles from "../../../styles/Global.module.scss";
 import { useRouter } from "next/router";
-import Link from "@mui/material/Link";
 import { useForm, Controller } from "react-hook-form";
-import Stack from "@mui/material/Stack";
-
+import { useTranslation } from "react-i18next";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import { Button, TextField } from "@mui/material";
+// import { StyledButton } from "../../atoms/Button/button";
+// import {styles} from "./style";
 
 const headingStyles = {
   marginBottom: 30,
@@ -66,21 +67,39 @@ const RedditTextField = styled((props) => (
   },
 }));
 
-const ForgotPasswordComponent = () => {
-  const router = useRouter();
-  const {handleSubmit,control}=useForm();
-  
+export default function ForgotPasswordComponent({
+  OnSubmitClicked
+  }) {
+ 
+    const [postMessage, setPostMessage] = React.useState("");
+    const router = useRouter();
+    const { t } = useTranslation("forgotPassword");
+    const { handleSubmit, setError, control } = useForm();
 
-  const { t } = useTranslation("forgotPassword");
-  const [isValidUsername, setValidUsername] = useState(false);
-  
-  const onResetPasswordClicked = () => {
-    setValidUsername(!isValidUsername);
-  };
-  const validateMandatoryFields=data=>{
-    console.log(data);
-}
+    const onSubmit = ({ userName }) => {
+      OnSubmitClicked({ userName }, router, checkMessage);
+      console.log({ userName });
+    };
 
+    
+    const checkMessage = (message) => {
+      const messageStatus = message.status === "failed";
+      console.log(`messageStatus ${messageStatus}`);
+      if (messageStatus) {
+        setError("userName", {
+          type: "custom",
+          message: "Incorrect email or username.Please Try again.",
+        });
+      }
+      setPostMessage(message);
+      console.log("this", postMessage, message);
+    };
+  
+    const renderFromMessage = () => {
+      console.log("sas", postMessage);
+     
+    };
+ 
   return (
     <Card className={globalStyles.container} sx={{ minWidth: 275, margin: 10 }}>
       <CardContent style={cardContentStyle}>
@@ -88,25 +107,39 @@ const ForgotPasswordComponent = () => {
         <label style={labelStyle}>{t("description")}</label>
         <Stack spacing={3}>
     
-   <form onSubmit={handleSubmit(validateMandatoryFields)}>
-    <Stack spacing={1.5}>
+   <form onSubmit={handleSubmit(onSubmit)}>
+   {renderFromMessage()}
+    <Stack spacing={2}>
     <Controller 
-        name="email"
+        name="userName"
         control={control}
         defaultValue=""
         rules={{required: "This is a required field" }}
         render={({field: { onChange, value}, fieldState: {error}})=>{
             return(
                 <TextField 
-                    label="Email*"
+                    id="userName"
+                    label="Email or Username*"
                     error={!!error}
                     helperText={error ? error.message : null}
                     value={value}
+                    onChange={onChange}
               />
             )
         }}
     />
-    <Button
+    {/* <StyledButton
+            type="submit"
+            theme="patient"
+            mode="primary"
+            size="large"
+            gradient={false}
+            style={styles.margin}
+            
+          >
+            Submit
+          </StyledButton> */}
+          <Button
           variant="contained"
           sx={buttonStyle} type="submit"
     >
@@ -120,5 +153,3 @@ const ForgotPasswordComponent = () => {
     </Card>
   );
 };
-
-export default ForgotPasswordComponent;
