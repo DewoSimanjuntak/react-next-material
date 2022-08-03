@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { Button, TextField } from "@mui/material";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 // import { StyledButton } from "../../atoms/Button/button";
 // import {styles} from "./style";
 
@@ -18,6 +19,14 @@ const headingStyles = {
   marginBottom: 30,
   textAlign: "left",
 };
+
+
+// const successStyles = {
+//   backgroundColor: green,
+//   width: 300,
+//   padding: 50,
+//   margin: 20,
+// };
 
 const labelStyle = {
   textAlign: "left",
@@ -34,6 +43,10 @@ const buttonStyle = {
   marginTop: 3,
   backgroundColor: "#015064",
   borderRadius: "48pt",
+  textTransform: "none",
+  '&:hover': {
+    background: '#015064'
+}
 };
 
 const linkStyles= {
@@ -42,6 +55,8 @@ const linkStyles= {
   color: "#015064",
   fontWeight: 'bold'
 };
+
+
 
 const RedditTextField = styled((props) => (
   <TextField InputProps={{ disableUnderline: true }} {...props} />
@@ -72,6 +87,8 @@ export default function ForgotPasswordComponent({
   }) {
  
     const [postMessage, setPostMessage] = React.useState("");
+    const [success,setSuccess] = React.useState("");
+    
     const router = useRouter();
     const { t } = useTranslation("forgotPassword");
     const { handleSubmit, setError, control } = useForm();
@@ -84,31 +101,50 @@ export default function ForgotPasswordComponent({
     
     const checkMessage = (message) => {
       const messageStatus = message.status === "failed";
-      console.log(`messageStatus ${messageStatus}`);
+      //console.log("messageStatus", messageStatus);
+      const userNameStatus = message.postBody;
+      //console.log("userNameStatus",userNameStatus);
+      
       if (messageStatus) {
         setError("userName", {
           type: "custom",
-          message: "Incorrect email or username.Please Try again.",
+          message: "Incorrect email or username. Please Try again.",
         });
       }
+      else if(userNameStatus.userName=="smith4@photon.com"){
+        setSuccess("A link has been sent to your registered email to reset your password. Please Check");
+      }
+      else if(userNameStatus.userName=="smith1@photon.com"){
+        setSuccess("Please check your email to reset your password");
+      }
+      else{
+      }
       setPostMessage(message);
-      console.log("this", postMessage, message);
+      //console.log("this", postMessage, message);
+    };
+
+
+    const renderFromMessage = () => {
+      //console.log("sas", postMessage);
+      return (
+        postMessage.status === "success" && (
+          
+          <div style={{backgroundColor:"#059142",borderRadius: '4px',color:"#fff",padding:"10px",marginBottom:"10px"}}><CheckCircleIcon sx={{ backgroundColor:"#fff" ,color:"#059142", borderRadius: '50px' }}/> {success}</div>
+          )
+      );
     };
   
-    const renderFromMessage = () => {
-      console.log("sas", postMessage);
-     
-    };
- 
+   
   return (
     <Card className={globalStyles.container} sx={{ minWidth: 275, margin: 10 }}>
       <CardContent style={cardContentStyle}>
         <h1 style={headingStyles}>{t("title")}</h1>
+        {renderFromMessage()}
         <label style={labelStyle}>{t("description")}</label>
         <Stack spacing={3}>
     
    <form onSubmit={handleSubmit(onSubmit)}>
-   {renderFromMessage()}
+   
     <Stack spacing={2}>
     <Controller 
         name="userName"
