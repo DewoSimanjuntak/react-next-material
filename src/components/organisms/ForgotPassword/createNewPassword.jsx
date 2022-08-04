@@ -58,6 +58,10 @@ export const CreateNewPassword=()=>{
     const [pwdLength,setPwdLength]=useState(true);
     const [pwdSplChar,setPwdSplChar]=useState(true);
     const [pwdNumeric, setPwdNumerice]=useState(true);
+    const [pwdUserName,setPwdUserName]=useState(true);
+    const [pwdCurrentPassword, setPwdCurrentPassword]=useState(true);
+
+
     const [alertInfo,setAlertInfo]=useState({
             type:"",
             msg:"",
@@ -105,6 +109,8 @@ export const CreateNewPassword=()=>{
         setPwdLength(!(data['newPassword'].length >=8 && data['newPassword'].length <=20));
         setPwdNumerice(!atleastOneNum.test(data['newPassword']));
         setPwdSplChar(!atleastOneSplChar.test(data['newPassword']));
+        setPwdCurrentPassword(true);
+        setPwdUserName(true);
     }
 
     const validateFields=()=>{
@@ -210,8 +216,8 @@ export const CreateNewPassword=()=>{
                 <LabelWithIcon error={pwdUpperAlphabet} label="Atleast One Upper case Alphabet" />
                 <LabelWithIcon error={pwdLowerAlphabet} label="Atleast One Lower case Alphabet" />
                 <LabelWithIcon error={pwdSplChar} label="Atleast One Special character (no spaces)" />
-                <LabelWithIcon label="Password must not contain your username" />
-                <LabelWithIcon label="New password must not match current password" />
+                <LabelWithIcon error={pwdUserName} label="Password must not contain your username" />
+                <LabelWithIcon error={pwdCurrentPassword} label="New password must not match current password" />
 
                 <Button type="submit" sx={styles.buttonStyles} variant="contained">Submit</Button>
                 <Link sx={styles.linkStyles} href="/login">Back To Login</Link>
